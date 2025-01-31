@@ -39,6 +39,6 @@ out body;
 >;
 out skel qt;
 ```
-5. Visit Osmose and activate only "power lines". Press the plus symbol next to it and only select "Unfinished power major line". Zoom to the area you are interested in. Activate the osmose layer in JOSM and press Export --> JOSM. The towers with Unfinished power major line should now be visible in the osmose layer. If this is not the case deactivate your ad blocker, activate Remote Control under Edit --> Preferences in JOSM, or reduce the visible area in osmose. 
-6. You can now check every osmose error in the transmission grid. After you have fixed an issue or you are not able to fix it, remove the tower from the osmose layer to see what you already have checked. 
+5. Visit [Osmose](https://osmose.openstreetmap.fr/en/map/#loc=7/4.907/-72.994&level=1%2C2%2C3&tags=power&class=2&item=7040) and activate only "power lines". Press the plus symbol next to it and select "Unfinished power major line". Zoom to the area you are interested in. Activate the osmose layer in JOSM. Switch to osmose again and press Export --> JOSM. The towers with "Unfinished power major line" should now be visible in the osmose layer in JOSM. If this is not the case deactivate your ad blocker, activate Remote Control under Edit --> Preferences in JOSM, or reduce the visible area in osmose. 
+6. Enable "Discourage Upload" for the Osmose layer so that you do not accidentally upload this layer. You can now investigate every osmose error in the transmission grid. After you have fixed an issue or you are not able to fix it, remove the tower from the osmose layer to keep track about your progress. 
 
