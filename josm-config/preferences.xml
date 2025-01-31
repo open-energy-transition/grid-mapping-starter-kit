@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences xmlns='http://josm.openstreetmap.de/preferences-1.0' version='19277'>
+  <tag key='cache.bing.attribution.xml' value='1738329249'/>
+  <tag key='cache.capabilities1637351842' value='1737988814'/>
+  <tag key='cache.motd.html' value='1738329212'/>
+  <tag key='cache.motd.html.java' value='21.0.5'/>
+  <tag key='cache.motd.html.lang' value='En:'/>
+  <tag key='cache.motd.html.version' value='19277'/>
+  <tag key='changesetdialog.lastHeight' value='0'/>
+  <list key='clr.general.inactive'>
+    <entry value='#00FF00'/>
+    <entry value='general'/>
+    <entry value=''/>
+    <entry value='inactive'/>
+  </list>
+  <tag key='commandstack.lastHeight' value='0'/>
+  <tag key='conflict.lastHeight' value='0'/>
+  <tag key='download.overpass.for-multi-fetch' value='true'/>
+  <maps key='download.overpass.queries'>
+    <map>
+      <tag key='query' value='[out:json][timeout:25];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;(&#xA;  node[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;  way[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;  relation[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;&#xA;  node[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  way[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  &#xA;//  node[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  way[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  relation[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;&#xA;&#xA;//way[&quot;power&quot;=&quot;line&quot;]({{bbox}});&#xA;&#xA;  &#xA;);&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='17:54:57, 16-01-2025'/>
+      <tag key='key' value='history 17:54:57, 16-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:25];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;(&#xA;//  node[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;// way[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;//  relation[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;&#xA;  node[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  way[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  &#xA;//  node[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  way[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  relation[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;&#xA;&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}});&#xA;&#xA;  &#xA;);&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='17:03:03, 16-01-2025'/>
+      <tag key='key' value='history 17:03:03, 16-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:45];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power lines that are connected to towers&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers) -&gt; .lines_connected_to_towers;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='16:28:07, 22-01-2025'/>
+      <tag key='key' value='history 16:28:07, 22-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:25];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;(&#xA;//  node[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;//  way[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;//  relation[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;&#xA;  node[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  way[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  &#xA;//  node[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  way[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  relation[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;&#xA;&#xA;//way[&quot;power&quot;=&quot;line&quot;]({{bbox}});&#xA;&#xA;  &#xA;);&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='18:24:07, 16-01-2025'/>
+      <tag key='key' value='history 18:24:07, 16-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:25];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;(&#xA;  node[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;  way[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;  relation[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;&#xA;//  node[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;//  way[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;//  relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  &#xA;//  node[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  way[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  relation[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;&#xA;&#xA;//way[&quot;power&quot;=&quot;line&quot;]({{bbox}});&#xA;&#xA;  &#xA;);&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='12:45:36, 22-01-2025'/>
+      <tag key='key' value='history 12:45:36, 22-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:45];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;(&#xA;  node[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;  way[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;  relation[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;&#xA;  node[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  way[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  &#xA;//  node[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  way[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  relation[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;&#xA;&#xA;//way[&quot;power&quot;=&quot;line&quot;]({{bbox}});&#xA;&#xA;  &#xA;);&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='15:39:47, 22-01-2025'/>
+      <tag key='key' value='history 15:39:47, 22-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:45];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power lines that are connected to towers&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers) -&gt; .lines_connected_to_towers;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;&#xA;(&#xA;  .towers;&#xA;  .lines_connected_to_towers;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='15:56:08, 22-01-2025'/>
+      <tag key='key' value='history 15:56:08, 22-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:45];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power lines that are connected to towers&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers) -&gt; .lines_connected_to_towers;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;  .towers;&#xA;  .lines_connected_to_towers;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='16:33:19, 22-01-2025'/>
+      <tag key='key' value='history 16:33:19, 22-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:60];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power lines that are connected to towers&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers) -&gt; .lines_connected_to_towers;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;  .towers;&#xA;  .lines_connected_to_towers;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='20:53:29, 22-01-2025'/>
+      <tag key='key' value='history 20:53:29, 22-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:45];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power lines that are connected to towers&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})-&gt;.lines;&#xA;way.lines(bn.towers);&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='15:50:30, 22-01-2025'/>
+      <tag key='key' value='history 15:50:30, 22-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:45];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power lines that are connected to towers&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers) -&gt; .lines_connected_to_towers;&#xA;&#xA;(&#xA;  .towers;&#xA;  .lines_connected_to_towers;&#xA;);&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='16:31:42, 22-01-2025'/>
+      <tag key='key' value='history 16:31:42, 22-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power poles&#xA;node[&quot;power&quot;=&quot;pole&quot;]({{bbox}}) -&gt; .poles;&#xA;&#xA;// Find all power lines that are connected to towers or poles&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers, bn.poles) -&gt; .lines_connected;&#xA;&#xA;// Find all high-voltage power lines (&gt;= 115 kV)&#xA;way[&quot;power&quot;=&quot;line&quot;][&quot;voltage&quot;](if:t[&quot;voltage&quot;] &gt;= 115000)({{bbox}}) -&gt; .high_voltage_lines;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;  .towers;&#xA;  .poles;&#xA;  .lines_connected;&#xA;  .high_voltage_lines;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='13:59:42, 30-01-2025'/>
+      <tag key='key' value='history 13:59:42, 30-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power poles. Depending on the country, the pole data can be significant and affect the performance of JOSM. However, there are countries such as the US where poles also carry transmission lines above 100kV. &#xA;node[&quot;power&quot;=&quot;pole&quot;]({{bbox}}) -&gt; .poles;&#xA;&#xA;// Find all power lines that are connected to towers or poles&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers, bn.poles) -&gt; .lines_connected;&#xA;&#xA;// Find all high-voltage power lines (&gt;= 100 kV)&#xA;way[&quot;power&quot;=&quot;line&quot;][&quot;voltage&quot;](if:t[&quot;voltage&quot;] &gt;= 100000)({{bbox}}) -&gt; .high_voltage_lines;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;  .towers;&#xA;  .poles;&#xA;  .lines_connected;&#xA;  .high_voltage_lines;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='14:25:40, 30-01-2025'/>
+      <tag key='key' value='history 14:25:40, 30-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:25];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;(&#xA;//  node[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;// way[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;//  relation[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;&#xA;  node[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  way[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  &#xA;//  node[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  way[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  relation[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;&#xA;&#xA;//way[&quot;power&quot;=&quot;line&quot;]({{bbox}});&#xA;&#xA;  &#xA;);&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='17:26:51, 16-01-2025'/>
+      <tag key='key' value='history 17:26:51, 16-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:25];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;(&#xA;  node[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;  way[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;  relation[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;&#xA;//  node[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;//  way[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;//  relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  &#xA;  node[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;  way[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;  relation[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;&#xA;&#xA;//way[&quot;power&quot;=&quot;line&quot;]({{bbox}});&#xA;&#xA;  &#xA;);&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='11:39:47, 22-01-2025'/>
+      <tag key='key' value='history 11:39:47, 22-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power poles. Depending on the country, the pole data can be significant and affect the performance of JOSM. However, there are countries such as the US where poles also carry transmission lines above 100kV. &#xA;node[&quot;power&quot;=&quot;pole&quot;]({{bbox}}) -&gt; .poles;&#xA;&#xA;// Find all power lines that are connected to towers or poles&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers, bn.poles) -&gt; .lines_connected;&#xA;&#xA;// Find all high-voltage power lines (&gt;= 100 kV)&#xA;// way[&quot;power&quot;=&quot;line&quot;][&quot;voltage&quot;](if:t[&quot;voltage&quot;] &gt;= 100000)({{bbox}}) -&gt; .high_voltage_lines;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;  .towers;&#xA;  .poles;&#xA;  .lines_connected;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='15:42:13, 30-01-2025'/>
+      <tag key='key' value='history 15:42:13, 30-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:60];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power lines that are connected to towers&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers) -&gt; .lines_connected_to_towers;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;//  .towers;&#xA;//  .lines_connected_to_towers;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='20:41:01, 24-01-2025'/>
+      <tag key='key' value='history 20:41:01, 24-01-2025'/>
+    </map>
+  </maps>
+  <tag key='download.overpass.query' value='[out:json][timeout:60];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power lines that are connected to towers&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers) -&gt; .lines_connected_to_towers;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;  .towers;&#xA;  .lines_connected_to_towers;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+  <list key='download.sophox.servers'>
+    <entry value='https://sophox.org/bigdata/namespace/wdq/sparql'/>
+    <entry value='https://sophox.org/bigdata/namespace/wdq/sparql'/>
+    <entry value='https://sophox.org/bigdata/namespace/wdq/sparql'/>
+  </list>
+  <tag key='download.source.tab' value='overpassdownloadpanel'/>
+  <tag key='download.tabsplit.overpassdownloadpanel' value='281'/>
+  <tag key='expert' value='true'/>
+  <list key='file-open.history'>
+    <entry value='/home/cy0/gitclones/OET/grid-mapping-starter-kit/josm-config/transmission_grid_mapping_template.joz'/>
+    <entry value='/home/cy0/gitclones/OET/grid-mapping-starter-kit/josm-config/kenya_template.joz'/>
+    <entry value='/home/cy0/gitclones/OET/grid-mapping-starter-kit/josm-config/africa_template.osm'/>
+    <entry value='/home/cy0/Documents/grid_mapping/south_east_asia.joz'/>
+    <entry value='/home/cy0/Documents/grid_mapping/south_east_asia_v2.joz'/>
+    <entry value='/home/cy0/Documents/grid_mapping/shapes/primary_substations.geojson'/>
+    <entry value='/home/cy0/Documents/grid_mapping/central_africa_mapping.joz'/>
+    <entry value='/home/cy0/Documents/grid_mapping/OSM_grid_mapping_sessions/South_Vietname.joz'/>
+    <entry value='/home/cy0/Documents/issues.geojson'/>
+    <entry value='/home/cy0/Documents/grid_mapping/shapes/burundigrid.geojson'/>
+    <entry value='/home/cy0/Documents/grid_mapping/shapes/issues.geojson'/>
+    <entry value='/home/cy0/Documents/grid_mapping/shapes/issues (2).geojson'/>
+    <entry value='/home/cy0/Documents/grid_mapping/shapes/issues (1).geojson'/>
+    <entry value='/home/cy0/Documents/grid_mapping/kenya_mapping.joz'/>
+    <entry value='/home/cy0/Documents/grid_mapping/Zambia_substation_integration.joz'/>
+  </list>
+  <tag key='filter.lastHeight' value='0'/>
+  <tag key='geoimage.docked' value='false'/>
+  <tag key='geoimage.geometry' value='x=192,y=410,width=1285,height=755'/>
+  <tag key='geoimage.lastHeight' value='718'/>
+  <tag key='gui.geometry' value='x=-580,y=222,width=960,height=879'/>
+  <tag key='gui.maximized' value='true'/>
+  <maps key='imagery.entries'>
+    <map>
+      <tag key='max-zoom' value='22'/>
+      <tag key='min-zoom' value='1'/>
+      <tag key='noTileHeaders' value='{&quot;X-VE-Tile-Info&quot;:[&quot;no-tile&quot;]}'/>
+      <tag key='noTileChecksums' value='{&quot;MD5&quot;:[&quot;c13269481c73de6e18589f9fbc3bdf7e&quot;]}'/>
+      <tag key='metadataHeaders' value='{&quot;X-VE-TILEMETA-CaptureDatesRange&quot;:&quot;Capture Date&quot;}'/>
+      <tag key='transparent' value='true'/>
+      <tag key='minimumTileExpire' value='3600'/>
+      <tag key='name' value='Bing aerial imagery'/>
+      <tag key='id' value='Bing'/>
+      <tag key='type' value='bing'/>
+      <tag key='url' value='https://www.bing.com/maps/'/>
+      <tag key='permission-reference-url' value='https://wiki.openstreetmap.org/wiki/Bing_Maps'/>
+      <tag key='cookies' value=''/>
+      <tag key='icon' value='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAALVBMVEUMhIT///8jj4/Z7Ozl8vJUqal/vr6+3t6Tycmo1NQxl5dutbXz+flBn5/M5eX9gIKtAAAAjUlEQVR4XmMgD6gFoQkoC7eiCQgKK6AJiNBEQGkBmoBW5S40LROFZyugCMQICloEIQuoCwoKCicgCbAJCgoKGiEJMCWjCTAwpaAJsBaiCnC1CCILCCslCwoKijQgVKQLCgoKliLcAQbWCqgCFgin6wkKCgqevIDwHO8cQUHxAAYkwFoonMSAArS7GCgAAKZlGg8L4DPrAAAAAElFTkSuQmCC'/>
+      <tag key='customHttpHeaders' value='{}'/>
+      <tag key='category' value='photo'/>
+    </map>
+    <map>
+      <tag key='max-zoom' value='22'/>
+      <tag key='noTileHeaders' value='{&quot;Etag&quot;:[&quot;\&quot;10i954m13i2\&quot;&quot;]}'/>
+      <tag key='noTileChecksums' value='{&quot;MD5&quot;:[&quot;f27d9de7f80c13501f470595e327aa6d&quot;]}'/>
+      <tag key='transparent' value='true'/>
+      <tag key='minimumTileExpire' value='3600'/>
+      <tag key='name' value='Esri World Imagery'/>
+      <tag key='id' value='EsriWorldImagery'/>
+      <tag key='type' value='tms'/>
+      <tag key='url' value='https://{switch:services,server}.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{zoom}/{y}/{x}'/>
+      <tag key='attribution-text' value='Terms &amp; Feedback'/>
+      <tag key='attribution-url' value='https://wiki.openstreetmap.org/wiki/Esri'/>
+      <tag key='cookies' value=''/>
+      <tag key='icon' value='data:image/png;base64,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'/>
+      <tag key='customHttpHeaders' value='{}'/>
+      <tag key='category' value='photo'/>
+    </map>
+    <map>
+      <tag key='max-zoom' value='22'/>
+      <tag key='transparent' value='true'/>
+      <tag key='minimumTileExpire' value='3600'/>
+      <tag key='name' value='Esri World Imagery (Clarity) Beta'/>
+      <tag key='id' value='EsriWorldImageryClarity'/>
+      <tag key='type' value='tms'/>
+      <tag key='url' value='https://clarity.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/MapServer/tile/{zoom}/{y}/{x}'/>
+      <tag key='attribution-text' value='Terms &amp; Feedback'/>
+      <tag key='attribution-url' value='https://wiki.openstreetmap.org/wiki/Esri'/>
+      <tag key='permission-reference-url' value='https://github.com/osmlab/editor-layer-index/pull/358#issuecomment-361416110'/>
+      <tag key='cookies' value=''/>
+      <tag key='icon' value='data:image/png;base64,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'/>
+      <tag key='description' value='Esri archive imagery that may be clearer and more accurate than the default layer.'/>
+      <tag key='customHttpHeaders' value='{}'/>
+      <tag key='category' value='photo'/>
+    </map>
+    <map>
+      <tag key='max-zoom' value='22'/>
+      <tag key='noTileHeaders' value='{&quot;ETag&quot;:[&quot;\&quot;336b022ed883bc72347a637634e490d4\&quot;|\&quot;067736a547cafe90014b4e59b6510abe\&quot;|\&quot;ee1f6802b0234046b553cbbc672ac7d9\&quot;|\&quot;9f5a2f1d7cc131e58befc2052c71c827\&quot;&quot;]}'/>
+      <tag key='noTileChecksums' value='{&quot;MD5&quot;:[&quot;58e78313d04adf0ea64b8de8590c3d46&quot;]}'/>
+      <tag key='transparent' value='true'/>
+      <tag key='minimumTileExpire' value='3600'/>
+      <tag key='name' value='Mapbox Satellite'/>
+      <tag key='id' value='Mapbox'/>
+      <tag key='type' value='tms'/>
+      <tag key='url' value='https://{switch:a,b,c,d}.tiles.mapbox.com/v4/mapbox.satellite/{zoom}/{x}/{y}.jpg?access_token={apikey}'/>
+      <tag key='attribution-text' value='Terms &amp; Feedback'/>
+      <tag key='attribution-url' value='https://www.mapbox.com/about/maps/'/>
+      <tag key='permission-reference-url' value='https://wiki.openstreetmap.org/wiki/Vertical_Aerial_Photographs#DigitalGlobe_.2F_MapBox'/>
+      <tag key='cookies' value=''/>
+      <tag key='icon' value='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAhFBMVEVHcEz///9CZPtphPtFZ/uMof1KavvO0uJifvtQcPuLn/1ng/ve4euQnv36+vtIaPtXdfvt7vTr7PG2v+jl5/BaePuhrv1devugrOC7wNdxi/uap96uuOXKzeDc3/O9xuqfrfzY2+ilsOLEy+xEZfuQntuwttG+w9mpsM2Zp/x3j/t0jfvA+Y0kAAAAAXRSTlMAQObYZgAAASRJREFUeF6Fk+eSwyAMhC2Be+9Ob9fv/d/viBQgDLnx98cedi2JNQTPhHkqZSrC4CVZjYYo8+SzRAdZunqCHsmznuILUk/3HX79fPmMN7vE7XK2n5yAuTVI8KRm/qYATSd4L7R/rddH0i4VObjGPY9IGxYgfvbchRNTBq2PFQkxzvzCk6r8teFKy+0WcSHHjlbDIEdGtne5pIbzXlk2tCxMSFtQ9DMSvxeAwyOsN2RK6lD1jfLGALpCbQwfwPQYtWBnkKZFDEw1TkDkjxYCGZNi39HjhIQw2xzAoXhUDk1QnaMfG2RUkrVuYakWXuSoMzsk015H1GT2d7/HxTAUh69J8Mbt7w6+8V9K58j5JGuHdv3Yr18cy7Ry9RRZ5F1ej1D41/8P1QwO53k2L5oAAAAASUVORK5CYII='/>
+      <tag key='customHttpHeaders' value='{&quot;Referer&quot;:&quot;https://josm.openstreetmap.de/&quot;}'/>
+      <tag key='category' value='photo'/>
+    </map>
+    <map>
+      <tag key='max-zoom' value='19'/>
+      <tag key='valid-georeference' value='true'/>
+      <tag key='transparent' value='true'/>
+      <tag key='minimumTileExpire' value='3600'/>
+      <tag key='name' value='OpenStreetMap Carto (Standard)'/>
+      <tag key='id' value='standard'/>
+      <tag key='type' value='tms'/>
+      <tag key='url' value='https://tile.openstreetmap.org/{zoom}/{x}/{y}.png'/>
+      <tag key='attribution-text' value='© OpenStreetMap contributors'/>
+      <tag key='attribution-url' value='https://www.openstreetmap.org/'/>
+      <tag key='permission-reference-url' value='https://wiki.osmfoundation.org/wiki/Terms_of_Use'/>
+      <tag key='cookies' value=''/>
+      <tag key='icon' value='data:image/png;base64,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'/>
+      <tag key='customHttpHeaders' value='{}'/>
+      <tag key='category' value='osmbasedmap'/>
+    </map>
+  </maps>
+  <list key='imagery.layers.default'>
+    <entry value='Bing'/>
+    <entry value='EsriWorldImagery'/>
+    <entry value='EsriWorldImageryClarity'/>
+    <entry value='Mapbox'/>
+    <entry value='standard'/>
+  </list>
+  <maps key='imagery.offsetbookmarks'>
+  </maps>
+  <tag key='josm.version' value='19277'/>
+  <tag key='lastDirectory' value='/home/cy0/gitclones/OET/grid-mapping-starter-kit/josm-config'/>
+  <tag key='layerlist.lastHeight' value='286'/>
+  <tag key='mapillary-filter-expert.lastHeight' value='0'/>
+  <tag key='mapillary-filter.lastHeight' value='0'/>
+  <tag key='mapillary-info.lastHeight' value='0'/>
+  <tag key='mapillary-main.lastHeight' value='0'/>
+  <tag key='mappaint.renderer-class-name' value='org.openstreetmap.josm.data.osm.visitor.paint.StyledMapRenderer'/>
+  <maps key='mappaint.style.entries'>
+    <map>
+      <tag key='active' value='true'/>
+      <tag key='title' value='FLacombe Power Style Enhanced'/>
+      <tag key='url' value='/home/cy0/Documents/grid_mapping/Styles_Power-style.mapcss'/>
+    </map>
+    <map>
+      <tag key='active' value='false'/>
+      <tag key='title' value='JOSM default (MapCSS)'/>
+      <tag key='ptoken' value='standard'/>
+      <tag key='url' value='resource://styles/standard/elemstyles.mapcss'/>
+    </map>
+    <map>
+      <tag key='active' value='false'/>
+      <tag key='title' value='Potlatch 2'/>
+      <tag key='ptoken' value='standard'/>
+      <tag key='url' value='https://josm.openstreetmap.de/josmfile?page=Styles/Potlatch2&amp;zip=1'/>
+    </map>
+    <map>
+      <tag key='active' value='false'/>
+      <tag key='title' value=''/>
+      <tag key='url' value='/home/cy0/Documents/grid_mapping/grid_integrate.mapcss'/>
+    </map>
+  </maps>
+  <list key='mappaint.style.known-defaults'>
+    <entry value='resource://styles/standard/elemstyles.mapcss'/>
+  </list>
+  <tag key='mapstyle.lastHeight' value='0'/>
+  <tag key='message.imagery.nagPanel.https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/1.0.0/WMTSCapabilities.xml' value='false'/>
+  <tag key='message.imagery.nagPanel.https://tiles.maps.eox.at/?FORMAT=image/png&amp;TRANSPARENT=TRUE&amp;VERSION=1.1.1&amp;SERVICE=WMS&amp;REQUEST=GetMap&amp;LAYERS=s2cloudless-2023_3857&amp;STYLES=&amp;SRS={proj}&amp;WIDTH={width}&amp;HEIGHT={height}&amp;BBOX={bbox}' value='false'/>
+  <tag key='message.imagery.nagPanel.https://www.bing.com/maps/' value='false'/>
+  <tag key='minimap.lastHeight' value='0'/>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://api.trafikinfo.trafikverket.se/img/apple-touch-icon-144-precomposed.png'>
+    <entry value='1736207905614'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___api.trafikinfo.trafikverket.se_img_apple-touch-icon-144-precomposed.png'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://avatars.githubusercontent.com/u/37575873?s_32&amp;v_4'>
+    <entry value='1736207904751'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___avatars.githubusercontent.com_u_37575873_s_32_v_4'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/clock.svg?format_raw'>
+    <entry value='1736259277456'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_clock.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/activate.svg?format_raw'>
+    <entry value='1736259278494'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_activate.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/delete.svg?format_raw'>
+    <entry value='1736259279027'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_delete.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/down.svg?format_raw'>
+    <entry value='1736259278426'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_down.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/geoimage.svg?format_raw'>
+    <entry value='1736259277689'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_geoimage.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/layerlist.svg?format_raw'>
+    <entry value='1736259277312'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_layerlist.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/layerlist/active.svg?format_raw'>
+    <entry value='1736259278050'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_layerlist_active.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/layerlist/colorfulness.svg?format_raw'>
+    <entry value='1736259278716'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_layerlist_colorfulness.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/layerlist/eye.svg?format_raw'>
+    <entry value='1736259278286'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_layerlist_eye.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/layerlist/gamma.svg?format_raw'>
+    <entry value='1736259278780'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_layerlist_gamma.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/layerlist/offset.svg?format_raw'>
+    <entry value='1736259278220'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_layerlist_offset.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/layerlist/scale.svg?format_raw'>
+    <entry value='1736259278129'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_layerlist_scale.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/layerlist/sharpness.svg?format_raw'>
+    <entry value='1736259278871'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_layerlist_sharpness.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/layerlist/transparency.svg?format_raw'>
+    <entry value='1736259278652'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_layerlist_transparency.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/layerlist/visibility.svg?format_raw'>
+    <entry value='1736259278584'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_layerlist_visibility.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/notes/note_open.svg?format_raw'>
+    <entry value='1736259277979'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_notes_note_open.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/up.svg?format_raw'>
+    <entry value='1736259278360'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_up.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/dialogs/validator.svg?format_raw'>
+    <entry value='1736259277912'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_dialogs_validator.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/imagery_menu.svg?format_raw'>
+    <entry value='1736259277846'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_imagery_menu.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/layer/gpx_small.svg?format_raw'>
+    <entry value='1736259277539'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_layer_gpx_small.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/layer/marker_small.svg?format_raw'>
+    <entry value='1736259277613'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_layer_marker_small.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/layer/osmdata_small.svg?format_raw'>
+    <entry value='1736259277390'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_layer_osmdata_small.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/browser/trunk/resources/images/wikimedia_commons.svg?format_raw'>
+    <entry value='1736259277770'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_browser_trunk_resources_images_wikimedia_commons.svg_format_raw'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/raw-attachment/wiki/Maps/USA%20Country/TIGER2017RoadsOverlay.png'>
+    <entry value='1738189952497'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_raw-attachment_wiki_Maps_USA_20Country_TIGER2017RoadsOverlay.png'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://josm.openstreetmap.de/raw-attachment/wiki/Maps/Worldwide/eox.png'>
+    <entry value='1737988831654'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_raw-attachment_wiki_Maps_Worldwide_eox.png'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://kelkkareitit.fi/img/favicon.png'>
+    <entry value='1736207901553'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___kelkkareitit.fi_img_favicon.png'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://kommunikasjon.ntb.no/data/images/00525/e8799776-4b69-4ec4-906d-46285ccb3dbe-w_300_h_100.png'>
+    <entry value='1736207901757'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___kommunikasjon.ntb.no_data_images_00525_e8799776-4b69-4ec4-906d-46285ccb3dbe-w_300_h_100.png'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://osmlab.github.io/editor-layer-index/sources/north-america/us/TIGER2017RoadsOverlay.png'>
+    <entry value='1738189952701'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___osmlab.github.io_editor-layer-index_sources_north-america_us_TIGER2017RoadsOverlay.png'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Emblem_of_the_Norwegian_Directorate_of_Mining.svg/157px-Emblem_of_the_Norwegian_Directorate_of_Mining.svg.png'>
+    <entry value='1736207900687'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___upload.wikimedia.org_wikipedia_commons_thumb_0_02_Emblem_of_the_Norwegian_Directorate_of_Mining.svg_157px-Emblem_of_the_Norwegian_Directorate_of_Mining.svg.png'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Sweden_road_sign_D9.svg/200px-Sweden_road_sign_D9.svg.png'>
+    <entry value='1736207904778'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___upload.wikimedia.org_wikipedia_commons_thumb_8_8f_Sweden_road_sign_D9.svg_200px-Sweden_road_sign_D9.svg.png'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Emblem_of_the_Norwegian_Directorate_of_Fisheries.svg/175px-Emblem_of_the_Norwegian_Directorate_of_Fisheries.svg.png'>
+    <entry value='1736207900852'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___upload.wikimedia.org_wikipedia_commons_thumb_9_9c_Emblem_of_the_Norwegian_Directorate_of_Fisheries.svg_175px-Emblem_of_the_Norwegian_Directorate_of_Fisheries.svg.png'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://upload.wikimedia.org/wikipedia/en/5/59/Riksantikvaren_logo.png'>
+    <entry value='1736207901786'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___upload.wikimedia.org_wikipedia_en_5_59_Riksantikvaren_logo.png'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://www.fosterhjemsforening.no/wp-content/uploads/2015/06/SSB_logo1.png'>
+    <entry value='1736207905076'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___www.fosterhjemsforening.no_wp-content_uploads_2015_06_SSB_logo1.png'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://www.raa.se/app/themes/raa-external/assets/images/favicon/raa-favicon-32.png'>
+    <entry value='1736207902826'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___www.raa.se_app_themes_raa-external_assets_images_favicon_raa-favicon-32.png'/>
+  </list>
+  <list key='mirror./home/cy0/.cache/JOSM/images.https://www.svk.se/static/img/favicon/favicon-32x32.png'>
+    <entry value='1736207905284'/>
+    <entry value='/home/cy0/.cache/JOSM/images/mirror_https___www.svk.se_static_img_favicon_favicon-32x32.png'/>
+  </list>
+  <list key='mirror.https://api.github.com/repos/JOSM/Mapillary/releases/latest'>
+    <entry value='1737050012546'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___api.github.com_repos_JOSM_Mapillary_releases_latest'/>
+  </list>
+  <list key='mirror.https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/1.0.0/WMTSCapabilities.xml'>
+    <entry value='1738242019753'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___gibs.earthdata.nasa.gov_wmts_epsg3857_best_1.0.0_WMTSCapabilities.xml'/>
+  </list>
+  <list key='mirror.https://josm.openstreetmap.de/josmfile?page_Styles/Admin_Boundaries&amp;zip_1'>
+    <entry value='1738062899989'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_josmfile_page_Styles_Admin_Boundaries_zip_1'/>
+  </list>
+  <list key='mirror.https://josm.openstreetmap.de/josmfile?page_Styles/MapillaryDetections&amp;zip_1'>
+    <entry value='1737988920488'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_josmfile_page_Styles_MapillaryDetections_zip_1'/>
+  </list>
+  <list key='mirror.https://josm.openstreetmap.de/josmfile?page_Styles/Potlatch2&amp;zip_1'>
+    <entry value='1737988819778'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_josmfile_page_Styles_Potlatch2_zip_1'/>
+  </list>
+  <list key='mirror.https://josm.openstreetmap.de/josmfile?page_Styles/Power&amp;zip_1'>
+    <entry value='1737539561000'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_josmfile_page_Styles_Power_zip_1'/>
+  </list>
+  <list key='mirror.https://josm.openstreetmap.de/josmfile?page_Styles/PowerMapping&amp;zip_1'>
+    <entry value='1737539655586'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_josmfile_page_Styles_PowerMapping_zip_1'/>
+  </list>
+  <list key='mirror.https://josm.openstreetmap.de/maps'>
+    <entry value='1738329215433'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_maps'/>
+  </list>
+  <list key='mirror.https://josm.openstreetmap.de/presets'>
+    <entry value='1738104490545'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_presets'/>
+  </list>
+  <list key='mirror.https://josm.openstreetmap.de/remote/geofabrik-index-v1-nogeom.json'>
+    <entry value='1737988818962'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_remote_geofabrik-index-v1-nogeom.json'/>
+  </list>
+  <list key='mirror.https://josm.openstreetmap.de/remote/sophox-sparql?query_SELECT+%28CONCAT%28%22Key%3A%22%2C+%3Fpermanent_key_ID%29+as+%3FOSM_key%29+%3Fformatter_URL+WHERE+%7B%0A++%3Fitem+osmdt%3AP2+osmd%3AQ7.%0A++%3Fitem+osmdt%3AP16+%3Fpermanent_key_ID.%0A++%3Fitem+osmdt%3AP8+%3Fformatter_URL.%0A%7D%0A'>
+    <entry value='1735742822958'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmaa9afd68cc62ad3780ff2609e7bb1e11b'/>
+  </list>
+  <list key='mirror.https://josm.openstreetmap.de/remote/wikidata-sparql?query_SELECT+%3FOSM_key+%3Fformatter_URL+WHERE+%7B%0A++%7B+%3Fitem+wdt%3AP1282+%3FOSM_key.+%7D%0A++FILTER%28STRSTARTS%28%3FOSM_key%2C+%27Key%3A%27%29%29+.%0A%0A++%7B%0A++++%7B+%3Fitem+wdt%3AP1630+%3Fformatter_URL.+%7D%0A++++UNION%0A++++%7B+%3Fitem+wdt%3AP3303+%3Fformatter_URL.+%7D%0A++%7D%0A%7D%0A'>
+    <entry value='1735742822553'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetma2ed2f87d98ef5b24c7f8123020996ecf'/>
+  </list>
+  <list key='mirror.https://josm.openstreetmap.de/styles'>
+    <entry value='1737847711654'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_styles'/>
+  </list>
+  <list key='mirror.https://josm.openstreetmap.de/tested'>
+    <entry value='1737637914477'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_tested'/>
+  </list>
+  <list key='mirror.https://services.sentinel-hub.com/ogc/wmts/113184fa-263a-4bd8-a2d3-0c00fbcef8b5?SERVICE_WMS&amp;REQUEST_GetCapabilities'>
+    <entry value='1736210669880'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___services.sentinel-hub.com_ogc_wmts_113184fa-263a-4bd8-a2d3-0c00fbcef8b5_SERVICE_WMS_REQUEST_GetCapabilities'/>
+  </list>
+  <tag key='notes/note_open.lastHeight' value='0'/>
+  <tag key='oauth.access-token.object.OAuth20.api.openstreetmap.org' value='{&quot;access_token&quot;:&quot;ta2DcecXpUI-YShIInE0s5qPTbnSX9JINBZrmjL8hQM&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;created_at&quot;:1737041377,&quot;scope&quot;:&quot;read_gpx write_gpx read_prefs write_prefs write_api write_notes&quot;}'/>
+  <tag key='oauth.access-token.parameters.OAuth20.api.openstreetmap.org' value='{&quot;client_id&quot;:&quot;edPII614Lm0_0zEpc_QzEltA9BUll93-Y-ugRQUoHMI&quot;,&quot;redirect_uri&quot;:&quot;http://127.0.0.1:8111/oauth_authorization&quot;,&quot;api_url&quot;:&quot;https://api.openstreetmap.org/api&quot;,&quot;authorize_url&quot;:&quot;https://www.openstreetmap.org/oauth2/authorize&quot;,&quot;token_url&quot;:&quot;https://www.openstreetmap.org/oauth2/token&quot;}'/>
+  <tag key='oauth.access-token.parameters.OAuth20.https://api.openstreetmap.org/api' value='{&quot;client_id&quot;:&quot;edPII614Lm0_0zEpc_QzEltA9BUll93-Y-ugRQUoHMI&quot;,&quot;redirect_uri&quot;:&quot;http://127.0.0.1:8111/oauth_authorization&quot;,&quot;api_url&quot;:&quot;https://api.openstreetmap.org/api&quot;,&quot;authorize_url&quot;:&quot;https://www.openstreetmap.org/oauth2/authorize&quot;,&quot;token_url&quot;:&quot;https://www.openstreetmap.org/oauth2/token&quot;}'/>
+  <tag key='openqa.filetype' value='geojson'/>
+  <list key='openqa.osmose-tests'>
+    <entry value='7040'/>
+    <entry value='8281'/>
+  </list>
+  <tag key='org.openstreetmap.josm.actions.SessionSaveAction$SessionSaveAsDialog.geometry' value='x=735,y=388,width=450,height=450'/>
+  <tag key='org.openstreetmap.josm.gui.dialogs.DeleteFromRelationConfirmationDialog.geometry' value='x=760,y=513,width=400,height=200'/>
+  <tag key='org.openstreetmap.josm.gui.dialogs.LatLonDialog.geometry' value='x=601,y=350,width=717,height=526'/>
+  <tag key='org.openstreetmap.josm.gui.dialogs.changeset.ChangesetCacheManager.geometry' value='x=0,y=27,width=1000,height=600'/>
+  <tag key='org.openstreetmap.josm.gui.dialogs.properties.TagEditHelper$AddTagsDialog.geometry' value='x=806,y=490,width=399,height=426'/>
+  <tag key='org.openstreetmap.josm.gui.dialogs.properties.TagEditHelper$EditTagDialog.geometry' value='x=516,y=519,width=887,height=188'/>
+  <tag key='org.openstreetmap.josm.gui.download.DownloadDialog.geometry' value='x=65,y=94,width=1573,height=1010'/>
+  <tag key='org.openstreetmap.josm.gui.help.HelpBrowser.geometry' value='x=0,y=27,width=1212,height=973'/>
+  <tag key='org.openstreetmap.josm.gui.io.UploadDialog.geometry' value='x=560,y=313,width=800,height=600'/>
+  <tag key='org.openstreetmap.josm.gui.preferences.PreferenceDialog.geometry' value='x=0,y=50,width=1885,height=1024'/>
+  <tag key='org.openstreetmap.josm.gui.preferences.imagery.AddWMSLayerPanel.geometry' value='x=760,y=313,width=400,height=600'/>
+  <tag key='org.openstreetmap.josm.plugins.utilsplugin2.multitagger.MultiTagDialog.geometry' value='x=710,y=363,width=500,height=500'/>
+  <tag key='osm-download.bounds' value='-2.1418295;34.3872015;3.6450053;42.4072211'/>
+  <tag key='osm-server.upload-strategy' value='singlerequest'/>
+  <tag key='pluginmanager.lastupdate' value='1737041255790'/>
+  <tag key='pluginmanager.version' value='19277'/>
+  <tag key='preferences.reset.draw.rawgps.lines' value='true'/>
+  <tag key='progressdialog.size' value='455'/>
+  <list key='projection.sub.core:mercator'>
+  </list>
+  <list key='properties.recent-tags'>
+    <entry value='power'/>
+    <entry value='substation'/>
+    <entry value='tower:type'/>
+    <entry value='communication'/>
+    <entry value='power'/>
+    <entry value='terminal'/>
+    <entry value='power'/>
+    <entry value='tower'/>
+    <entry value='start_date'/>
+    <entry value='2024'/>
+    <entry value='wikipedia'/>
+    <entry value='en:Isinya–Singida High Voltage Power Line'/>
+    <entry value='substation'/>
+    <entry value='transmission'/>
+  </list>
+  <tag key='propertiesdialog.lastHeight' value='300'/>
+  <tag key='relationlist.lastHeight' value='0'/>
+  <tag key='relationlist.visible' value='false'/>
+  <tag key='remotecontrol.enabled' value='true'/>
+  <tag key='remotecontrol.permission.authorization' value='true'/>
+  <list key='search.history'>
+    <entry value='R 3655420431'/>
+  </list>
+  <tag key='selectionlist.lastHeight' value='228'/>
+  <list key='sensitive.keys'>
+    <entry value='oauth.access-token.key'/>
+    <entry value='oauth.access-token.object.OAuth20.api.openstreetmap.org'/>
+    <entry value='oauth.access-token.parameters.OAuth20.api.openstreetmap.org'/>
+    <entry value='oauth.access-token.secret'/>
+    <entry value='osm-server.password'/>
+    <entry value='osm-server.username'/>
+    <entry value='proxy.pass'/>
+    <entry value='proxy.user'/>
+    <entry value='sensitive.keys'/>
+  </list>
+  <tag key='sidetoolbar.hidden.mapmode/node/autonode' value='false'/>
+  <tag key='sidetoolbar.hidden.mapmode/splitway' value='false'/>
+  <tag key='sourcetag.value' value='Bing'/>
+  <tag key='streetside-info.lastHeight' value='0'/>
+  <tag key='streetside-main.lastHeight' value='0'/>
+  <tag key='streetside-main.visible' value='false'/>
+  <tag key='streetside-viewer.lastHeight' value='0'/>
+  <tag key='streetside-viewer.visible' value='false'/>
+  <tag key='streetside.download-mode' value='manualOnly'/>
+  <tag key='streetside.imageInfo.helpDisplayedCountdown' value='0'/>
+  <tag key='toggleDialogs.width' value='417'/>
+  <list key='toolbar'>
+    <entry value='open'/>
+    <entry value='save'/>
+    <entry value='download'/>
+    <entry value='upload'/>
+    <entry value='|'/>
+    <entry value='undo'/>
+    <entry value='redo'/>
+    <entry value='|'/>
+    <entry value='dialogs/search(searchExpression=)'/>
+    <entry value='preference'/>
+    <entry value='|'/>
+    <entry value='combineway'/>
+    <entry value='wayflip'/>
+    <entry value='tagging_Man Made/Power/Power Substation'/>
+    <entry value='tagging_Man Made/Power/Power Tower'/>
+    <entry value='tagging_Man Made/Power/Power Line'/>
+    <entry value='tagging_Man Made/Power/Power Portal'/>
+    <entry value='imagery-offset'/>
+    <entry value='addnode'/>
+  </list>
+  <list key='upload.comment.history'>
+    <entry value='Closed HV transmission lines '/>
+    <entry value=''/>
+    <entry value='Found towers next to new substation that is not connected'/>
+    <entry value='Connected to HV lines to substation and closed lines'/>
+    <entry value='Connected to HV lines to substation'/>
+    <entry value='Connected to HV lines'/>
+    <entry value='Found more towers and connected to HV lines'/>
+    <entry value='Found more towers and found new substation'/>
+    <entry value='Found more towers , finished line and extended substation'/>
+    <entry value='Found more towers but could not finish the line'/>
+    <entry value='Add new HV line and connected another substation thanks to osmose'/>
+    <entry value='Add Wikipedia article about the line '/>
+    <entry value='Connect substations'/>
+    <entry value='Close two lines but still no end found'/>
+    <entry value='Finish line '/>
+  </list>
+  <tag key='upload.comment.last-used' value='1738245880'/>
+  <list key='upload.source.history'>
+    <entry value='Bing; Esri World Imagery'/>
+    <entry value='Esri World Imagery'/>
+    <entry value='Esri World Imagery; Bing'/>
+    <entry value='Esri World Imagery; Bing; Mapbox Satellite'/>
+    <entry value='OpenStreetMap (German Style); Esri World Imagery; Bing'/>
+    <entry value='Mapbox Satellite'/>
+    <entry value='Bing'/>
+    <entry value='Mapbox Satellite; Bing'/>
+    <entry value='Mapbox Satellite; Esri World Imagery'/>
+    <entry value='Mapbox Satellite; OpenStreetMap Carto (Standard); Esri World Imagery'/>
+    <entry value='https://transformers-magazine.com/tm-news/kenya-tanzania-transmission-line-energized/#:~:text=Kenya%2FTanzania%3A%20The%20Kenya%20Electricity,power%20grids%20of%20the%20nations'/>
+    <entry value='Mapbox Satellite; OpenStreetMap Carto (Standard)'/>
+    <entry value=''/>
+    <entry value='Bing; Mapbox Satellite'/>
+    <entry value='knowledge'/>
+  </list>
+  <tag key='upload.source.obtainautomatically' value='true'/>
+  <tag key='userlist.lastHeight' value='0'/>
+  <tag key='utilsplugin2.customurl' value='https://www.openstreetmap.org/{#type}/{#id}/history'/>
+  <list key='utilsplugin2.urlHistory'>
+    <entry value='Wikipedia'/>
+    <entry value='https://en.wikipedia.org/w/index.php?search={name}&amp;fulltext=Search'/>
+    <entry value='Wikipedia RU'/>
+    <entry value='http://osm.mapki.com/history/{#type}.php?id={#id}'/>
+    <entry value='Who Dit It?'/>
+    <entry value='http://simon04.dev.openstreetmap.org/whodidit/?zoom=12&amp;lat={#lat}&amp;lon={#lon}&amp;layers=BTT'/>
+    <entry value='Keep Right validator'/>
+    <entry value='http://keepright.ipax.at/report_map.php?zoom=14&amp;lat={#lat}&amp;lon={#lon}&amp;layers=B0T'/>
+    <entry value='Element history [demo, =Ctrl-Shift-H]'/>
+    <entry value='https://www.openstreetmap.org/{#type}/{#id}/history'/>
+    <entry value='Browse element [demo, =Ctrl-Shift-I]'/>
+    <entry value='https://www.openstreetmap.org/{#type}/{#id}'/>
+  </list>
+  <tag key='validated.ipv6' value='true'/>
+  <tag key='validator.lastHeight' value='225'/>
+  <list key='validator.skip'>
+  </list>
+  <list key='validator.skipBeforeUpload'>
+  </list>
+  <tag key='validator.visible' value='true'/>
+  <tag key='wikidata.lastHeight' value='0'/>
+  <tag key='wikipedia.lastHeight' value='155'/>
+  <tag key='wikipedia.visible' value='false'/>
+</preferences>
