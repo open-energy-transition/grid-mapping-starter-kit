@@ -40,5 +40,13 @@ out body;
 out skel qt;
 ```
 5. Visit [Osmose](https://osmose.openstreetmap.fr/en/map/#loc=7/4.907/-72.994&level=1%2C2%2C3&tags=power&class=2&item=7040) and activate only "power lines". Press the plus symbol next to it and select "Unfinished power major line". Zoom to the area you are interested in. Activate the osmose layer in JOSM. Switch to osmose again and press Export --> JOSM. The towers with "Unfinished power major line" should now be visible in the osmose layer in JOSM. If this is not the case deactivate your ad blocker, activate Remote Control under Edit --> Preferences in JOSM, or reduce the visible area in osmose. 
-6. Enable "Discourage Upload" for the Osmose layer so that you do not accidentally upload this layer. You can now investigate every osmose error in the transmission grid. After you have fixed an issue or you are not able to fix it, remove the tower from the osmose layer to keep track about your progress. 
+6. Enable "Discourage Upload" for the Osmose layer so that you do not accidentally upload this layer. You can now investigate every osmose error in the transmission grid. After you have fixed an issue or you are not able to fix it, remove the tower from the osmose layer to keep track about your progress.
+
+## Checklist 
+- [ ] Investigate all osmose "Unfinished power major line"
+- [ ] Search for new substations in the country starting operation in the last 2 years in the news.
+- [ ] Search for new substation datasets and for national substation datasets as a "hint" layer.
+- [ ] Check generator / solar park / datasets for integration into the transmission grid
+- [ ] Compare to another (national) grid map as a hint but only map lines that are visible in satellite images. 
+- [ ] Check if all transmission substations are connected to the national grid
 
