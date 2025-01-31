@@ -1,13 +1,13 @@
 # Grid Mapping Starter Kit 
-*Contains a starter kit for Electrical Transmission Grid Mapping in OpenStreetMap by combining Osmose with JOSM*
+**Contains a starter kit for Electrical Transmission Grid Mapping in OpenStreetMap by combining Osmose with JOSM*Ü
 
-_Please keep in mind that the content of this repository is still under development and the recommendations may change significantly over time._ 
+_The content of this repository is still under development and may significantly change over time._ 
 
 ## Setup Mapping Environment 
 1. Install the newest version JOSM on your machine. [Link](https://josm.openstreetmap.de/)
 2. Configure the JOSM GUI preferences according to your needs. A preconfigured preferences file is [available here](josm-config/preferences.xml). The wiki gives [details](https://josm.openstreetmap.de/wiki/Help/Preferences) on where to place the perferences.xml file depending on your operating system.
-3. Add the [paint map style](), optimized for large scale transmission grid mapping, under Edit->Preferences->Paint Map style
-4. Zoom to you area of interested and download new transmission grid data into your osm-transmission-grid layer using the preconfigured Overpass Turbo Script. If the download fails the timeout is to low or the bounding box to large. 
+3. Add the [paint map style](), optimized for large scale transmission grid mapping, under Edit->Preferences->Paint Map Style.
+4. Zoom to you area of interested and download new transmission grid data into your osm-transmission-grid layer using the preconfigured Overpass Turbo Script. If the download fails the timeout is to low or the bounding box to large.
 ```
 [out:json][timeout:60];
 // Use the current map's bounding box for the search area
