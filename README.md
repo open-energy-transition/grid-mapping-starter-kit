@@ -48,7 +48,7 @@ out skel qt;
 - [ ] Search the news for new substations in the country that have become operational in the last 2 years.
 - [ ] Search for new substation records and for national substation records as a 'hint' layer.
 - [ ] Check the records of generators, solar farms and other energy assets for integration into the transmission network.
-- [ ] Check that all transmission substations are connected to the national grid.
+- [ ] Check if all transmission substations are connected to the national grid.
 - [ ] Check for obvious gaps in the network topology from a national perspective.
 - [ ] Check for new lines parallel to existing lines and new lines leaving major CE substations. 
 
