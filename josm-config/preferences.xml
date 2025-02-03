@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<preferences xmlns='http://josm.openstreetmap.de/preferences-1.0' version='19277'>
-  <tag key='cache.bing.attribution.xml' value='1738329249'/>
+<preferences xmlns='http://josm.openstreetmap.de/preferences-1.0' version='19304'>
+  <tag key='cache.bing.attribution.xml' value='1738589480'/>
   <tag key='cache.capabilities1637351842' value='1737988814'/>
-  <tag key='cache.motd.html' value='1738329212'/>
+  <tag key='cache.motd.html' value='1738589416'/>
   <tag key='cache.motd.html.java' value='21.0.5'/>
   <tag key='cache.motd.html.lang' value='En:'/>
-  <tag key='cache.motd.html.version' value='19277'/>
+  <tag key='cache.motd.html.version' value='19304'/>
   <tag key='changesetdialog.lastHeight' value='0'/>
   <list key='clr.general.inactive'>
     <entry value='#00FF00'/>
@@ -113,6 +113,7 @@
   <tag key='download.tabsplit.overpassdownloadpanel' value='281'/>
   <tag key='expert' value='true'/>
   <list key='file-open.history'>
+    <entry value='/home/ly0/gitclones/grid-mapping-starter-kit/josm-config/transmission_grid_mapping_template.joz'/>
     <entry value='/home/cy0/gitclones/OET/grid-mapping-starter-kit/josm-config/transmission_grid_mapping_template.joz'/>
     <entry value='/home/cy0/gitclones/OET/grid-mapping-starter-kit/josm-config/kenya_template.joz'/>
     <entry value='/home/cy0/gitclones/OET/grid-mapping-starter-kit/josm-config/africa_template.osm'/>
@@ -127,7 +128,6 @@
     <entry value='/home/cy0/Documents/grid_mapping/shapes/issues (2).geojson'/>
     <entry value='/home/cy0/Documents/grid_mapping/shapes/issues (1).geojson'/>
     <entry value='/home/cy0/Documents/grid_mapping/kenya_mapping.joz'/>
-    <entry value='/home/cy0/Documents/grid_mapping/Zambia_substation_integration.joz'/>
   </list>
   <tag key='filter.lastHeight' value='0'/>
   <tag key='geoimage.docked' value='false'/>
@@ -233,8 +233,8 @@
   </list>
   <maps key='imagery.offsetbookmarks'>
   </maps>
-  <tag key='josm.version' value='19277'/>
-  <tag key='lastDirectory' value='/home/cy0/gitclones/OET/grid-mapping-starter-kit/josm-config'/>
+  <tag key='josm.version' value='19304'/>
+  <tag key='lastDirectory' value='/home/ly0/gitclones/grid-mapping-starter-kit/josm-config'/>
   <tag key='layerlist.lastHeight' value='286'/>
   <tag key='mapillary-filter-expert.lastHeight' value='0'/>
   <tag key='mapillary-filter.lastHeight' value='0'/>
@@ -243,26 +243,15 @@
   <tag key='mappaint.renderer-class-name' value='org.openstreetmap.josm.data.osm.visitor.paint.StyledMapRenderer'/>
   <maps key='mappaint.style.entries'>
     <map>
-      <tag key='active' value='true'/>
-      <tag key='title' value='FLacombe Power Style Enhanced'/>
-      <tag key='url' value='/home/cy0/Documents/grid_mapping/Styles_Power-style.mapcss'/>
-    </map>
-    <map>
       <tag key='active' value='false'/>
       <tag key='title' value='JOSM default (MapCSS)'/>
       <tag key='ptoken' value='standard'/>
       <tag key='url' value='resource://styles/standard/elemstyles.mapcss'/>
     </map>
     <map>
-      <tag key='active' value='false'/>
-      <tag key='title' value='Potlatch 2'/>
-      <tag key='ptoken' value='standard'/>
-      <tag key='url' value='https://josm.openstreetmap.de/josmfile?page=Styles/Potlatch2&amp;zip=1'/>
-    </map>
-    <map>
-      <tag key='active' value='false'/>
-      <tag key='title' value=''/>
-      <tag key='url' value='/home/cy0/Documents/grid_mapping/grid_integrate.mapcss'/>
+      <tag key='active' value='true'/>
+      <tag key='title' value='grid-mapping-starter-kit'/>
+      <tag key='url' value='https://raw.githubusercontent.com/open-energy-transition/grid-mapping-starter-kit/refs/heads/main/josm-config/Styles_Power-style.mapcss'/>
     </map>
   </maps>
   <list key='mappaint.style.known-defaults'>
@@ -438,8 +427,8 @@
     <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_josmfile_page_Styles_MapillaryDetections_zip_1'/>
   </list>
   <list key='mirror.https://josm.openstreetmap.de/josmfile?page_Styles/Potlatch2&amp;zip_1'>
-    <entry value='1737988819778'/>
-    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_josmfile_page_Styles_Potlatch2_zip_1'/>
+    <entry value='1738589417910'/>
+    <entry value='/home/ly0/.cache/JOSM-latest/mirror_https___josm.openstreetmap.de_josmfile_page_Styles_Potlatch2_zip_1'/>
   </list>
   <list key='mirror.https://josm.openstreetmap.de/josmfile?page_Styles/Power&amp;zip_1'>
     <entry value='1737539561000'/>
@@ -450,16 +439,16 @@
     <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_josmfile_page_Styles_PowerMapping_zip_1'/>
   </list>
   <list key='mirror.https://josm.openstreetmap.de/maps'>
-    <entry value='1738329215433'/>
-    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_maps'/>
+    <entry value='1738589419546'/>
+    <entry value='/home/ly0/.cache/JOSM-latest/mirror_https___josm.openstreetmap.de_maps'/>
   </list>
   <list key='mirror.https://josm.openstreetmap.de/presets'>
     <entry value='1738104490545'/>
     <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_presets'/>
   </list>
   <list key='mirror.https://josm.openstreetmap.de/remote/geofabrik-index-v1-nogeom.json'>
-    <entry value='1737988818962'/>
-    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_remote_geofabrik-index-v1-nogeom.json'/>
+    <entry value='1738589417650'/>
+    <entry value='/home/ly0/.cache/JOSM-latest/mirror_https___josm.openstreetmap.de_remote_geofabrik-index-v1-nogeom.json'/>
   </list>
   <list key='mirror.https://josm.openstreetmap.de/remote/sophox-sparql?query_SELECT+%28CONCAT%28%22Key%3A%22%2C+%3Fpermanent_key_ID%29+as+%3FOSM_key%29+%3Fformatter_URL+WHERE+%7B%0A++%3Fitem+osmdt%3AP2+osmd%3AQ7.%0A++%3Fitem+osmdt%3AP16+%3Fpermanent_key_ID.%0A++%3Fitem+osmdt%3AP8+%3Fformatter_URL.%0A%7D%0A'>
     <entry value='1735742822958'/>
@@ -470,20 +459,23 @@
     <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetma2ed2f87d98ef5b24c7f8123020996ecf'/>
   </list>
   <list key='mirror.https://josm.openstreetmap.de/styles'>
-    <entry value='1737847711654'/>
-    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_styles'/>
+    <entry value='1738589547433'/>
+    <entry value='/home/ly0/.cache/JOSM-latest/mirror_https___josm.openstreetmap.de_styles'/>
   </list>
   <list key='mirror.https://josm.openstreetmap.de/tested'>
     <entry value='1737637914477'/>
     <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_tested'/>
+  </list>
+  <list key='mirror.https://raw.githubusercontent.com/open-energy-transition/grid-mapping-starter-kit/refs/heads/main/josm-config/Styles_Power-style.mapcss'>
+    <entry value='1738589674373'/>
+    <entry value='/home/ly0/.cache/JOSM-latest/mirror_https___raw.githubusercontent.com_open-energy-transition_grid-mapping-starter-kit_refs_heads_mai_1119b9a2e398f962f6a67d77a2959210'/>
   </list>
   <list key='mirror.https://services.sentinel-hub.com/ogc/wmts/113184fa-263a-4bd8-a2d3-0c00fbcef8b5?SERVICE_WMS&amp;REQUEST_GetCapabilities'>
     <entry value='1736210669880'/>
     <entry value='/home/cy0/.cache/JOSM/mirror_https___services.sentinel-hub.com_ogc_wmts_113184fa-263a-4bd8-a2d3-0c00fbcef8b5_SERVICE_WMS_REQUEST_GetCapabilities'/>
   </list>
   <tag key='notes/note_open.lastHeight' value='0'/>
-  <tag key='oauth.access-token.object.OAuth20.api.openstreetmap.org' value='{&quot;access_token&quot;:&quot;ta2DcecXpUI-YShIInE0s5qPTbnSX9JINBZrmjL8hQM&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;created_at&quot;:1737041377,&quot;scope&quot;:&quot;read_gpx write_gpx read_prefs write_prefs write_api write_notes&quot;}'/>
-  <tag key='oauth.access-token.parameters.OAuth20.api.openstreetmap.org' value='{&quot;client_id&quot;:&quot;edPII614Lm0_0zEpc_QzEltA9BUll93-Y-ugRQUoHMI&quot;,&quot;redirect_uri&quot;:&quot;http://127.0.0.1:8111/oauth_authorization&quot;,&quot;api_url&quot;:&quot;https://api.openstreetmap.org/api&quot;,&quot;authorize_url&quot;:&quot;https://www.openstreetmap.org/oauth2/authorize&quot;,&quot;token_url&quot;:&quot;https://www.openstreetmap.org/oauth2/token&quot;}'/>
+  <tag key='oauth.access-token.object.OAuth20.api.openstreetmap.org' value='{&quot;access_token&quot;:&quot;P46yoGFW4pUUiMLQAcsyPtbkpBdB3WFEiZyhgxBZtGo&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;created_at&quot;:1738591091,&quot;scope&quot;:&quot;read_gpx write_gpx read_prefs write_prefs write_api write_notes&quot;}'/>
   <tag key='oauth.access-token.parameters.OAuth20.https://api.openstreetmap.org/api' value='{&quot;client_id&quot;:&quot;edPII614Lm0_0zEpc_QzEltA9BUll93-Y-ugRQUoHMI&quot;,&quot;redirect_uri&quot;:&quot;http://127.0.0.1:8111/oauth_authorization&quot;,&quot;api_url&quot;:&quot;https://api.openstreetmap.org/api&quot;,&quot;authorize_url&quot;:&quot;https://www.openstreetmap.org/oauth2/authorize&quot;,&quot;token_url&quot;:&quot;https://www.openstreetmap.org/oauth2/token&quot;}'/>
   <tag key='openqa.filetype' value='geojson'/>
   <list key='openqa.osmose-tests'>
@@ -538,7 +530,6 @@
   <list key='sensitive.keys'>
     <entry value='oauth.access-token.key'/>
     <entry value='oauth.access-token.object.OAuth20.api.openstreetmap.org'/>
-    <entry value='oauth.access-token.parameters.OAuth20.api.openstreetmap.org'/>
     <entry value='oauth.access-token.secret'/>
     <entry value='osm-server.password'/>
     <entry value='osm-server.username'/>
