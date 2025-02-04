@@ -1,27 +1,28 @@
-# Grid Mapping Starter Kit 
-**Contains a starter kit for Electrical Transmission Grid Mapping in OpenStreetMap by combining Osmose with JOSM**
+# Grid Mapping Starter Kit
 
-_The content of this repository is still under development and may significantly change over time._ 
+**A starter kit for Electrical Transmission Grid Mapping in OpenStreetMap, combining Osmose with JOSM.**
 
-## Setup Mapping Environment 
-1. Install the newest version of JOSM on your machine. [Link](https://josm.openstreetmap.de/)
-2. Configure the JOSM user interface according to your needs. A preconfigured preferences file is [available here](josm-config/preferences.xml). The wiki gives [details](https://josm.openstreetmap.de/wiki/Help/Preferences) on where to place the perferences.xml file depending on your operating system.
-3. The [paint map style](josm-config/Styles_Power-style.mapcss) is dynamically loaded from this GitHub repository, optimized for large scale transmission grid mapping. If you want your own paint style, please load the file to you local machine, modify it and add it to JOSM under Edit->Preferences->Paint Map Style.
-4. Load the [template session](transmission_grid_mapping_template.joz) of with File->Open.
-5. Add a new OSM token to JOSM under Edit->Preferences->OSM Server. **Please be aware of that your token will be stored in your local preferences.xml file, so do not share this file with anyone.**
+_This repository is still under development and may change significantly over time._
+
+## Setup Mapping Environment
+1. Install the latest version of JOSM on your machine. [Download here](https://josm.openstreetmap.de/).
+2. Configure the JOSM user interface according to your needs. A preconfigured preferences file is [available here](josm-config/preferences.xml). The [JOSM wiki](https://josm.openstreetmap.de/wiki/Help/Preferences) provides details on where to place the `preferences.xml` file, depending on your operating system.
+3. The [paint map style](josm-config/Styles_Power-style.mapcss) is dynamically loaded from this GitHub repository and optimized for large-scale transmission grid mapping. If you want to use a custom paint style, download the file to your local machine, modify it, and add it to JOSM under **Edit → Preferences → Paint Map Style**.
+4. Load the [template session](transmission_grid_mapping_template.joz) by selecting **File → Open**.
+5. Add a new OSM token to JOSM under **Edit → Preferences → OSM Server**. **Be aware that your token will be stored in your local `preferences.xml` file. Do not share this file with anyone.**
 
 ## Download Transmission Data and Issues
-1. Zoom to the area you want to map. Activate the osm-transmission-grid layer using the preconfigured Overpass Turbo Script. If the download fails, the timeout is to low or the bounding box to large:
-```
+1. Zoom to the area you want to map. Activate the `osm-transmission-grid` layer and download the osm tranmission data to this layer using the preconfigured Overpass Turbo script. If the download fails, the timeout may be too low or the bounding box too large:
+
+```overpass
 [out:json][timeout:120];
 // Use the current map's bounding box for the search area
 
 // Find all power towers
 node["power"="tower"]({{bbox}}) -> .towers;
 
-// Find all power lines that are connected to towers
-way["power"="line"]({{bbox}})
-  (bn.towers) -> .lines_connected_to_towers;
+// Find all power lines connected to towers
+way["power"="line"]({{bbox}}) (bn.towers) -> .lines_connected_to_towers;
 
 // Include substations
 node["power"="substation"]({{bbox}}) -> .substation_nodes;
@@ -41,17 +42,22 @@ out body;
 >;
 out skel qt;
 ```
-2. Visit [Osmose](https://osmose.openstreetmap.fr/en/map/#loc=7/4.907/-72.994&level=1%2C2%2C3&tags=power&class=2&item=7040) and activate only "power lines". Press the plus symbol next to it and select "Unfinished power major line". Zoom to the area you are interested in. Activate the osmose layer in JOSM. Switch to osmose again and press Export --> JOSM. The towers with "Unfinished power major line" should now be visible in the osmose layer in JOSM. If this is not the case deactivate your ad blocker, activate Remote Control under Edit --> Preferences in JOSM, or reduce the visible area in osmose. 
-3. Enable "Discourage Upload" for the Osmose layer so that you do not accidentally upload this layer. You can now investigate every osmose error in the transmission grid. After you have fixed an issue or you are not able to fix it, remove the tower from the osmose layer to keep track about your progress.
+
+2. Visit [Osmose](https://osmose.openstreetmap.fr/en/map/#loc=7/4.907/-72.994&level=1%2C2%2C3&tags=power&class=2&item=7040) and activate only **"Power lines"**. Click the plus symbol next to it and select **"Unfinished power major line"**. Zoom to the area of interest, activate the Osmose layer in JOSM, switch back to Osmose, and press **Export → JOSM**. Towers with "Unfinished power major line" should now be visible in the Osmose layer in JOSM.
+   - If the towers are not visible, try the following:
+     - Disable your ad blocker.
+     - Enable **Remote Control** under **Edit → Preferences** in JOSM.
+     - Reduce the visible area in Osmose.
+3. Enable **"Discourage Upload"** for the Osmose layer to prevent accidental uploads. You can now investigate each Osmose error in the transmission grid. After fixing an issue (or if you cannot fix it), remove the tower from the Osmose layer to track your progress.
 
 ## Mapping Strategies
-The following mapping strategies show different approaches to extending the existing transmission network. Please note that you should only map infrastructure that you can classify with a high degree of confidence from satellite or ground imagery.
+The following strategies outline different approaches to extending the existing transmission network. **Only map infrastructure that you can confidently classify using satellite or ground imagery.**
 
-- [ ] Search for all "Unfinished major power line" in Osmose.
-- [ ] Search the news for new substations in the country that have become operational in the last years.
-- [ ] Search for new substation records and for national substation records as a 'hint' layer.
-- [ ] Check the records of generators, solar farms and other energy assets for integration into the transmission network.
-- [ ] Check if all transmission substations are connected to the national grid.
-- [ ] Check for obvious gaps in the network topology from a national perspective.
-- [ ] Check for new lines parallel to existing lines and new lines leaving major CE substations. 
+- [ ] Search for all **"Unfinished major power lines"** in Osmose.
+- [ ] Look for news reports on new substations that have become operational in recent years.
+- [ ] Search for new substation records and national substation records as a reference layer.
+- [ ] Check records of generators, solar farms, and other energy assets for integration into the transmission network.
+- [ ] Ensure all transmission substations are connected to the national grid.
+- [ ] Identify obvious gaps in the network topology from a national perspective.
+- [ ] Look for new lines parallel to existing ones and new lines extending from major central substations.
 
