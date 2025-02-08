@@ -54,10 +54,10 @@ out skel qt;
 The following strategies outline different approaches to extending the existing transmission network. **Only map infrastructure that you can confidently classify using satellite or ground imagery.**
 
 - [ ] Search for all **"Unfinished major power lines"** in Osmose.
-- [ ] Look for news reports on new substations that have become operational in recent years.
-- [ ] Search for new substation records and national substation records as a reference layer.
+- [ ] Look for news reports on new substations and transmission lines that have become operational in recent years. LLMs like ChatGPT allow you to search in the local language: _"Please search for news about transmission lines or substation recently opened in X. Please use the official language of the country for your search"_
+- [ ] Search for new substation records and national substation records as a reference "hint" layer. LLMs like ChatGPT allow you to search in the local language: _"Please search for transmission lines or substation datasets in X. Please use the official language of the country for your search"_
 - [ ] Check records of generators, solar farms, and other energy assets for integration into the transmission network.
 - [ ] Ensure all transmission substations are connected to the national grid.
 - [ ] Identify obvious gaps in the network topology from a national perspective.
-- [ ] Look for new lines parallel to existing ones and new lines extending from major central substations.
+- [ ] Look for new lines parallel to existing ones and new lines starting from major central substations.
 
