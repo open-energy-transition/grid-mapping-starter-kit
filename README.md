@@ -12,37 +12,7 @@ _This repository is still under development and may change significantly over ti
 5. Add a new OSM token to JOSM under **Edit → Preferences → OSM Server**. **Be aware that your token will be stored in your local `preferences.xml` file. Do not share this file with anyone.**
 
 ## Download Transmission Data and Issues
-1. Zoom to the area you want to map. Activate the `osm-transmission-grid` layer and download the osm tranmission data to this layer using the preconfigured Overpass Turbo script. If the download fails, the timeout may be too low or the bounding box too large:
-
-```overpass
-[out:json][timeout:120];
-// Use the current map's bounding box for the search area
-
-// Find all power towers
-node["power"="tower"]({{bbox}}) -> .towers;
-
-// Find all power lines connected to towers
-way["power"="line"]({{bbox}}) (bn.towers) -> .lines_connected_to_towers;
-
-// Include substations
-node["power"="substation"]({{bbox}}) -> .substation_nodes;
-way["power"="substation"]({{bbox}}) -> .substation_ways;
-relation["power"="substation"]({{bbox}}) -> .substation_relations;
-
-// Combine all relevant results
-(
-  .towers;
-  .lines_connected_to_towers;
-  .substation_nodes;
-  .substation_ways;
-  .substation_relations;
-);
-
-out body;
->;
-out skel qt;
-```
-
+1. Zoom to the area you want to map. Activate the `osm-transmission-grid` layer and download the osm tranmission data to this layer using the preconfigured Overpass Turbo script [transmission-grid.overpassql](josm-config/transmission-grid.overpassql). **Press Download → Download from Overpass API** and copy/paste the content to the script window. If the download fails, the timeout may be too low or the bounding box too large:
 2. Visit [Osmose](https://osmose.openstreetmap.fr/en/map/#loc=7/4.907/-72.994&level=1%2C2%2C3&tags=power&class=2&item=7040) and activate only **"Power lines"**. Click the plus symbol next to it and select **"Unfinished power major line"**. Zoom to the area of interest, activate the Osmose layer in JOSM, switch back to Osmose, and press **Export → JOSM**. Towers with "Unfinished power major line" should now be visible in the Osmose layer in JOSM.
    - If the towers are not visible, try the following:
      - Disable your ad blocker.
