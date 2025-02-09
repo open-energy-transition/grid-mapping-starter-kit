@@ -75,6 +75,24 @@ way[power=line][line=bay]{
 	width:3;
 }
 
+way[power=plant]{
+	width:15;
+	symbol-size:5;
+	color:#BA55D3;
+	fill-color:#FFD800;
+	fill-opacity:0.05;
+}
+
+
+node[power=generator] {
+    symbol-shape: square;
+    symbol-fill-color: brown;
+    symbol-size: 10; /* Adjust size as needed */
+    symbol-fill-opacity:0.7;
+}
+
+
+
 /* Voltages */
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))<=33000]{
 	width:1;
