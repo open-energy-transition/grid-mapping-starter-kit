@@ -4,9 +4,15 @@
 // Find all power towers
 node["power"="tower"]({{bbox}}) -> .towers;
 
-// Find all power lines that are connected to towers
+// Find all power poles
+node["power"="pole"]({{bbox}}) -> .poles;
+
+// Find all power lines that are connected to towers or poles
 way["power"="line"]({{bbox}})
-  (bn.towers) -> .lines_connected_to_towers;
+  (bn.towers, bn.poles) -> .lines_connected;
+
+// Find all high-voltage power lines (>= 115 kV)
+way["power"="line"]["voltage"](if:t["voltage"] >= 115000)({{bbox}}) -> .high_voltage_lines;
 
 // Include substations
 node["power"="substation"]({{bbox}}) -> .substation_nodes;
@@ -18,16 +24,30 @@ node["power"="plant"]({{bbox}}) -> .plant_nodes;
 way["power"="plant"]({{bbox}}) -> .plant_ways;
 relation["power"="plant"]({{bbox}}) -> .plant_relations;
 
+// Include generators 
+node["power"="generator"]({{bbox}}) -> .generator_nodes;
+way["power"="generator"]({{bbox}}) -> .generator_ways;
+relation["power"="generator"]({{bbox}}) -> .generator_relations;
+
+// Include portals 
+node["power"="portal"]({{bbox}}) -> .portal_nodes;
+
 // Combine all relevant results
 (
   .towers;
-  .lines_connected_to_towers;
+  .poles;
+  .lines_connected;
+  .high_voltage_lines;
   .substation_nodes;
   .substation_ways;
   .substation_relations;
   .plant_nodes;
   .plant_ways;
   .plant_relations;
+  .generator_nodes;
+  .generator_ways;
+  .generator_relations;
+  .portal_nodes;
 );
 
 out body;
