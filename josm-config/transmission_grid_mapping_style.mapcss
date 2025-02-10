@@ -1,6 +1,6 @@
 
 meta {
-	title: "fast_grid_mapping_style";
+	title: "transmission-grid-mapping-style";
 	description: "A style for fast electrical grid mapping of wide-area transmission networks. Adapted from the "detailed power grid style" by FLacombe.";
 	version: "0.1";	
 }
