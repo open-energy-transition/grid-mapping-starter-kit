@@ -1,16 +1,9 @@
 
 meta {
-	title: "Power";
-	description: "A more detailed style for various power facilities and features";
-	version: "0.4.5_2020-04-17";
-	author: "FLacombe";
+	title: "fast_grid_mapping_style";
+	description: "A style for fast electrical grid mapping of wide-area transmission networks. Adapted from the "detailed power grid style" by FLacombe.";
+	version: "0.1";	
 }
-
-meta[lang=de] {
-	title: "Stromversorgung";
-	description: "Ein detaillierterer Stil für verschiedene Anlagen zur Stromversorgung";
-}
-
 
 node[power=portal] {
     symbol-shape: square;
@@ -51,6 +44,14 @@ area[power=substation][substation=distribution]{
 	color:lime;
 	fill-opacity:0.05;
 }
+
+area[power=substation][substation=minor_distribution]{
+	width:5;
+	symbol-size:5;
+	color:lime;
+	fill-opacity:0.05;
+}
+
 
 /* Power lines */
 way[power=line]{
