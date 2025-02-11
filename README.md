@@ -7,7 +7,7 @@ _This repository is still under development and may change significantly over ti
 ## Setup Mapping Environment
 1. Install the latest version of JOSM on your machine. [Download here](https://josm.openstreetmap.de/).
 2. Configure the JOSM user interface according to your needs. A preconfigured preferences file is [available here](josm-config/preferences.xml). The [JOSM wiki](https://josm.openstreetmap.de/wiki/Help/Preferences) provides details on where to place the `preferences.xml` file, depending on your operating system.
-3. The [paint map style](josm-config/transmission_grid_mapping_style.mapcss) is dynamically loaded from this GitHub repository and optimized for large-scale transmission grid mapping. If you want to use a custom paint style, download the file to your local machine, modify it, and add it to JOSM under **Edit → Preferences → Paint Map Style**.
+3. The [paint map style](josm-config/transmission_grid_mapping_style.mapcss) is dynamically loaded from this GitHub repository and optimized for large-scale transmission grid mapping using [this URL](https://raw.githubusercontent.com/open-energy-transition/grid-mapping-starter-kit/refs/heads/main/josm-config/transmission_grid_mapping_style.mapcss). If you want to use a custom paint style, download the file to your local machine, modify it, and add it to JOSM under **Edit → Preferences → Paint Map Style**.
 4. Load the [template session](josm-config/transmission_grid_mapping_template.joz) by selecting **File → Open**.
 5. Add a new OSM token to JOSM under **Edit → Preferences → OSM Server**. **Be aware that your token will be stored in your local `preferences.xml` file. Do not share this file with anyone.**
 
