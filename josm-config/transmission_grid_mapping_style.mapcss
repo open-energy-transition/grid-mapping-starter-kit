@@ -8,7 +8,7 @@ meta {
 node[power=portal] {
     symbol-shape: square;
     symbol-fill-color: pink;
-    symbol-size: 10; /* Adjust size as needed */
+    symbol-size: 5; /* Adjust size as needed */
 }
 
 
