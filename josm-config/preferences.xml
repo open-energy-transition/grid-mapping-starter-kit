@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<preferences xmlns='http://josm.openstreetmap.de/preferences-1.0' version='19304'>
-  <tag key='cache.bing.attribution.xml' value='1738589480'/>
-  <tag key='cache.capabilities1637351842' value='1737988814'/>
-  <tag key='cache.motd.html' value='1738589416'/>
-  <tag key='cache.motd.html.java' value='21.0.5'/>
+<preferences xmlns='http://josm.openstreetmap.de/preferences-1.0' version='19277'>
+  <tag key='cache.bing.attribution.xml' value='1739264034'/>
+  <tag key='cache.capabilities1637351842' value='1738610929'/>
+  <tag key='cache.motd.html' value='1739182117'/>
+  <tag key='cache.motd.html.java' value='21.0.6'/>
   <tag key='cache.motd.html.lang' value='En:'/>
-  <tag key='cache.motd.html.version' value='19304'/>
+  <tag key='cache.motd.html.version' value='19277'/>
   <tag key='changesetdialog.lastHeight' value='0'/>
   <list key='clr.general.inactive'>
     <entry value='#00FF00'/>
@@ -13,14 +13,25 @@
     <entry value=''/>
     <entry value='inactive'/>
   </list>
-  <tag key='commandstack.lastHeight' value='0'/>
+  <tag key='commandstack.lastHeight' value='159'/>
   <tag key='conflict.lastHeight' value='0'/>
+  <tag key='download.autorun' value='true'/>
   <tag key='download.overpass.for-multi-fetch' value='true'/>
   <maps key='download.overpass.queries'>
+    <map>
+      <tag key='query' value='[out:json][timeout:120];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power poles&#xA;node[&quot;power&quot;=&quot;pole&quot;]({{bbox}}) -&gt; .poles;&#xA;&#xA;// Find all power lines that are connected to towers or poles&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers, bn.poles) -&gt; .lines_connected;&#xA;&#xA;// Find all high-voltage power lines (&gt;= 115 kV)&#xA;way[&quot;power&quot;=&quot;line&quot;][&quot;voltage&quot;](if:t[&quot;voltage&quot;] &gt;= 115000)({{bbox}}) -&gt; .high_voltage_lines;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Include power plants&#xA;node[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_nodes;&#xA;way[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_ways;&#xA;relation[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_relations;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;  .towers;&#xA;  .poles;&#xA;  .lines_connected;&#xA;  .high_voltage_lines;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;  .plant_nodes;&#xA;  .plant_ways;&#xA;  .plant_relations;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='16:57:12, 10-02-2025'/>
+      <tag key='key' value='history 16:57:12, 10-02-2025'/>
+    </map>
     <map>
       <tag key='query' value='[out:json][timeout:25];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;(&#xA;  node[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;  way[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;  relation[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;&#xA;  node[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  way[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  &#xA;//  node[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  way[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  relation[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;&#xA;&#xA;//way[&quot;power&quot;=&quot;line&quot;]({{bbox}});&#xA;&#xA;  &#xA;);&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
       <tag key='lastEdit' value='17:54:57, 16-01-2025'/>
       <tag key='key' value='history 17:54:57, 16-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:120];&#xA;&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power poles&#xA;node[&quot;power&quot;=&quot;pole&quot;]({{bbox}}) -&gt; .poles;&#xA;&#xA;// Find all power lines that are connected to towers or poles&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers, bn.poles) -&gt; .lines_connected;&#xA;&#xA;// Find all high-voltage power lines (&gt;= 115 kV)&#xA;way[&quot;power&quot;=&quot;line&quot;][&quot;voltage&quot;](if:t[&quot;voltage&quot;] &gt;= 115000)({{bbox}}) -&gt; .high_voltage_lines;&#xA;&#xA;// Find only poles that are part of high-voltage lines&#xA;node.poles(w.high_voltage_lines) -&gt; .hv_poles;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Include power plants&#xA;node[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_nodes;&#xA;way[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_ways;&#xA;relation[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_relations;&#xA;&#xA;// Include generators &#xA;node[&quot;power&quot;=&quot;generator&quot;]({{bbox}}) -&gt; .generator_nodes;&#xA;way[&quot;power&quot;=&quot;generator&quot;]({{bbox}}) -&gt; .generator_ways;&#xA;relation[&quot;power&quot;=&quot;generator&quot;]({{bbox}}) -&gt; .generator_relations;&#xA;&#xA;// Include portals &#xA;node[&quot;power&quot;=&quot;portal&quot;]({{bbox}}) -&gt; .portal_nodes;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;  .towers;&#xA;  .hv_poles;   // Only HV poles&#xA;  .lines_connected;&#xA;  .high_voltage_lines;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;  .plant_nodes;&#xA;  .plant_ways;&#xA;  .plant_relations;&#xA;  .generator_nodes;&#xA;  .generator_ways;&#xA;  .generator_relations;&#xA;  .portal_nodes;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='11:17:35, 11-02-2025'/>
+      <tag key='key' value='history 11:17:35, 11-02-2025'/>
     </map>
     <map>
       <tag key='query' value='[out:json][timeout:25];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;(&#xA;//  node[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;// way[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;//  relation[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;&#xA;  node[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  way[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  &#xA;//  node[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  way[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  relation[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;&#xA;&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}});&#xA;&#xA;  &#xA;);&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
@@ -28,9 +39,24 @@
       <tag key='key' value='history 17:03:03, 16-01-2025'/>
     </map>
     <map>
+      <tag key='query' value='[out:json][timeout:120];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power poles&#xA;node[&quot;power&quot;=&quot;pole&quot;]({{bbox}}) -&gt; .poles;&#xA;&#xA;// Find all power lines that are connected to towers or poles&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers, bn.poles) -&gt; .lines_connected;&#xA;&#xA;// Find all high-voltage power lines (&gt;= 115 kV)&#xA;way[&quot;power&quot;=&quot;line&quot;][&quot;voltage&quot;](if:t[&quot;voltage&quot;] &gt;= 115000)({{bbox}}) -&gt; .high_voltage_lines;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Include power plants&#xA;node[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_nodes;&#xA;way[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_ways;&#xA;relation[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_relations;&#xA;&#xA;// Include generators &#xA;node[&quot;power&quot;=&quot;generator&quot;]({{bbox}}) -&gt; .generator_nodes;&#xA;way[&quot;power&quot;=&quot;generator&quot;]({{bbox}}) -&gt; .generator_ways;&#xA;relation[&quot;power&quot;=&quot;generator&quot;]({{bbox}}) -&gt; .generator_relations;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;  .towers;&#xA;  .poles;&#xA;  .lines_connected;&#xA;  .high_voltage_lines;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;  .plant_nodes;&#xA;  .plant_ways;&#xA;  .plant_relations;&#xA;  .generator_nodes;&#xA;  .generator_ways;&#xA;  .generator_relations;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='18:24:45, 10-02-2025'/>
+      <tag key='key' value='history 18:24:45, 10-02-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:120];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power poles&#xA;node[&quot;power&quot;=&quot;pole&quot;]({{bbox}}) -&gt; .poles;&#xA;&#xA;// Find all power lines that are connected to towers or poles&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers, bn.poles) -&gt; .lines_connected;&#xA;&#xA;// Find all high-voltage power lines (&gt;= 115 kV)&#xA;way[&quot;power&quot;=&quot;line&quot;][&quot;voltage&quot;](if:t[&quot;voltage&quot;] &gt;= 115000)({{bbox}}) -&gt; .high_voltage_lines;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Include power plants&#xA;node[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_nodes;&#xA;way[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_ways;&#xA;relation[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_relations;&#xA;&#xA;// Include generators &#xA;node[&quot;power&quot;=&quot;generator&quot;]({{bbox}}) -&gt; .generator_nodes;&#xA;way[&quot;power&quot;=&quot;generator&quot;]({{bbox}}) -&gt; .generator_ways;&#xA;relation[&quot;power&quot;=&quot;generator&quot;]({{bbox}}) -&gt; .generator_relations;&#xA;&#xA;// Include portals &#xA;node[&quot;power&quot;=&quot;portal&quot;]({{bbox}}) -&gt; .portal_nodes;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;  .towers;&#xA;  .poles;&#xA;  .lines_connected;&#xA;  .high_voltage_lines;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;  .plant_nodes;&#xA;  .plant_ways;&#xA;  .plant_relations;&#xA;  .generator_nodes;&#xA;  .generator_ways;&#xA;  .generator_relations;&#xA;  .portal_nodes;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='18:27:59, 10-02-2025'/>
+      <tag key='key' value='history 18:27:59, 10-02-2025'/>
+    </map>
+    <map>
       <tag key='query' value='[out:json][timeout:45];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power lines that are connected to towers&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers) -&gt; .lines_connected_to_towers;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
       <tag key='lastEdit' value='16:28:07, 22-01-2025'/>
       <tag key='key' value='history 16:28:07, 22-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:60];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power lines that are connected to towers&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers) -&gt; .lines_connected_to_towers;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Include power plants&#xA;node[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_nodes;&#xA;way[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_ways;&#xA;relation[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_relations;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;  .towers;&#xA;  .lines_connected_to_towers;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;  .plant_nodes;&#xA;  .plant_ways;&#xA;  .plant_relations;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='20:51:48, 08-02-2025'/>
+      <tag key='key' value='history 20:51:48, 08-02-2025'/>
     </map>
     <map>
       <tag key='query' value='[out:json][timeout:25];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;(&#xA;//  node[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;//  way[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;//  relation[&quot;power&quot;=&quot;tower&quot;]({{bbox}});&#xA;&#xA;  node[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  way[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}});&#xA;  &#xA;//  node[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  way[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;//  relation[&quot;power&quot;=&quot;pole&quot;]({{bbox}});&#xA;&#xA;&#xA;//way[&quot;power&quot;=&quot;line&quot;]({{bbox}});&#xA;&#xA;  &#xA;);&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
@@ -56,6 +82,11 @@
       <tag key='query' value='[out:json][timeout:45];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power lines that are connected to towers&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers) -&gt; .lines_connected_to_towers;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;  .towers;&#xA;  .lines_connected_to_towers;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
       <tag key='lastEdit' value='16:33:19, 22-01-2025'/>
       <tag key='key' value='history 16:33:19, 22-01-2025'/>
+    </map>
+    <map>
+      <tag key='query' value='[out:json][timeout:120];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power poles&#xA;node[&quot;power&quot;=&quot;pole&quot;]({{bbox}}) -&gt; .poles;&#xA;&#xA;// Find all power lines that are connected to towers&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers) -&gt; .lines_connected;&#xA;&#xA;// Find all high-voltage power lines (&gt;= 115 kV)&#xA;way[&quot;power&quot;=&quot;line&quot;][&quot;voltage&quot;](if:t[&quot;voltage&quot;] &gt;= 115000)({{bbox}}) -&gt; .high_voltage_lines;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Include power plants&#xA;node[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_nodes;&#xA;way[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_ways;&#xA;relation[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_relations;&#xA;&#xA;// Include generators &#xA;node[&quot;power&quot;=&quot;generator&quot;]({{bbox}}) -&gt; .generator_nodes;&#xA;way[&quot;power&quot;=&quot;generator&quot;]({{bbox}}) -&gt; .generator_ways;&#xA;relation[&quot;power&quot;=&quot;generator&quot;]({{bbox}}) -&gt; .generator_relations;&#xA;&#xA;// Include portals &#xA;node[&quot;power&quot;=&quot;portal&quot;]({{bbox}}) -&gt; .portal_nodes;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;  .towers;&#xA;  .poles;&#xA;  .lines_connected;&#xA;  .high_voltage_lines;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;  .plant_nodes;&#xA;  .plant_ways;&#xA;  .plant_relations;&#xA;  .generator_nodes;&#xA;  .generator_ways;&#xA;  .generator_relations;&#xA;  .portal_nodes;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+      <tag key='lastEdit' value='20:06:24, 10-02-2025'/>
+      <tag key='key' value='history 20:06:24, 10-02-2025'/>
     </map>
     <map>
       <tag key='query' value='[out:json][timeout:60];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power lines that are connected to towers&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers) -&gt; .lines_connected_to_towers;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;  .towers;&#xA;  .lines_connected_to_towers;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
@@ -103,7 +134,10 @@
       <tag key='key' value='history 20:41:01, 24-01-2025'/>
     </map>
   </maps>
-  <tag key='download.overpass.query' value='[out:json][timeout:60];&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power lines that are connected to towers&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers) -&gt; .lines_connected_to_towers;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;  .towers;&#xA;  .lines_connected_to_towers;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+  <tag key='download.overpass.query' value='[out:json][timeout:120];&#xA;&#xA;// Use the current map&apos;s bounding box for the search area&#xA;&#xA;// Find all power towers&#xA;node[&quot;power&quot;=&quot;tower&quot;]({{bbox}}) -&gt; .towers;&#xA;&#xA;// Find all power poles&#xA;node[&quot;power&quot;=&quot;pole&quot;]({{bbox}}) -&gt; .poles;&#xA;&#xA;// Find all power lines that are connected to towers or poles&#xA;way[&quot;power&quot;=&quot;line&quot;]({{bbox}})&#xA;  (bn.towers, bn.poles) -&gt; .lines_connected;&#xA;&#xA;// Find all high-voltage power lines (&gt;= 115 kV)&#xA;way[&quot;power&quot;=&quot;line&quot;][&quot;voltage&quot;](if:t[&quot;voltage&quot;] &gt;= 115000)({{bbox}}) -&gt; .high_voltage_lines;&#xA;&#xA;// Find only poles that are part of high-voltage lines&#xA;node.poles(w.high_voltage_lines) -&gt; .hv_poles;&#xA;&#xA;// Include substations&#xA;node[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_nodes;&#xA;way[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_ways;&#xA;relation[&quot;power&quot;=&quot;substation&quot;]({{bbox}}) -&gt; .substation_relations;&#xA;&#xA;// Include power plants&#xA;node[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_nodes;&#xA;way[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_ways;&#xA;relation[&quot;power&quot;=&quot;plant&quot;]({{bbox}}) -&gt; .plant_relations;&#xA;&#xA;// Include generators &#xA;node[&quot;power&quot;=&quot;generator&quot;]({{bbox}}) -&gt; .generator_nodes;&#xA;way[&quot;power&quot;=&quot;generator&quot;]({{bbox}}) -&gt; .generator_ways;&#xA;relation[&quot;power&quot;=&quot;generator&quot;]({{bbox}}) -&gt; .generator_relations;&#xA;&#xA;// Include portals &#xA;node[&quot;power&quot;=&quot;portal&quot;]({{bbox}}) -&gt; .portal_nodes;&#xA;&#xA;// Combine all relevant results&#xA;(&#xA;  .towers;&#xA;  .hv_poles;   // Only HV poles&#xA;  .lines_connected;&#xA;  .high_voltage_lines;&#xA;  .substation_nodes;&#xA;  .substation_ways;&#xA;  .substation_relations;&#xA;  .plant_nodes;&#xA;  .plant_ways;&#xA;  .plant_relations;&#xA;  .generator_nodes;&#xA;  .generator_ways;&#xA;  .generator_relations;&#xA;  .portal_nodes;&#xA;);&#xA;&#xA;out body;&#xA;&gt;;&#xA;out skel qt;'/>
+  <list key='download.places.history'>
+    <entry value='Aachen'/>
+  </list>
   <list key='download.sophox.servers'>
     <entry value='https://sophox.org/bigdata/namespace/wdq/sparql'/>
     <entry value='https://sophox.org/bigdata/namespace/wdq/sparql'/>
@@ -111,10 +145,15 @@
   </list>
   <tag key='download.source.tab' value='overpassdownloadpanel'/>
   <tag key='download.tabsplit.overpassdownloadpanel' value='281'/>
+  <tag key='draw.rawgps.colormode' value='0'/>
+  <tag key='draw.rawgps.lines' value='2'/>
   <tag key='expert' value='true'/>
   <list key='file-open.history'>
-    <entry value='/home/ly0/gitclones/grid-mapping-starter-kit/josm-config/transmission_grid_mapping_template.joz'/>
     <entry value='/home/cy0/gitclones/OET/grid-mapping-starter-kit/josm-config/transmission_grid_mapping_template.joz'/>
+    <entry value='/home/cy0/Documents/grid_mapping/playground.joz'/>
+    <entry value='/home/cy0/gitclones/OET/sentisub/coordinates.geojson'/>
+    <entry value='/home/cy0/Documents/grid_mapping/shapes/burundigrid.geojson'/>
+    <entry value='/home/cy0/Documents/grid_mapping/shapes/US_Electric_Power_Transmission_Lines_-5565712113468837121.zip'/>
     <entry value='/home/cy0/gitclones/OET/grid-mapping-starter-kit/josm-config/kenya_template.joz'/>
     <entry value='/home/cy0/gitclones/OET/grid-mapping-starter-kit/josm-config/africa_template.osm'/>
     <entry value='/home/cy0/Documents/grid_mapping/south_east_asia.joz'/>
@@ -123,17 +162,14 @@
     <entry value='/home/cy0/Documents/grid_mapping/central_africa_mapping.joz'/>
     <entry value='/home/cy0/Documents/grid_mapping/OSM_grid_mapping_sessions/South_Vietname.joz'/>
     <entry value='/home/cy0/Documents/issues.geojson'/>
-    <entry value='/home/cy0/Documents/grid_mapping/shapes/burundigrid.geojson'/>
     <entry value='/home/cy0/Documents/grid_mapping/shapes/issues.geojson'/>
     <entry value='/home/cy0/Documents/grid_mapping/shapes/issues (2).geojson'/>
-    <entry value='/home/cy0/Documents/grid_mapping/shapes/issues (1).geojson'/>
-    <entry value='/home/cy0/Documents/grid_mapping/kenya_mapping.joz'/>
   </list>
   <tag key='filter.lastHeight' value='0'/>
   <tag key='geoimage.docked' value='false'/>
   <tag key='geoimage.geometry' value='x=192,y=410,width=1285,height=755'/>
   <tag key='geoimage.lastHeight' value='718'/>
-  <tag key='gui.geometry' value='x=-580,y=222,width=960,height=879'/>
+  <tag key='gui.geometry' value='x=-616,y=95,width=960,height=879'/>
   <tag key='gui.maximized' value='true'/>
   <maps key='imagery.entries'>
     <map>
@@ -223,6 +259,28 @@
       <tag key='customHttpHeaders' value='{}'/>
       <tag key='category' value='osmbasedmap'/>
     </map>
+    <map>
+      <tag key='projections' value='CRS:84,EPSG:3857,EPSG:4326'/>
+      <tag key='transparent' value='true'/>
+      <tag key='minimumTileExpire' value='3600'/>
+      <tag key='name' value='IDECA orthophotomosaic Bogota D.C. 2017'/>
+      <tag key='id' value='IDECA_Ortho2017'/>
+      <tag key='type' value='wms'/>
+      <tag key='url' value='https://serviciosgis.catastrobogota.gov.co/arcgis/services/imagenes/Ortho2017/MapServer/WmsServer?FORMAT=image/png&amp;TRANSPARENT=TRUE&amp;VERSION=1.3.0&amp;SERVICE=WMS&amp;REQUEST=GetMap&amp;LAYERS=0&amp;STYLES=&amp;CRS={proj}&amp;WIDTH={width}&amp;HEIGHT={height}&amp;BBOX={bbox}'/>
+      <tag key='attribution-text' value='IDECA Ortho-2017 Bogota'/>
+      <tag key='attribution-url' value='https://www.ideca.gov.co/'/>
+      <tag key='permission-reference-url' value='https://www.ideca.gov.co/recursos/mapas/ortoimagen-bogota-dc-2017'/>
+      <tag key='logo-image' value='https://www.ideca.gov.co/themes/custom/ideca2/logo.svg'/>
+      <tag key='terms-of-use-url' value='https://creativecommons.org/licenses/by/4.0/deed.es'/>
+      <tag key='country-code' value='CO'/>
+      <tag key='date' value='2017-12-31'/>
+      <tag key='cookies' value=''/>
+      <tag key='bounds' value='4.43842,-74.23258,4.84581,-73.98308'/>
+      <tag key='shapes' value='4.59071,-74.19971,4.5908,-74.20007,4.59099,-74.20106,4.59068,-74.20202,4.59054,-74.20268,4.59048,-74.2031,4.59042,-74.20367,4.59041,-74.2041,4.59041,-74.2044,4.59043,-74.20483,4.59047,-74.20532,4.59054,-74.2058,4.59069,-74.20649,4.59088,-74.20715,4.59109,-74.2077,4.59134,-74.20826,4.59158,-74.20871,4.59183,-74.20913,4.59214,-74.20957,4.59246,-74.20998,4.59278,-74.21036,4.59314,-74.21072,4.59367,-74.21119,4.59421,-74.21162,4.5952,-74.21238,4.59621,-74.21315,4.59831,-74.21478,4.60344,-74.21871,4.60501,-74.21995,4.60591,-74.22069,4.60711,-74.22177,4.60824,-74.22275,4.60883,-74.22364,4.60943,-74.22434,4.6102,-74.22505,4.61072,-74.22568,4.61139,-74.22679,4.61221,-74.22779,4.61306,-74.22861,4.61415,-74.22939,4.61528,-74.22999,4.61661,-74.23045,4.6172,-74.23059,4.61833,-74.23102,4.61956,-74.23129,4.62023,-74.23136,4.62035,-74.23137,4.62075,-74.23157,4.62137,-74.23185,4.62217,-74.23212,4.62267,-74.23225,4.62338,-74.23238,4.62408,-74.23247,4.62489,-74.23257,4.62602,-74.23258,4.62701,-74.23245,4.62792,-74.23225,4.62875,-74.23197,4.62994,-74.23151,4.63023,-74.23136,4.63071,-74.23129,4.63118,-74.23118,4.63118,-74.23109,4.63167,-74.23109,4.63245,-74.23074,4.6333,-74.23034,4.63421,-74.22975,4.63504,-74.22917,4.63579,-74.22847,4.63658,-74.22769,4.6377,-74.2285,4.63811,-74.22878,4.6385,-74.22897,4.63921,-74.22929,4.64134,-74.23007,4.64331,-74.23028,4.64594,-74.23013,4.64842,-74.22919,4.65035,-74.22766,4.65161,-74.22607,4.65281,-74.22341,4.65338,-74.2211,4.65343,-74.21492,4.65289,-74.21303,4.65388,-74.21198,4.65486,-74.21032,4.65542,-74.20848,4.65557,-74.20642,4.65681,-74.20483,4.65738,-74.20294,4.65912,-74.20232,4.66053,-74.20118,4.66187,-74.19981,4.66314,-74.19796,4.66391,-74.1955,4.66418,-74.19279,4.66384,-74.19054,4.6632,-74.18863,4.66239,-74.18698,4.66166,-74.18582,4.66173,-74.18241,4.6626,-74.18099,4.66363,-74.17852,4.66433,-74.17764,4.66613,-74.17863,4.66771,-74.17919,4.66887,-74.1794,4.66994,-74.18095,4.67152,-74.18228,4.67336,-74.18333,4.67565,-74.18387,4.67755,-74.18395,4.68014,-74.18354,4.6817,-74.18301,4.68388,-74.18264,4.68546,-74.18234,4.68675,-74.18168,4.68792,-74.18088,4.68923,-74.17981,4.6909,-74.18069,4.69179,-74.18097,4.69293,-74.18129,4.69398,-74.18133,4.69462,-74.1823,4.69546,-74.18321,4.69634,-74.18396,4.6973,-74.1846,4.69852,-74.18518,4.69975,-74.18557,4.70092,-74.18587,4.7024,-74.18606,4.70356,-74.18599,4.70469,-74.18577,4.70575,-74.18548,4.70717,-74.18488,4.70803,-74.18435,4.70899,-74.18361,4.70959,-74.18302,4.71044,-74.18191,4.71113,-74.18073,4.71161,-74.17958,4.71189,-74.17856,4.71215,-74.17759,4.71232,-74.17682,4.71246,-74.17623,4.71287,-74.17538,4.71324,-74.17419,4.71353,-74.17289,4.71365,-74.17195,4.7137,-74.17073,4.71368,-74.16984,4.71358,-74.16915,4.71379,-74.16862,4.71402,-74.16811,4.71471,-74.16742,4.71514,-74.16778,4.71607,-74.16834,4.71726,-74.16885,4.71874,-74.16923,4.71989,-74.16938,4.72116,-74.16949,4.72277,-74.1694,4.72381,-74.16921,4.72471,-74.16899,4.72578,-74.16871,4.72701,-74.16826,4.72833,-74.16756,4.72922,-74.16699,4.7303,-74.16611,4.73113,-74.16541,4.732,-74.16445,4.73273,-74.16347,4.73357,-74.16213,4.73397,-74.16116,4.73444,-74.15964,4.73459,-74.15798,4.73459,-74.15678,4.73447,-74.15555,4.73421,-74.15442,4.73366,-74.15313,4.73441,-74.15166,4.73552,-74.14967,4.73602,-74.1487,4.73677,-74.14736,4.73736,-74.14603,4.73762,-74.14516,4.73793,-74.14405,4.73804,-74.14327,4.73861,-74.14223,4.73887,-74.1417,4.73917,-74.14093,4.74017,-74.14101,4.74115,-74.14094,4.74239,-74.14079,4.74343,-74.14053,4.74459,-74.14017,4.74547,-74.13975,4.74605,-74.13941,4.7472,-74.13915,4.74856,-74.13878,4.74941,-74.13841,4.75066,-74.13775,4.75168,-74.13701,4.7527,-74.13606,4.75379,-74.13567,4.75495,-74.13518,4.75581,-74.13468,4.75647,-74.13415,4.75688,-74.13373,4.7576,-74.13348,4.7583,-74.13314,4.7592,-74.13257,4.75994,-74.13201,4.76064,-74.13132,4.76122,-74.13066,4.76164,-74.13006,4.76266,-74.12978,4.76366,-74.12939,4.76441,-74.12902,4.76535,-74.12842,4.76621,-74.12783,4.76681,-74.12727,4.76792,-74.12724,4.76929,-74.12697,4.77033,-74.12669,4.77147,-74.12626,4.77221,-74.12583,4.77261,-74.12557,4.77331,-74.12552,4.77389,-74.12542,4.77466,-74.12575,4.77592,-74.12608,4.77727,-74.12618,4.77834,-74.12619,4.77931,-74.12608,4.78015,-74.12619,4.78112,-74.12616,4.782,-74.12608,4.78338,-74.12579,4.78457,-74.1253,4.78567,-74.12482,4.78639,-74.12439,4.7871,-74.12374,4.78766,-74.12366,4.78863,-74.12337,4.7898,-74.12281,4.79061,-74.12258,4.7917,-74.12215,4.79246,-74.12179,4.79351,-74.12136,4.79461,-74.12079,4.79553,-74.12022,4.79604,-74.11991,4.79677,-74.11918,4.79736,-74.11854,4.79806,-74.1175,4.79874,-74.11624,4.79914,-74.11525,4.79944,-74.11415,4.80062,-74.11354,4.80186,-74.11275,4.80293,-74.11194,4.80393,-74.11091,4.80478,-74.10973,4.80549,-74.1085,4.80592,-74.10736,4.80622,-74.10622,4.80684,-74.10539,4.8074,-74.10433,4.80778,-74.10318,4.80805,-74.10204,4.80816,-74.10085,4.80811,-74.09978,4.80792,-74.09856,4.80813,-74.09766,4.80827,-74.09667,4.80828,-74.09598,4.8091,-74.09536,4.8098,-74.09474,4.81025,-74.09423,4.81074,-74.09458,4.81154,-74.09503,4.81245,-74.0954,4.8138,-74.09584,4.81519,-74.09608,4.81672,-74.09608,4.81799,-74.09594,4.81908,-74.09573,4.81971,-74.09557,4.82088,-74.09558,4.82189,-74.09549,4.82278,-74.09538,4.82411,-74.09503,4.82485,-74.09467,4.82563,-74.0943,4.82632,-74.09382,4.82751,-74.09462,4.82836,-74.09501,4.82906,-74.09529,4.83005,-74.09555,4.83102,-74.09566,4.83251,-74.09569,4.83388,-74.09547,4.83473,-74.0952,4.83569,-74.09484,4.83677,-74.09427,4.83777,-74.09359,4.83857,-74.09294,4.83929,-74.09216,4.83985,-74.09134,4.84042,-74.09033,4.84085,-74.0894,4.84125,-74.08831,4.84188,-74.08733,4.84237,-74.08643,4.84304,-74.08519,4.84354,-74.08412,4.84407,-74.08298,4.84469,-74.08127,4.84505,-74.08026,4.84542,-74.07905,4.84568,-74.07775,4.84578,-74.07655,4.84581,-74.07522,4.84571,-74.07383,4.8455,-74.07262,4.8452,-74.07154,4.84476,-74.07046,4.84433,-74.06966,4.84389,-74.06894,4.84425,-74.0679,4.84444,-74.067,4.84448,-74.06601,4.84446,-74.06469,4.84461,-74.06351,4.84459,-74.06214,4.84435,-74.06076,4.84392,-74.05944,4.84346,-74.05851,4.84281,-74.05751,4.84236,-74.0569,4.84165,-74.05617,4.84239,-74.05542,4.84299,-74.0545,4.84343,-74.05353,4.84382,-74.05258,4.84404,-74.05161,4.84422,-74.05036,4.84415,-74.04923,4.844,-74.04809,4.84362,-74.04681,4.84327,-74.04594,4.84285,-74.04516,4.84248,-74.04456,4.84203,-74.04397,4.84196,-74.04279,4.8416,-74.04141,4.84125,-74.04047,4.84068,-74.03942,4.84012,-74.03861,4.83937,-74.03777,4.83836,-74.03691,4.83767,-74.03641,4.83677,-74.03582,4.83588,-74.0351,4.8348,-74.03427,4.83487,-74.03366,4.83487,-74.03269,4.83468,-74.03176,4.83436,-74.03066,4.83398,-74.02968,4.83333,-74.02858,4.83278,-74.02775,4.83209,-74.02679,4.83216,-74.02591,4.83215,-74.02533,4.83204,-74.02429,4.83185,-74.02336,4.83164,-74.02272,4.83173,-74.02151,4.83162,-74.02017,4.8314,-74.01917,4.83115,-74.01839,4.83091,-74.01718,4.83058,-74.01601,4.83043,-74.01561,4.83053,-74.01476,4.83061,-74.01409,4.83072,-74.01282,4.83069,-74.0117,4.83054,-74.01097,4.83068,-74.01011,4.83078,-74.00909,4.83085,-74.00802,4.83086,-74.00689,4.83083,-74.00613,4.82621,-74.00614,4.82387,-74.00613,4.82351,-74.00576,4.82329,-74.00479,4.82287,-74.00426,4.82247,-74.00391,4.82188,-74.00347,4.82156,-74.00333,4.82125,-74.00221,4.82056,-74.00102,4.81957,-74.00022,4.81862,-73.99968,4.81756,-73.99945,4.81607,-73.99944,4.81466,-73.99962,4.8135,-73.99975,4.81207,-74.00006,4.81162,-73.99968,4.81108,-73.99942,4.81058,-73.99882,4.8101,-73.99808,4.80929,-73.9973,4.8083,-73.99665,4.80735,-73.99627,4.80639,-73.99613,4.80566,-73.99608,4.80514,-73.99618,4.80412,-73.99595,4.80328,-73.99593,4.80217,-73.99612,4.80103,-73.99657,4.80038,-73.99714,4.79968,-73.99786,4.79927,-73.99854,4.7985,-73.99892,4.79777,-73.99942,4.7972,-74.00016,4.79689,-74.00073,4.79666,-74.00124,4.79589,-74.00141,4.79511,-74.00187,4.79437,-74.00237,4.7937,-74.00311,4.79317,-74.00406,4.79286,-74.00511,4.79285,-74.00614,4.79301,-74.00706,4.79333,-74.00791,4.79324,-74.00861,4.79318,-74.00949,4.79326,-74.01025,4.79218,-74.01051,4.79144,-74.01082,4.7912,-74.01095,4.79076,-74.01126,4.78998,-74.01151,4.78877,-74.01152,4.78763,-74.01165,4.78693,-74.01188,4.78655,-74.01202,4.78571,-74.01209,4.78487,-74.01182,4.78405,-74.01168,4.78313,-74.01166,4.78176,-74.0116,4.78083,-74.01157,4.78028,-74.01158,4.77978,-74.01167,4.77882,-74.01157,4.77774,-74.01155,4.77643,-74.01152,4.77576,-74.01153,4.77489,-74.01127,4.77352,-74.01085,4.77144,-74.0102,4.76867,-74.0093,4.76575,-74.00838,4.76288,-74.00746,4.7603,-74.00663,4.75932,-74.00632,4.7585,-74.00571,4.75748,-74.00504,4.75655,-74.00473,4.75557,-74.00456,4.75471,-74.00446,4.75356,-74.00461,4.75236,-74.0048,4.75158,-74.00493,4.74996,-74.00497,4.74931,-74.00453,4.74846,-74.00411,4.74741,-74.00388,4.74674,-74.00384,4.7463,-74.0037,4.74548,-74.00308,4.74432,-74.00256,4.74346,-74.00245,4.74266,-74.00246,4.74174,-74.00264,4.74058,-74.00239,4.73984,-74.00243,4.73918,-74.0025,4.7385,-74.00264,4.73785,-74.00286,4.73728,-74.00313,4.7369,-74.00341,4.73538,-74.0036,4.73476,-74.00315,4.73374,-74.00266,4.73243,-74.00239,4.73156,-74.00243,4.73069,-74.00254,4.7293,-74.0027,4.72837,-74.00301,4.72697,-74.00356,4.72587,-74.00336,4.72508,-74.00339,4.72428,-74.00346,4.72342,-74.00382,4.72227,-74.0037,4.72134,-74.00368,4.72057,-74.00372,4.71991,-74.0039,4.71929,-74.00335,4.71865,-74.00292,4.71775,-74.0026,4.7168,-74.00238,4.71591,-74.00237,4.71491,-74.00253,4.71411,-74.00288,4.71336,-74.00331,4.71273,-74.00389,4.71215,-74.00465,4.7117,-74.00566,4.71082,-74.00585,4.71031,-74.00583,4.70948,-74.00599,4.70875,-74.00624,4.70806,-74.00656,4.70718,-74.00728,4.70655,-74.00748,4.70607,-74.00774,4.70518,-74.00755,4.70426,-74.00757,4.70344,-74.00769,4.70253,-74.008,4.70103,-74.00804,4.69995,-74.00816,4.69901,-74.00847,4.69839,-74.0088,4.69789,-74.0092,4.69711,-74.00832,4.69603,-74.00743,4.69492,-74.00681,4.69375,-74.00657,4.69275,-74.00659,4.692,-74.00669,4.69136,-74.00696,4.69066,-74.00665,4.69009,-74.00648,4.68906,-74.00634,4.68825,-74.00638,4.68732,-74.00657,4.6865,-74.00678,4.68595,-74.00664,4.68569,-74.00591,4.68521,-74.00496,4.68495,-74.00464,4.68461,-74.00379,4.68406,-74.00287,4.68354,-74.00217,4.6828,-74.00127,4.6817,-74.00034,4.68093,-73.99982,4.68051,-73.99934,4.67993,-73.99883,4.67927,-73.99842,4.67795,-73.9976,4.67737,-73.99741,4.67657,-73.99727,4.67588,-73.99714,4.67495,-73.99715,4.67386,-73.99734,4.67297,-73.99768,4.67197,-73.99844,4.67081,-73.99877,4.6698,-73.99919,4.66894,-73.99975,4.66804,-74.00036,4.66694,-74.0012,4.66642,-74.00165,4.66579,-74.00229,4.66463,-74.0025,4.66391,-74.00281,4.66307,-74.00323,4.66231,-74.0038,4.6617,-74.00451,4.66101,-74.00544,4.66044,-74.00666,4.65971,-74.00835,4.65935,-74.0092,4.65928,-74.00996,4.65929,-74.01024,4.65919,-74.01055,4.65902,-74.01144,4.65896,-74.0124,4.65917,-74.01321,4.6589,-74.01364,4.65825,-74.01434,4.65781,-74.01522,4.65751,-74.01623,4.65741,-74.01733,4.65734,-74.01844,4.65748,-74.01942,4.65772,-74.02018,4.65811,-74.02107,4.65716,-74.02094,4.65616,-74.02106,4.65522,-74.0214,4.65433,-74.02187,4.65356,-74.02266,4.65307,-74.02325,4.6526,-74.02414,4.65194,-74.02403,4.65165,-74.02406,4.65094,-74.02387,4.64974,-74.02377,4.64883,-74.02387,4.64803,-74.02407,4.64731,-74.02436,4.64736,-74.0234,4.64711,-74.02239,4.64702,-74.02168,4.64694,-74.02058,4.6466,-74.0198,4.64622,-74.01894,4.64571,-74.01806,4.6457,-74.01711,4.64544,-74.01619,4.64494,-74.01528,4.64423,-74.0143,4.64419,-74.0135,4.64413,-74.01243,4.64391,-74.01142,4.64365,-74.01093,4.64334,-74.01,4.64323,-74.00913,4.64293,-74.00818,4.64241,-74.00715,4.64161,-74.00626,4.64073,-74.00551,4.63972,-74.00511,4.63853,-74.00495,4.6375,-74.00505,4.63673,-74.00519,4.63585,-74.00542,4.63482,-74.00545,4.63388,-74.00561,4.63295,-74.00596,4.63218,-74.00541,4.63133,-74.00515,4.63161,-74.00397,4.63171,-74.0025,4.6317,-74.00172,4.63161,-74.00075,4.63226,-73.99999,4.63263,-73.99913,4.63296,-73.99813,4.63321,-73.99732,4.63343,-73.99654,4.63362,-73.99548,4.63383,-73.99501,4.63406,-73.99421,4.63414,-73.99339,4.6345,-73.99222,4.63461,-73.99136,4.63464,-73.99079,4.63531,-73.9899,4.63584,-73.98884,4.63592,-73.98839,4.63603,-73.98752,4.63576,-73.9862,4.63535,-73.9854,4.63468,-73.98449,4.63378,-73.98383,4.63269,-73.98327,4.63141,-73.98308,4.63021,-73.98324,4.62944,-73.98355,4.6286,-73.98404,4.62813,-73.98432,4.62724,-73.98454,4.62634,-73.98514,4.62554,-73.98514,4.62469,-73.98521,4.62339,-73.9855,4.62215,-73.98594,4.62149,-73.98658,4.62088,-73.98735,4.61972,-73.98684,4.61864,-73.98682,4.61726,-73.98691,4.61573,-73.9874,4.61408,-73.98825,4.61291,-73.98898,4.61189,-73.98984,4.61103,-73.98974,4.60954,-73.98988,4.60831,-73.99023,4.60723,-73.99062,4.60627,-73.99111,4.60539,-73.9906,4.60419,-73.98985,4.60396,-73.98978,4.60289,-73.9903,4.60049,-73.99148,4.59891,-73.99242,4.59639,-73.99354,4.59455,-73.99444,4.59243,-73.99564,4.59082,-73.99654,4.58849,-73.99761,4.58595,-73.9989,4.58364,-74.00012,4.58026,-74.00171,4.57874,-74.00264,4.57719,-74.00329,4.57637,-74.00372,4.57509,-74.00441,4.57398,-74.00493,4.57315,-74.00539,4.57231,-74.00584,4.57071,-74.00655,4.56915,-74.00735,4.5673,-74.00815,4.5645,-74.00957,4.56256,-74.01049,4.56075,-74.01143,4.55861,-74.01231,4.55667,-74.01336,4.55615,-74.01368,4.55669,-74.01463,4.55705,-74.01527,4.55705,-74.01564,4.55706,-74.01577,4.55706,-74.01609,4.55658,-74.01678,4.5563,-74.01714,4.55597,-74.01798,4.55571,-74.01877,4.55552,-74.01932,4.55521,-74.02014,4.55507,-74.02062,4.55495,-74.02109,4.55456,-74.02148,4.55417,-74.02228,4.55386,-74.02307,4.55307,-74.02283,4.5514,-74.02296,4.55033,-74.02328,4.54912,-74.02356,4.54774,-74.02388,4.54639,-74.0243,4.54571,-74.02458,4.54478,-74.02514,4.54414,-74.02562,4.54371,-74.02609,4.54289,-74.02614,4.54186,-74.02624,4.54054,-74.02643,4.53962,-74.02641,4.53882,-74.02665,4.53833,-74.02692,4.53754,-74.02733,4.53672,-74.02812,4.53581,-74.02912,4.5352,-74.02989,4.5347,-74.03057,4.53389,-74.03076,4.53322,-74.03104,4.53277,-74.03136,4.53254,-74.03148,4.53236,-74.03165,4.53165,-74.03188,4.53101,-74.03209,4.52999,-74.03245,4.5286,-74.03292,4.52716,-74.03343,4.52648,-74.03379,4.52532,-74.03396,4.52474,-74.03411,4.52381,-74.03439,4.52283,-74.03461,4.52211,-74.03495,4.52143,-74.03533,4.52043,-74.03544,4.51941,-74.03559,4.51846,-74.03589,4.51779,-74.03614,4.51725,-74.03648,4.51699,-74.03672,4.51617,-74.03698,4.51543,-74.03694,4.51454,-74.03695,4.51347,-74.03696,4.51282,-74.03695,4.51202,-74.03706,4.51118,-74.03726,4.51072,-74.03739,4.51011,-74.0376,4.50933,-74.03804,4.50875,-74.03846,4.50821,-74.03893,4.5077,-74.03957,4.50738,-74.04016,4.50714,-74.04088,4.50702,-74.04176,4.50685,-74.04244,4.50673,-74.04352,4.50678,-74.04421,4.50687,-74.04475,4.50683,-74.04559,4.50682,-74.04634,4.5069,-74.04708,4.50709,-74.04773,4.50761,-74.04876,4.50811,-74.04963,4.50755,-74.05036,4.50726,-74.05069,4.5067,-74.05115,4.50639,-74.05152,4.50539,-74.05175,4.5045,-74.052,4.50353,-74.05235,4.50247,-74.05276,4.50183,-74.05309,4.50114,-74.0535,4.50054,-74.05353,4.49998,-74.0536,4.49941,-74.0537,4.49896,-74.05386,4.49852,-74.05405,4.49829,-74.05418,4.49773,-74.05418,4.497,-74.05431,4.49627,-74.05457,4.49562,-74.0548,4.4948,-74.05513,4.49418,-74.05543,4.49368,-74.05573,4.49311,-74.05621,4.49219,-74.05645,4.49153,-74.05667,4.49118,-74.05685,4.49073,-74.05711,4.49,-74.05742,4.48965,-74.0576,4.4892,-74.05793,4.48861,-74.05838,4.48808,-74.05882,4.48751,-74.05929,4.48717,-74.05966,4.48677,-74.06012,4.48627,-74.06027,4.48574,-74.06055,4.48515,-74.06093,4.48456,-74.0614,4.48385,-74.06199,4.48323,-74.06274,4.48291,-74.06332,4.4826,-74.0642,4.48238,-74.06523,4.48236,-74.06583,4.48247,-74.06691,4.48262,-74.06789,4.48279,-74.06869,4.48288,-74.06893,4.48278,-74.06921,4.48258,-74.06991,4.48202,-74.06991,4.48157,-74.06995,4.48111,-74.07006,4.48041,-74.07007,4.47943,-74.07012,4.47877,-74.07015,4.47817,-74.07025,4.47758,-74.07035,4.47706,-74.07047,4.4766,-74.07065,4.47589,-74.0705,4.47514,-74.0704,4.47437,-74.07028,4.47364,-74.07023,4.4729,-74.07024,4.47241,-74.07031,4.47175,-74.0705,4.47096,-74.07051,4.47018,-74.07051,4.46966,-74.07051,4.4689,-74.0706,4.46838,-74.07068,4.46772,-74.07089,4.46712,-74.07117,4.46651,-74.07159,4.46532,-74.07173,4.46362,-74.07194,4.4615,-74.07221,4.4595,-74.07247,4.45695,-74.07279,4.45642,-74.07351,4.45533,-74.07505,4.45422,-74.07662,4.45337,-74.07782,4.45282,-74.0793,4.45222,-74.08079,4.45186,-74.08176,4.45187,-74.08415,4.45186,-74.08531,4.45202,-74.08725,4.45213,-74.08881,4.45215,-74.08935,4.45214,-74.09007,4.45198,-74.0921,4.45185,-74.0939,4.45043,-74.09636,4.44926,-74.09829,4.44818,-74.09911,4.44652,-74.10025,4.44526,-74.10115,4.4446,-74.10133,4.44416,-74.10155,4.44243,-74.10237,4.44118,-74.10291,4.44052,-74.10316,4.44,-74.1039,4.43947,-74.10465,4.43842,-74.10615,4.4388,-74.10868,4.4393,-74.1121,4.44057,-74.11378,4.44224,-74.11595,4.44495,-74.1195,4.44608,-74.12202,4.44709,-74.12433,4.44815,-74.12475,4.4504,-74.12561,4.45319,-74.12672,4.45469,-74.1273,4.45468,-74.13186,4.45468,-74.13297,4.45468,-74.13572,4.45468,-74.13847,4.45416,-74.19573,4.45833,-74.19563,4.46141,-74.19496,4.46481,-74.19384,4.46695,-74.19247,4.46905,-74.19262,4.47061,-74.19217,4.47258,-74.19127,4.47444,-74.1903,4.47606,-74.18949,4.48137,-74.18702,4.48712,-74.18421,4.48916,-74.18324,4.49532,-74.18507,4.49981,-74.18642,4.50593,-74.18827,4.5159,-74.19121,4.52124,-74.19266,4.52432,-74.19236,4.52606,-74.19399,4.53164,-74.19554,4.53611,-74.19487,4.53932,-74.1944,4.54122,-74.19191,4.54248,-74.19,4.54362,-74.18809,4.54426,-74.18666,4.54473,-74.1853,4.54661,-74.1853,4.54811,-74.18505,4.5492,-74.18477,4.55061,-74.18545,4.55254,-74.18591,4.55442,-74.18606,4.55654,-74.18582,4.55803,-74.18597,4.55936,-74.18593,4.5615,-74.18648,4.56394,-74.18687,4.56586,-74.18696,4.5668,-74.18691,4.56815,-74.18732,4.57023,-74.18751,4.57258,-74.18724,4.57442,-74.18803,4.57652,-74.18859,4.57908,-74.1888,4.58537,-74.18962,4.58685,-74.19048,4.58875,-74.19114,4.59071,-74.19971'/>
+      <tag key='description' value='It contains an orthorectified raster mosaic of the Capital District of Bogotá, the Cerros Orientales and  part of the rural area of Bogotá of the localities of Ciudad Bolívar and Usme, corresponding to 75,000 hectares. It has 4 bands of the electromagnetic spectrum: Red, Green, Blue and Near Infrared, allowing to create a false color for forestry applications.'/>
+      <tag key='customHttpHeaders' value='{}'/>
+      <tag key='category' value='photo'/>
+    </map>
   </maps>
   <list key='imagery.layers.default'>
     <entry value='Bing'/>
@@ -233,9 +291,9 @@
   </list>
   <maps key='imagery.offsetbookmarks'>
   </maps>
-  <tag key='josm.version' value='19304'/>
-  <tag key='lastDirectory' value='/home/ly0/gitclones/grid-mapping-starter-kit/josm-config'/>
-  <tag key='layerlist.lastHeight' value='286'/>
+  <tag key='josm.version' value='19277'/>
+  <tag key='lastDirectory' value='/home/cy0/gitclones/OET/grid-mapping-starter-kit/josm-config'/>
+  <tag key='layerlist.lastHeight' value='179'/>
   <tag key='mapillary-filter-expert.lastHeight' value='0'/>
   <tag key='mapillary-filter.lastHeight' value='0'/>
   <tag key='mapillary-info.lastHeight' value='0'/>
@@ -250,8 +308,8 @@
     </map>
     <map>
       <tag key='active' value='true'/>
-      <tag key='title' value='grid-mapping-starter-kit'/>
-      <tag key='url' value='https://raw.githubusercontent.com/open-energy-transition/grid-mapping-starter-kit/refs/heads/main/josm-config/Styles_Power-style.mapcss'/>
+      <tag key='title' value='Power'/>
+      <tag key='url' value='https://raw.githubusercontent.com/open-energy-transition/grid-mapping-starter-kit/refs/heads/main/josm-config/transmission_grid_mapping_style.mapcss'/>
     </map>
   </maps>
   <list key='mappaint.style.known-defaults'>
@@ -427,8 +485,8 @@
     <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_josmfile_page_Styles_MapillaryDetections_zip_1'/>
   </list>
   <list key='mirror.https://josm.openstreetmap.de/josmfile?page_Styles/Potlatch2&amp;zip_1'>
-    <entry value='1738589417910'/>
-    <entry value='/home/ly0/.cache/JOSM-latest/mirror_https___josm.openstreetmap.de_josmfile_page_Styles_Potlatch2_zip_1'/>
+    <entry value='1738610932353'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_josmfile_page_Styles_Potlatch2_zip_1'/>
   </list>
   <list key='mirror.https://josm.openstreetmap.de/josmfile?page_Styles/Power&amp;zip_1'>
     <entry value='1737539561000'/>
@@ -439,16 +497,16 @@
     <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_josmfile_page_Styles_PowerMapping_zip_1'/>
   </list>
   <list key='mirror.https://josm.openstreetmap.de/maps'>
-    <entry value='1738589419546'/>
-    <entry value='/home/ly0/.cache/JOSM-latest/mirror_https___josm.openstreetmap.de_maps'/>
+    <entry value='1739182121937'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_maps'/>
   </list>
   <list key='mirror.https://josm.openstreetmap.de/presets'>
-    <entry value='1738104490545'/>
+    <entry value='1739225378088'/>
     <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_presets'/>
   </list>
   <list key='mirror.https://josm.openstreetmap.de/remote/geofabrik-index-v1-nogeom.json'>
-    <entry value='1738589417650'/>
-    <entry value='/home/ly0/.cache/JOSM-latest/mirror_https___josm.openstreetmap.de_remote_geofabrik-index-v1-nogeom.json'/>
+    <entry value='1738610931926'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_remote_geofabrik-index-v1-nogeom.json'/>
   </list>
   <list key='mirror.https://josm.openstreetmap.de/remote/sophox-sparql?query_SELECT+%28CONCAT%28%22Key%3A%22%2C+%3Fpermanent_key_ID%29+as+%3FOSM_key%29+%3Fformatter_URL+WHERE+%7B%0A++%3Fitem+osmdt%3AP2+osmd%3AQ7.%0A++%3Fitem+osmdt%3AP16+%3Fpermanent_key_ID.%0A++%3Fitem+osmdt%3AP8+%3Fformatter_URL.%0A%7D%0A'>
     <entry value='1735742822958'/>
@@ -459,22 +517,28 @@
     <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetma2ed2f87d98ef5b24c7f8123020996ecf'/>
   </list>
   <list key='mirror.https://josm.openstreetmap.de/styles'>
-    <entry value='1738589547433'/>
-    <entry value='/home/ly0/.cache/JOSM-latest/mirror_https___josm.openstreetmap.de_styles'/>
+    <entry value='1739219824292'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_styles'/>
   </list>
   <list key='mirror.https://josm.openstreetmap.de/tested'>
     <entry value='1737637914477'/>
     <entry value='/home/cy0/.cache/JOSM/mirror_https___josm.openstreetmap.de_tested'/>
   </list>
   <list key='mirror.https://raw.githubusercontent.com/open-energy-transition/grid-mapping-starter-kit/refs/heads/main/josm-config/Styles_Power-style.mapcss'>
-    <entry value='1738589674373'/>
-    <entry value='/home/ly0/.cache/JOSM-latest/mirror_https___raw.githubusercontent.com_open-energy-transition_grid-mapping-starter-kit_refs_heads_mai_1119b9a2e398f962f6a67d77a2959210'/>
+    <entry value='1739183672503'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___raw.githubusercontent.com_open-energy-transition_grid-mapping-starter-kit_refs_heads_mai_1119b9a2e398f962f6a67d77a2959210'/>
+  </list>
+  <list key='mirror.https://raw.githubusercontent.com/open-energy-transition/grid-mapping-starter-kit/refs/heads/main/josm-config/transmission_grid_mapping_style.mapcss'>
+    <entry value='1739225421304'/>
+    <entry value='/home/cy0/.cache/JOSM/mirror_https___raw.githubusercontent.com_open-energy-transition_grid-mapping-starter-kit_refs_heads_mai_fe561d73ed9e5215063fe4463af70d17'/>
   </list>
   <list key='mirror.https://services.sentinel-hub.com/ogc/wmts/113184fa-263a-4bd8-a2d3-0c00fbcef8b5?SERVICE_WMS&amp;REQUEST_GetCapabilities'>
     <entry value='1736210669880'/>
     <entry value='/home/cy0/.cache/JOSM/mirror_https___services.sentinel-hub.com_ogc_wmts_113184fa-263a-4bd8-a2d3-0c00fbcef8b5_SERVICE_WMS_REQUEST_GetCapabilities'/>
   </list>
   <tag key='notes/note_open.lastHeight' value='0'/>
+  <tag key='o24.png.lastHeight' value='0'/>
+  <tag key='o24.png.minimized' value='true'/>
   <tag key='oauth.access-token.object.OAuth20.api.openstreetmap.org' value='{&quot;access_token&quot;:&quot;P46yoGFW4pUUiMLQAcsyPtbkpBdB3WFEiZyhgxBZtGo&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;created_at&quot;:1738591091,&quot;scope&quot;:&quot;read_gpx write_gpx read_prefs write_prefs write_api write_notes&quot;}'/>
   <tag key='oauth.access-token.parameters.OAuth20.https://api.openstreetmap.org/api' value='{&quot;client_id&quot;:&quot;edPII614Lm0_0zEpc_QzEltA9BUll93-Y-ugRQUoHMI&quot;,&quot;redirect_uri&quot;:&quot;http://127.0.0.1:8111/oauth_authorization&quot;,&quot;api_url&quot;:&quot;https://api.openstreetmap.org/api&quot;,&quot;authorize_url&quot;:&quot;https://www.openstreetmap.org/oauth2/authorize&quot;,&quot;token_url&quot;:&quot;https://www.openstreetmap.org/oauth2/token&quot;}'/>
   <tag key='openqa.filetype' value='geojson'/>
@@ -486,22 +550,30 @@
   <tag key='org.openstreetmap.josm.gui.dialogs.DeleteFromRelationConfirmationDialog.geometry' value='x=760,y=513,width=400,height=200'/>
   <tag key='org.openstreetmap.josm.gui.dialogs.LatLonDialog.geometry' value='x=601,y=350,width=717,height=526'/>
   <tag key='org.openstreetmap.josm.gui.dialogs.changeset.ChangesetCacheManager.geometry' value='x=0,y=27,width=1000,height=600'/>
-  <tag key='org.openstreetmap.josm.gui.dialogs.properties.TagEditHelper$AddTagsDialog.geometry' value='x=806,y=490,width=399,height=426'/>
+  <tag key='org.openstreetmap.josm.gui.dialogs.properties.TagEditHelper$AddTagsDialog.geometry' value='x=446,y=421,width=399,height=426'/>
   <tag key='org.openstreetmap.josm.gui.dialogs.properties.TagEditHelper$EditTagDialog.geometry' value='x=516,y=519,width=887,height=188'/>
-  <tag key='org.openstreetmap.josm.gui.download.DownloadDialog.geometry' value='x=65,y=94,width=1573,height=1010'/>
+  <tag key='org.openstreetmap.josm.gui.download.DownloadDialog.geometry' value='x=174,y=120,width=1573,height=1010'/>
   <tag key='org.openstreetmap.josm.gui.help.HelpBrowser.geometry' value='x=0,y=27,width=1212,height=973'/>
   <tag key='org.openstreetmap.josm.gui.io.UploadDialog.geometry' value='x=560,y=313,width=800,height=600'/>
-  <tag key='org.openstreetmap.josm.gui.preferences.PreferenceDialog.geometry' value='x=0,y=50,width=1885,height=1024'/>
+  <tag key='org.openstreetmap.josm.gui.preferences.PreferenceDialog.geometry' value='x=0,y=176,width=1885,height=1024'/>
   <tag key='org.openstreetmap.josm.gui.preferences.imagery.AddWMSLayerPanel.geometry' value='x=760,y=313,width=400,height=600'/>
   <tag key='org.openstreetmap.josm.plugins.utilsplugin2.multitagger.MultiTagDialog.geometry' value='x=710,y=363,width=500,height=500'/>
-  <tag key='osm-download.bounds' value='-2.1418295;34.3872015;3.6450053;42.4072211'/>
+  <tag key='osm-download.bounds' value='-1.633992;31.8411227;1.2605822;35.7797214'/>
   <tag key='osm-server.upload-strategy' value='singlerequest'/>
   <tag key='pluginmanager.lastupdate' value='1737041255790'/>
   <tag key='pluginmanager.version' value='19277'/>
+  <list key='plugins'>
+    <entry value='apache-commons'/>
+    <entry value='ejml'/>
+    <entry value='geotools'/>
+    <entry value='jackson'/>
+    <entry value='jaxb'/>
+    <entry value='jts'/>
+    <entry value='opendata'/>
+    <entry value='utilsplugin2'/>
+  </list>
   <tag key='preferences.reset.draw.rawgps.lines' value='true'/>
   <tag key='progressdialog.size' value='455'/>
-  <list key='projection.sub.core:mercator'>
-  </list>
   <list key='properties.recent-tags'>
     <entry value='power'/>
     <entry value='substation'/>
@@ -517,8 +589,10 @@
     <entry value='en:Isinya–Singida High Voltage Power Line'/>
     <entry value='substation'/>
     <entry value='transmission'/>
+    <entry value='power'/>
+    <entry value='plant'/>
   </list>
-  <tag key='propertiesdialog.lastHeight' value='300'/>
+  <tag key='propertiesdialog.lastHeight' value='242'/>
   <tag key='relationlist.lastHeight' value='0'/>
   <tag key='relationlist.visible' value='false'/>
   <tag key='remotecontrol.enabled' value='true'/>
@@ -539,7 +613,7 @@
   </list>
   <tag key='sidetoolbar.hidden.mapmode/node/autonode' value='false'/>
   <tag key='sidetoolbar.hidden.mapmode/splitway' value='false'/>
-  <tag key='sourcetag.value' value='Bing'/>
+  <tag key='sourcetag.value' value='bing'/>
   <tag key='streetside-info.lastHeight' value='0'/>
   <tag key='streetside-main.lastHeight' value='0'/>
   <tag key='streetside-main.visible' value='false'/>
@@ -547,7 +621,7 @@
   <tag key='streetside-viewer.visible' value='false'/>
   <tag key='streetside.download-mode' value='manualOnly'/>
   <tag key='streetside.imageInfo.helpDisplayedCountdown' value='0'/>
-  <tag key='toggleDialogs.width' value='417'/>
+  <tag key='toggleDialogs.width' value='443'/>
   <list key='toolbar'>
     <entry value='open'/>
     <entry value='save'/>
@@ -566,43 +640,44 @@
     <entry value='tagging_Man Made/Power/Power Tower'/>
     <entry value='tagging_Man Made/Power/Power Line'/>
     <entry value='tagging_Man Made/Power/Power Portal'/>
-    <entry value='imagery-offset'/>
+    <entry value='tagginggroup_Man Made/Power'/>
+    <entry value='tagginggroup_Man Made/Power/Power Plant'/>
     <entry value='addnode'/>
   </list>
   <list key='upload.comment.history'>
-    <entry value='Closed HV transmission lines '/>
+    <entry value='Found new towers next to substation'/>
+    <entry value='Found new towers next to power plant'/>
+    <entry value='Found new substation next to solarpark but finish line'/>
     <entry value=''/>
-    <entry value='Found towers next to new substation that is not connected'/>
-    <entry value='Connected to HV lines to substation and closed lines'/>
-    <entry value='Connected to HV lines to substation'/>
-    <entry value='Connected to HV lines'/>
-    <entry value='Found more towers and connected to HV lines'/>
-    <entry value='Found more towers and found new substation'/>
-    <entry value='Found more towers , finished line and extended substation'/>
-    <entry value='Found more towers but could not finish the line'/>
-    <entry value='Add new HV line and connected another substation thanks to osmose'/>
-    <entry value='Add Wikipedia article about the line '/>
-    <entry value='Connect substations'/>
-    <entry value='Close two lines but still no end found'/>
-    <entry value='Finish line '/>
+    <entry value='Found more towers'/>
+    <entry value='Follow line and found solar park'/>
+    <entry value='Follow line and found new substation'/>
+    <entry value='Extend solar park'/>
+    <entry value='Found new substation next to windpark'/>
+    <entry value='Found towers and substation'/>
+    <entry value='Found hydro power plant'/>
+    <entry value='Remove towers from line already mapped'/>
+    <entry value='Found some more lonely towers next to power plant and substation'/>
+    <entry value='Found some more lonely towers next to power plant'/>
+    <entry value='Found some more lonely towers'/>
   </list>
-  <tag key='upload.comment.last-used' value='1738245880'/>
+  <tag key='upload.comment.last-used' value='1739267954'/>
   <list key='upload.source.history'>
+    <entry value='Mapbox Satellite; Esri World Imagery'/>
+    <entry value='Mapbox Satellite; Esri World Imagery; Bing'/>
+    <entry value='Bing; Mapbox Satellite; Esri World Imagery'/>
     <entry value='Bing; Esri World Imagery'/>
+    <entry value='Bing'/>
+    <entry value='Bing; Mapbox Satellite'/>
+    <entry value='Bing; Esri World Imagery; Mapbox Satellite'/>
     <entry value='Esri World Imagery'/>
     <entry value='Esri World Imagery; Bing'/>
     <entry value='Esri World Imagery; Bing; Mapbox Satellite'/>
     <entry value='OpenStreetMap (German Style); Esri World Imagery; Bing'/>
     <entry value='Mapbox Satellite'/>
-    <entry value='Bing'/>
     <entry value='Mapbox Satellite; Bing'/>
-    <entry value='Mapbox Satellite; Esri World Imagery'/>
     <entry value='Mapbox Satellite; OpenStreetMap Carto (Standard); Esri World Imagery'/>
     <entry value='https://transformers-magazine.com/tm-news/kenya-tanzania-transmission-line-energized/#:~:text=Kenya%2FTanzania%3A%20The%20Kenya%20Electricity,power%20grids%20of%20the%20nations'/>
-    <entry value='Mapbox Satellite; OpenStreetMap Carto (Standard)'/>
-    <entry value=''/>
-    <entry value='Bing; Mapbox Satellite'/>
-    <entry value='knowledge'/>
   </list>
   <tag key='upload.source.obtainautomatically' value='true'/>
   <tag key='userlist.lastHeight' value='0'/>
