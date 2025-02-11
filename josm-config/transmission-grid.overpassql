@@ -1,4 +1,5 @@
 [out:json][timeout:120];
+
 // Use the current map's bounding box for the search area
 
 // Find all power towers
@@ -7,12 +8,15 @@ node["power"="tower"]({{bbox}}) -> .towers;
 // Find all power poles
 node["power"="pole"]({{bbox}}) -> .poles;
 
-// Find all power lines that are connected to towers
+// Find all power lines that are connected to towers or poles
 way["power"="line"]({{bbox}})
-  (bn.towers) -> .lines_connected;
+  (bn.towers, bn.poles) -> .lines_connected;
 
 // Find all high-voltage power lines (>= 115 kV)
 way["power"="line"]["voltage"](if:t["voltage"] >= 115000)({{bbox}}) -> .high_voltage_lines;
+
+// Find only poles that are part of high-voltage lines
+node.poles(w.high_voltage_lines) -> .hv_poles;
 
 // Include substations
 node["power"="substation"]({{bbox}}) -> .substation_nodes;
@@ -35,7 +39,7 @@ node["power"="portal"]({{bbox}}) -> .portal_nodes;
 // Combine all relevant results
 (
   .towers;
-  .poles;
+  .hv_poles;   // Only HV poles
   .lines_connected;
   .high_voltage_lines;
   .substation_nodes;
