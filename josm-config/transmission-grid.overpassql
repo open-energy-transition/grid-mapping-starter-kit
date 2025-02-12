@@ -5,15 +5,15 @@
 // Find all power towers
 node["power"="tower"]({{bbox}}) -> .towers;
 
-// Find all power poles
+// Find all power poles.
 node["power"="pole"]({{bbox}}) -> .poles;
 
-// Find all power lines that are connected to towers or poles
+// Find all power lines that are connected to towers
 way["power"="line"]({{bbox}})
-  (bn.towers, bn.poles) -> .lines_connected;
+  (bn.towers) -> .lines_connected;
 
-// Find all high-voltage power lines (>= 115 kV)
-way["power"="line"]["voltage"](if:t["voltage"] >= 115000)({{bbox}}) -> .high_voltage_lines;
+// Find all high-voltage power lines (>= 90 kV)
+way["power"="line"]["voltage"](if:t["voltage"] >= 90000)({{bbox}}) -> .high_voltage_lines;
 
 // Find only poles that are part of high-voltage lines
 node.poles(w.high_voltage_lines) -> .hv_poles;
