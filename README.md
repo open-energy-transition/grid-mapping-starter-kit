@@ -4,6 +4,8 @@
 
 _This repository is still under development and may change significantly over time._
 
+**⚠️ Please note that the Overpass Turbo script provided with this starter kit is optimised for transmission grid mapping. Lines on poles below 115 kV are not visualised in JOSM and should not be mapped. ⚠️**
+
 ## Setup Mapping Environment
 1. Install the latest version of JOSM on your machine. [Download here](https://josm.openstreetmap.de/).
 2. Configure the JOSM user interface according to your needs. A preconfigured preferences file is [available here](josm-config/preferences.xml). The [JOSM wiki](https://josm.openstreetmap.de/wiki/Help/Preferences) provides details on where to place the `preferences.xml` file, depending on your operating system.
