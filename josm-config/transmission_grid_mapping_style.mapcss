@@ -6,22 +6,17 @@ meta {
 }
 
 
-relation[boundary=administrative] > node {
-    visible: false;
-}
-
 relation[boundary=administrative]{
-  color:rgb(0, 0, 0);          /* Boundary line color */
-  width: 10;                /* Boundary line width */
-  opacity: 1;            /* Boundary line opacity */
-  fill-opacity: 0.0;       /* Fill opacity for areas */
+  color:rgb(99, 99, 99);          /* Boundary line color */
+  symbol-size: 0.1;          /* Make them very small */
+  width: 1;                /* Boundary line width */
+  opacity: 1.6;            /* Boundary line opacity */
+  fill-opacity: 0.2;       /* Fill opacity for areas */
+  major-z-index:100.0;  
 }
 
-
-
-relation[boundary=administrative] node {
-  opacity: 0.0;
-  fill-opacity: 0.0;
+relation[boundary=administrative] > node {
+    display: none;
 }
 
 node[power=portal] {
@@ -116,7 +111,7 @@ node[power=generator] {
 /* Voltages */
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))<=33000]{
 	width:1;
-	color:#0094FF;
+	color:rgb(55, 0, 145);
 	text-halo-color:#0094FF;
 	z-index: 5;   
 }
@@ -219,3 +214,4 @@ way[power=line][proposed=yes] {
     dashes: 8, 4;    /* Dashed pattern (8px dash, 4px gap) */
     opacity: 0.8;
 }
+
