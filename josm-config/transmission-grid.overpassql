@@ -1,4 +1,4 @@
-[out:json][timeout:120];
+[out:json][timeout:200];
 
 {{geocodeArea:"Kenya"}}->.searchArea;
 
