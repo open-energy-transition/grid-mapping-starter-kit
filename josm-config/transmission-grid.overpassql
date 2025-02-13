@@ -1,7 +1,8 @@
 [out:json][timeout:400];
 
-// Retrieve the admin_level=2 administrative boundary that intersects with the bbox
-relation["boundary"="administrative"]["admin_level"="2"]({{bbox}}) -> .admin_boundary;
+// Retrieve the admin_level="2" administrative boundary that intersects with the bbox
+// Switch to "admin_level"="3" for countries with large grid data to retrieve on a state level 
+relation["boundary"="administrative"]["admin_level"="3"]({{bbox}}) -> .admin_boundary;
 
 // Map the relation to an area
 .admin_boundary map_to_area -> .searchArea;
