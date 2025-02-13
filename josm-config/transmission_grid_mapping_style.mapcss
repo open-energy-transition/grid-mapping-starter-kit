@@ -5,6 +5,25 @@ meta {
 	version: "0.1";	
 }
 
+
+relation[boundary=administrative] > node {
+    visible: false;
+}
+
+relation[boundary=administrative]{
+  color:rgb(0, 0, 0);          /* Boundary line color */
+  width: 10;                /* Boundary line width */
+  opacity: 1;            /* Boundary line opacity */
+  fill-opacity: 0.0;       /* Fill opacity for areas */
+}
+
+
+
+relation[boundary=administrative] node {
+  opacity: 0.0;
+  fill-opacity: 0.0;
+}
+
 node[power=portal] {
     symbol-shape: square;
     symbol-fill-color: pink;

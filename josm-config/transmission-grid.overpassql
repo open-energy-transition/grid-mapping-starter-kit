@@ -1,40 +1,42 @@
 [out:json][timeout:120];
 
-// Use the current map's bounding box for the search area
+{{geocodeArea:"Kenya"}}->.searchArea;
+
+relation["boundary"="administrative"][admin_level=2](area.searchArea) ->.administrative_boundary;
 
 // Find all power towers
-node["power"="tower"]({{bbox}}) -> .towers;
+node["power"="tower"](area.searchArea) -> .towers;
 
 // Find all power poles.
-node["power"="pole"]({{bbox}}) -> .poles;
+node["power"="pole"](area.searchArea) -> .poles;
 
 // Find all power lines that are connected to towers
-way["power"="line"]({{bbox}})
+way["power"="line"](area.searchArea)
   (bn.towers) -> .lines_connected;
 
 // Find all high-voltage power lines (>= 90 kV)
-way["power"="line"]["voltage"](if:t["voltage"] >= 90000)({{bbox}}) -> .high_voltage_lines;
+way["power"="line"]["voltage"](if:t["voltage"] >= 90000)(area.searchArea) -> .high_voltage_lines;
 
 // Find only poles that are part of high-voltage lines
 node.poles(w.high_voltage_lines) -> .hv_poles;
 
 // Include substations
-node["power"="substation"]({{bbox}}) -> .substation_nodes;
-way["power"="substation"]({{bbox}}) -> .substation_ways;
-relation["power"="substation"]({{bbox}}) -> .substation_relations;
+node["power"="substation"](area.searchArea) -> .substation_nodes;
+way["power"="substation"](area.searchArea) -> .substation_ways;
+relation["power"="substation"](area.searchArea) -> .substation_relations;
 
 // Include power plants
-node["power"="plant"]({{bbox}}) -> .plant_nodes;
-way["power"="plant"]({{bbox}}) -> .plant_ways;
-relation["power"="plant"]({{bbox}}) -> .plant_relations;
+node["power"="plant"](area.searchArea) -> .plant_nodes;
+way["power"="plant"](area.searchArea)-> .plant_ways;
+relation["power"="plant"](area.searchArea) -> .plant_relations;
 
 // Include generators 
-node["power"="generator"]({{bbox}}) -> .generator_nodes;
-way["power"="generator"]({{bbox}}) -> .generator_ways;
-relation["power"="generator"]({{bbox}}) -> .generator_relations;
+node["power"="generator"](area.searchArea) -> .generator_nodes;
+way["power"="generator"](area.searchArea) -> .generator_ways;
+relation["power"="generator"](area.searchArea) -> .generator_relations;
 
 // Include portals 
-node["power"="portal"]({{bbox}}) -> .portal_nodes;
+node["power"="portal"](area.searchArea) -> .portal_nodes;
 
 // Combine all relevant results
 (
@@ -52,6 +54,7 @@ node["power"="portal"]({{bbox}}) -> .portal_nodes;
   .generator_ways;
   .generator_relations;
   .portal_nodes;
+  .administrative_boundary;
 );
 
 out body;
