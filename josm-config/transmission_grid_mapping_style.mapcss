@@ -7,16 +7,13 @@ meta {
 
 
 relation[boundary=administrative]{
-  color:rgb(99, 99, 99);          /* Boundary line color */
-  symbol-size: 0.1;          /* Make them very small */
-  width: 1;                /* Boundary line width */
-  opacity: 1.6;            /* Boundary line opacity */
-  fill-opacity: 0.2;       /* Fill opacity for areas */
+  color:yellow;         /* Boundary line color */
+  symbol-fill-color: yellow;
+  symbol-size: 0.5;          /* Make them very small */
+  width: 6;                /* Boundary line width */
+  opacity: 1;            /* Boundary line opacity */
+  fill-opacity: 1;       /* Fill opacity for areas */
   major-z-index:100.0;  
-}
-
-relation[boundary=administrative] > node {
-    display: none;
 }
 
 node[power=portal] {
@@ -45,9 +42,9 @@ area[power=substation]{
 }
 
 area[power=substation][substation=transmission]{
-	width:15;
+	width:20;
 	symbol-size:5;
-	color:#FFF000;
+	color:white;
 	fill-color:#FFD800;
 	fill-opacity:0.05;
 }
@@ -135,7 +132,7 @@ way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>70000
 }
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>100000][to_int(get(split(";",tag(voltage)),0))<=170000]{
 	width:3;
-	color:#003DB0;
+	color:magenta;
 	text-halo-color:#003DB0;
 	z-index: 5;   
 }
