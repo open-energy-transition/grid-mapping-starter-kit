@@ -12,18 +12,21 @@ _This repository is still under development and may change significantly over ti
 3. The [paint map style](josm-config/transmission_grid_mapping_style.mapcss) is dynamically loaded from this GitHub repository and optimized for large-scale transmission grid mapping using [this URL](https://raw.githubusercontent.com/open-energy-transition/grid-mapping-starter-kit/refs/heads/main/josm-config/transmission_grid_mapping_style.mapcss). If you want to use a custom paint style, download the file to your local machine, modify it, and add it to JOSM under **Edit → Preferences → Paint Map Style**.
 4. Load the [template session](josm-config/transmission_grid_mapping_template.joz) by selecting **File → Open**.
 5. Add a new OSM token to JOSM under **Edit → Preferences → OSM Server**. **Be aware that your token will be stored in your local `preferences.xml` file. Do not share this file with anyone.**
+6. To show the Overpass Turbo tab in the Download window, you have to activate the **View → Expert Mode**. 
 
 ## Download Transmission Data and Issues
-1. Zoom to the area you want to map. Activate the `osm-transmission-grid` layer and download the osm tranmission data to this layer using the preconfigured Overpass Turbo script [transmission-grid.overpassql](josm-config/transmission-grid.overpassql). **Press Download → Download from Overpass API** and copy/paste the content to the script window. If the download fails, the timeout may be too low or the bounding box too large:
-2. Visit [Osmose](https://osmose.openstreetmap.fr/en/map/#loc=7/4.907/-72.994&level=1%2C2%2C3&tags=power&class=2&item=7040) and activate only **"Power lines"**. Click the plus symbol next to it and select **"Unfinished power major line"**. Zoom to the area of interest, activate the Osmose layer in JOSM, switch back to Osmose, and press **Export → JOSM**. Towers with "Unfinished power major line" should now be visible in the Osmose layer in JOSM.
+1. Zoom to the area you want to map. Activate the `osm-transmission-grid` layer and press the Download button. Switch to the **Download from Overpass API** tab. Add the content of the [transmission-grid.overpassql](josm-config/transmission-grid.overpassql) to the script field.
+2. Select the **Slippy Map** tab in the **Download from Overpass API** and draw a bounding box for the area you want to map. The script will retrieve all data from the administrative areas that cross the bounding box. Depending on the country you are mapping, you may want to divide the mapping regions into states, as the data for some countries will be extensive. To do this, simply change the **"admin_level"="2"** to **"admin_level"="3"** in the second line of the script. 
+3. Press "Download" to recive the relevant data for transmission grid mapping using the preconfigured Overpass Turbo script. If the download fails, the timeout may be too low or the bounding box too large. You should consider mapping at the state level or reducing the size of your bounding box. 
+4. Visit [Osmose](https://osmose.openstreetmap.fr/en/map/#loc=7/4.907/-72.994&level=1%2C2%2C3&tags=power&class=2&item=7040) and activate only **"Power lines"**. Click the plus symbol next to it and select **"Unfinished power major line"**. Zoom to the area of interest, activate the Osmose layer in JOSM, switch back to Osmose, and press **Export → JOSM**. Towers with "Unfinished power major line" should now be visible in the Osmose layer in JOSM.
    - If the towers are not visible, try the following:
      - Disable your ad blocker.
      - Enable **Remote Control** under **Edit → Preferences** in JOSM.
      - Reduce the visible area in Osmose.
-3. Enable **"Discourage Upload"** for the Osmose layer to prevent accidental uploads. You can now investigate each Osmose error in the transmission grid. After fixing an issue (or if you cannot fix it), remove the tower from the Osmose layer to track your progress.
+5. Enable **"Discourage Upload"** for the Osmose layer to prevent accidental uploads. You can now investigate each Osmose error in the transmission grid. After fixing an issue (or if you cannot fix it), remove the tower from the Osmose layer to track your progress.
 
 ## Mapping Strategies
-The following strategies outline different approaches to extending the existing transmission network. **Only map infrastructure that you can confidently classify using satellite or ground imagery.**
+The following strategies outline different approaches to extending the existing transmission network. The easiest way in transmission grid mapping is to record the position of new ‘power towers’.  You can almost do nothing wrong with doing so and it will help you to get familiar with the process. **Only map infrastructure that you can confidently classify using satellite or ground imagery.**
 
 - [ ] Search for all **"Unfinished major power lines"** in Osmose.
 - [ ] Look for news reports on new substations and transmission lines that have become operational in recent years. LLMs like ChatGPT allow you to search in the local language: _"Please search for news about transmission lines or substation recently opened in X. Please use the official language of the country for your search"_
@@ -33,3 +36,10 @@ The following strategies outline different approaches to extending the existing 
 - [ ] Identify obvious gaps in the network topology from a national perspective.
 - [ ] Look for new lines parallel to existing ones and new lines starting from major central substations.
 
+## Common Mistakes 
+
+1. Leaving the downloaded area and mapping transmission grids that do not appear to have been mapped, but simply have not yet been downloaded into JOSM. To avoid this problem you should always be aware of the country boundary and be careful when crossing the highlighted country boundary. Due to the design of Overpass Turbo, some elements such as lines may still be visible across the border, but other objects such as substations will appear as if they have not yet been mapped. 
+2. Mapping beyond your experience is something you should avoid. Mapping is an iterative process and you should not expect to be able to finish all the details you are mapping. If you cannot map with a high degree of certainty, leave it to local mappers or experienced grid mappers.
+3. If the route of the lines is not completely obvious or visible in the satellite imagery, don't map it.
+4. Avoid uploading large changesets. Upload your data regularly.
+5. Avoid ignoring validation results. The only acceptable warning when uploading data is "Possible missing line support node within power line".
