@@ -106,30 +106,13 @@ node[power=generator] {
 
 
 /* Voltages */
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))<=33000]{
-	width:1;
-	color:rgb(55, 0, 145);
-	text-halo-color:#0094FF;
-	z-index: 5;   
+  
+way[power=line][!voltage],
+way[power=line][voltage=0] {
+    color: white;
+    width: 5; /* Adjust line width as needed */
 }
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>33000][to_int(get(split(";",tag(voltage)),0))<=50000]{
-	width:1;
-	color:#FFFFFF;
-	text-halo-color:#FFFFFF;
-	z-index: 5;   	
-}
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>50000][to_int(get(split(";",tag(voltage)),0))<=70000]{
-	width:2;
-	color:#BF0054;
-	text-halo-color:#BF0054;
-	z-index: 5;   
-}
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>70000][to_int(get(split(";",tag(voltage)),0))<=100000]{
-	width:2;
-	color:#FF8000;
-	text-halo-color:#FF8000;
-	z-index: 5;   
-}
+
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>100000][to_int(get(split(";",tag(voltage)),0))<=170000]{
 	width:3;
 	color:magenta;
