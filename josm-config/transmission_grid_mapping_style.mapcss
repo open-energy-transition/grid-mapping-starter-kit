@@ -37,14 +37,14 @@ node[power=tower] {
 area[power=substation]{
 	width:15;
 	symbol-size:5;
-	color:tomato;
+	color:white;
 	fill-opacity:0.05;
 }
 
 area[power=substation][substation=transmission]{
 	width:20;
 	symbol-size:5;
-	color:white;
+	color:tomato;
 	fill-color:#FFD800;
 	fill-opacity:0.05;
 }
