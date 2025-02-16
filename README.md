@@ -36,7 +36,7 @@ The following strategies outline different approaches to extending the existing 
 - [ ] Look for news reports on new substations and transmission lines that have become operational in recent years. LLMs like ChatGPT allow you to search in the local language: _"Please search for news about transmission lines or substation recently opened in X. Please use the official language of the country for your search"_
 - [ ] Search for new substation records and national substation records as a reference "hint" layer. LLMs like ChatGPT allow you to search in the local language: _"Please search for transmission lines or substation datasets in X. Please use the official language of the country for your search."_ For a curated list of datasets that may be useful, see [Awesome Electric Grid Mapping](https://github.com/open-energy-transition/Awesome-Electric-Grid-Mapping).
 
-If you don't know a good country to start with, [OpenInfraMap.org's nightlights background](https://openinframap.org/#2.15/0.63/21.49) can help you find countries with larger gaps in the transmission grid.
+If you don't know a good country to start with, [OpenInfraMap.org's nightlights background](https://openinframap.org/#2.15/-1.45/23.58/L,N,P) can help you find countries with larger gaps in the transmission grid.
 
 ## Common Mistakes 
 
