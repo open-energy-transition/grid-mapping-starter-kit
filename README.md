@@ -2,7 +2,7 @@
 
 **A starter kit for Electrical Transmission Grid Mapping in OpenStreetMap, combining Osmose with JOSM.**
 
-_This repository is still under development and may change significantly over time._
+> We provide one on one workshop to help you get started. Please [contact the maintainer](https://github.com/Ly0n) of this repository to book a free training session. 
 
 **⚠️ Please note that the Overpass Turbo script provided with this starter kit is optimised for transmission grid mapping. Lines on poles below 90 kV are not visualised in JOSM and should not be mapped. ⚠️**
 
