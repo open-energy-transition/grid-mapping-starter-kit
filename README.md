@@ -29,12 +29,14 @@ _This repository is still under development and may change significantly over ti
 The following strategies outline different approaches to extending the existing transmission network. In general, the larger the tower and substation, the higher the voltage and therefore the greater the importance to the network. Priority should therefore be given to large, high-voltage infrastructure first. The easiest way to start mapping the transmission network is to find the location of new 'pylons'. You can hardly go wrong with this and it will help you to familiarise yourself with the tool and the local network. **Only map infrastructure that you can confidently classify using satellite or ground imagery.**
 
 - [ ] Search for all **"Unfinished major power lines"** in Osmose and check if you are able to find new towers at the ende of the line. After fixing an issue (or if you cannot fix it), remove the tower from the Osmose layer to track your progress.
-- [ ] Check records of generators, solar farms, and other energy assets for integration into the transmission network.
-- [ ] Ensure all transmission substations are connected to the national grid.
+- [ ] Check if windparks, solar farms, and larger energy assets are connected to the national transmission grid.
+- [ ] Ensure all substations are connected to the national grid.
 - [ ] Identify obvious gaps in the network topology from a national perspective.
-- [ ] Look for new lines parallel to existing ones and new lines starting from major central substations.
+- [ ] Look for new lines parallel to existing ones and new lines starting from major central transmission substations.
 - [ ] Look for news reports on new substations and transmission lines that have become operational in recent years. LLMs like ChatGPT allow you to search in the local language: _"Please search for news about transmission lines or substation recently opened in X. Please use the official language of the country for your search"_
-- [ ] Search for new substation records and national substation records as a reference "hint" layer. LLMs like ChatGPT allow you to search in the local language: _"Please search for transmission lines or substation datasets in X. Please use the official language of the country for your search"_
+- [ ] Search for new substation records and national substation records as a reference "hint" layer. LLMs like ChatGPT allow you to search in the local language: _"Please search for transmission lines or substation datasets in X. Please use the official language of the country for your search."_ For a curated list of datasets that may be useful, see [Awesome Electric Grid Mapping](https://github.com/open-energy-transition/Awesome-Electric-Grid-Mapping).
+
+If you don't know a good country to start with, [OpenInfraMap.org's nightlights background](https://openinframap.org/#2.15/0.63/21.49) can help you find countries with larger gaps in the transmission grid.
 
 ## Common Mistakes 
 
