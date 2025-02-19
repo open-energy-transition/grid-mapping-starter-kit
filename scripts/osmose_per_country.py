@@ -1,6 +1,12 @@
 import requests
 import json
 
+## API documentation:
+## https://wiki.openstreetmap.org/wiki/Osmose/api/0.3
+
+## possible regions countries and states supported
+## https://osmose.openstreetmap.fr/api/0.3/countries
+
 def fetch_osmose_data(country, issue_type=7040):
 
     url = f"https://osmose.openstreetmap.fr/api/0.3/issues.json?country={country}&item={issue_type}&limit=500"
