@@ -1,8 +1,17 @@
 [out:json][timeout:400];
 
+// Select your mapping area with a bounding box or country name(s). If possible, mapping data should be carried out at state or federal level to avoid conflicts. 
+
+// Use the bounding box to select the boarders between 2 or more countries or select one country with a larger bounding box in it. 
 // Retrieve the admin_level="2" administrative boundary that intersects with the bbox
-// Switch to "admin_level"="3" for countries with large grid data to retrieve on a state level 
-relation["boundary"="administrative"]["admin_level"="3"]({{bbox}}) -> .admin_boundary;
+// Switch to "admin_level"="3" for countries with large grid data.
+ 
+relation["boundary"="administrative"]["admin_level"="2"]({{bbox}}) -> .admin_boundary;
+// relation["boundary"="administrative"]["name"~"Kenya|Uganda"] -> .admin_boundary;
+// relation["boundary"="administrative"]["name"~"Kenya"] -> .admin_boundary;
+
+
+// Get transmission grid mapping relevant data
 
 // Map the relation to an area
 .admin_boundary map_to_area -> .searchArea;
