@@ -103,6 +103,13 @@ node[power=generator] {
     symbol-fill-opacity:0.7;
 }
 
+node[item=7040] {
+    symbol-shape: triangle;
+    symbol-fill-color: brown;
+    symbol-size: 15; /* Adjust size as needed */
+    symbol-fill-opacity:1.0;
+}
+
 
 
 /* Voltages */
