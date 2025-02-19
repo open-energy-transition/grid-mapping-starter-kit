@@ -1,9 +1,9 @@
 import requests
 import json
 
-def fetch_osmose_data(region, issue_type=8110):
+def fetch_osmose_data(country, issue_type=7040):
 
-    url = f"https://osmose.openstreetmap.fr/api/0.3/issues.json?state={region}&item={issue_type}"
+    url = f"https://osmose.openstreetmap.fr/api/0.3/issues.json?country={country}&item={issue_type}&limit=500"
     
     response = requests.get(url)
     
