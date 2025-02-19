@@ -9,7 +9,7 @@ import json
 
 def fetch_osmose_data(country, issue_type=7040):
 
-    url = f"https://osmose.openstreetmap.fr/api/0.3/issues.json?country={country}&item={issue_type}&limit=500"
+    url = f"https://osmose.openstreetmap.fr/api/0.3/issues.json?country={country}&item={issue_type}&class=2&limit=500"
     
     response = requests.get(url)
     
