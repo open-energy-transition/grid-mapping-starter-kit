@@ -1,20 +1,48 @@
 [out:json][timeout:400];
 
-// Select your mapping area with a bounding box or country name(s). If possible, mapping data should be carried out at state or federal level to avoid conflicts. 
+ // ===============================================================
+ //  Grid Mapping Starter Kit  
+ //  
+ //  Please note that the minimum voltage level in this script  
+ //  is set to 90 kV by default, as these scripts are optimized  
+ //  for transmission grid mapping.  
+ // ===============================================================
+ //  Depending on the area you want to map, you need to switch  
+ //  between country (admin_level=2), state (admin_level=3),  
+ //  or province (admin_level=5) level.  
+ // ===============================================================
 
-// Use the bounding box to select the boarders between 2 or more countries or select one country with a larger bounding box in it. 
-// Retrieve the admin_level="2" administrative boundary that intersects with the bbox
-// Switch to "admin_level"="3" for countries with large grid data.
- 
-relation["boundary"="administrative"]["admin_level"="2"]({{bbox}}) -> .admin_boundary;
+
+// Select country or state/province nodes inside the bounding box
+node["place"~"country|state|province"]({{bbox}}) -> .places;
+
+  // ================================
+  //  You can set the admin_level  
+  //         in the following code.   
+  // ================================
+
+// Find administrative boundaries that match the selected admin level
+relation["boundary"="administrative"]["admin_level"="2"](bn.places) -> .admin_boundary;
+
+  // =========================================================
+  //  If you want load data based on country, state, or  
+  //  province names, please comment out the code in  
+  //  the following lines.  
+  // =========================================================
+
 // relation["boundary"="administrative"]["name"~"Kenya|Uganda"] -> .admin_boundary;
-// relation["boundary"="administrative"]["name"~"Kenya"] -> .admin_boundary;
-
-
-// Get transmission grid mapping relevant data
+// relation["boundary"="administrative"]["name"~"Colombia"] -> .admin_boundary;
 
 // Map the relation to an area
 .admin_boundary map_to_area -> .searchArea;
+
+ // ================================
+ // Get transmission grid relevant data
+ // ================================
+
+// Map the relation to an area
+.admin_boundary map_to_area -> .searchArea;
+
 
 // Find all power towers within the administrative boundary
 node["power"="tower"](area.searchArea) -> .towers;
