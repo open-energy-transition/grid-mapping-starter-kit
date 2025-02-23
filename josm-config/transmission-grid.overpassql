@@ -1,17 +1,21 @@
 [out:json][timeout:400];
 
- // ===============================================================
- //  Grid Mapping Starter Kit  
- //  
- //  Please note that the minimum voltage level in this script  
- //  is set to 90 kV by default, as these scripts are optimized  
- //  for transmission grid mapping.  
- // ===============================================================
- //  Depending on the area you want to map, you need to switch  
- //  between country (admin_level=2), state (admin_level=3),  
- //  or province (admin_level=5) level.  
- // ===============================================================
-
+// ===============================================================
+//  Grid Mapping Starter Kit  
+// 
+//  Cover a country, state or province you want to map 
+//  with the Slippy Map bounding box to select the area you want to download. 
+// 
+// ===============================================================
+//  Depending on the area you want to map, you need to switch  
+//  between country (admin_level=2), state (admin_level=3),  
+//  or province (admin_level=5) level.  
+// ===============================================================
+//  Please note that the minimum voltage level in this script  
+//  is set to 90 kV by default, as these scripts are optimized  
+//  for transmission grid mapping. 
+//  Add poles and lower the voltage to map the distribution grid. 
+// ===============================================================
 
 // Select country or state/province nodes inside the bounding box
 node["place"~"country|state|province"]({{bbox}}) -> .places;
@@ -36,9 +40,9 @@ relation["boundary"="administrative"]["admin_level"="2"](bn.places) -> .admin_bo
 // Map the relation to an area
 .admin_boundary map_to_area -> .searchArea;
 
- // ================================
- // Get transmission grid relevant data
- // ================================
+// ================================
+// Get transmission grid relevant data
+// ================================
 
 // Map the relation to an area
 .admin_boundary map_to_area -> .searchArea;
@@ -81,6 +85,7 @@ node["power"="portal"](area.searchArea) -> .portal_nodes;
 // Combine all relevant results
 (
   .towers;
+  // poles
   .hv_poles;   // Only HV poles
   .lines_connected;
   .high_voltage_lines;
