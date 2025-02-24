@@ -24,7 +24,11 @@
      - Enable **Remote Control** under **Edit → Preferences** in JOSM.
      - Reduce the visible area in Osmose.
 5. Enable **"Discourage Upload"** for the Osmose layer to prevent accidental uploads. You can now investigate each Osmose error in the transmission grid. After fixing an issue (or if you cannot fix it), remove the tower from the Osmose layer to track your progress.
-6. For ease of mapping, customise your toolbar with presets. **Edit → Preferences → Toolbar**. Then select the **Presets → Man Made → Man Made/Power** and add power towers, power portals etc.
+
+## How to Map and upload your progress to OSM
+1. For ease of mapping, customise your toolbar with presets. **Edit → Preferences → Toolbar**. Then select the **Presets → Man Made → Man Made/Power** and add power towers, power portals etc.
+2. Place a node (eg.power towers, power portals) or place nodes to delimit an area (eg. substation, generator), and press on the preset structure you want it to be. Add extra data such as voltage if available.
+3. With the correct layer selected, press the upload arrow.
 
 ## Mapping Strategies
 The following strategies outline different approaches to extending the existing transmission network. In general, the larger the tower and substation, the higher the voltage and therefore the greater the importance to the network. Priority should therefore be given to large, high-voltage infrastructure first. The easiest way to start mapping the transmission network is to find the location of new 'pylons'. You can hardly go wrong with this and it will help you to familiarise yourself with the tool and the local network. **Only map infrastructure that you can confidently classify using satellite or ground imagery.**
