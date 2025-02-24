@@ -110,6 +110,15 @@ node[item=7040] {
     symbol-fill-opacity:1.0;
 }
 
+node[power=transformer], way[power=transformer] {
+    icon-size: 14;
+    text: name;
+    text-size: 12;
+    text-position: center;
+    color:rgb(3, 134, 106);
+    fill-color: rgb(3, 134, 106);
+    width: 3;
+}
 
 
 /* Voltages */
