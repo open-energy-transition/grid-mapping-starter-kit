@@ -79,13 +79,18 @@ node["power"="generator"](area.searchArea) -> .generator_nodes;
 way["power"="generator"](area.searchArea) -> .generator_ways;
 relation["power"="generator"](area.searchArea) -> .generator_relations;
 
+// Include generators within the administrative boundary
+node["power"="transformer"](area.searchArea) -> .transformer_nodes;
+way["power"="transformer"](area.searchArea) -> .transformer_ways;
+relation["power"="transformer"](area.searchArea) -> .transformer_relations;
+
 // Include portals within the administrative boundary
 node["power"="portal"](area.searchArea) -> .portal_nodes;
 
 // Combine all relevant results
 (
   .towers;
-  // poles
+  // poles;
   .hv_poles;   // Only HV poles
   .lines_connected;
   .high_voltage_lines;
@@ -99,6 +104,9 @@ node["power"="portal"](area.searchArea) -> .portal_nodes;
   .generator_ways;
   .generator_relations;
   .portal_nodes;
+  .transformer_nodes;
+  .transformer_ways;
+  .transformer_relations;
   .admin_boundary;
 );
 
