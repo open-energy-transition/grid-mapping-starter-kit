@@ -8,8 +8,8 @@
 // 
 // ===============================================================
 //  Depending on the area you want to map, you need to switch  
-//  between country (admin_level=2), state (admin_level=3),  
-//  or province (admin_level=5) level.  
+//  between country (admin_level=2), state (admin_level=4),  
+//  or province/city (admin_level=5) level.  
 // ===============================================================
 //  Please note that the minimum voltage level in this script  
 //  is set to 90 kV by default, as these scripts are optimized  
