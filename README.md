@@ -16,14 +16,15 @@
 
 ## Download Transmission Data and Issues
 1. Zoom and move (right click) to the area you want to map. Activate the `osm-transmission-grid` layer and press the Download button (green arrow). Switch to the **Download from Overpass API** tab. Add the content of the [transmission-grid.overpassql](josm-config/transmission-grid.overpassql) to the script field.
-2. Select the **Slippy Map** tab in the **Download from Overpass API** and draw a bounding box for the area you want to map. The script will retrieve all data from the administrative areas that cross the bounding box. Depending on the country you are mapping, you may want to divide the mapping regions into states, as the data for some countries will be extensive. To do this, simply change the **"admin_level"="2"** to **"admin_level"="4"** in the second line of the script. Admin level 2 is at the **country level**, whilst admin level 4 is for **states/regions/provinces**. Therefore, when drawing a bounding box, make sure it is similar in size as the admin level in the Overpass script, or else you will get "No info found" errors.
-3. Press "Download" to receive the relevant data for transmission grid mapping using the preconfigured Overpass Turbo script. If the download fails, the timeout may be too low or the bounding box too large. You should consider mapping at the state level or reducing the size of your bounding box. 
+2. Select the **Slippy Map** tab in the **Download from Overpass API** and draw a bounding box for the area you want to map. The script will retrieve all the data from the administrative area you cover with the bounding box. If you only want data from a single region, draw the box inside the region so that it covers most of the central region of the country. Depending on the country you are mapping, you may want to divide the mapping regions into states, as the data for some countries will be extensive. To do this, simply change the **"admin_level"** in the script. 
+3. Press "Download" to receive the relevant data for transmission grid mapping using the preconfigured Overpass Turbo script. If the download fails, the timeout may be too low or the bounding box too large. You should consider mapping at the state level or reducing the size of your bounding box. When drawing a bounding box, make sure it is similar in size to the administrative area otherwise you will get "No info found" errors. If this happens increase the size of the bounding box and make sure it covers the center of the region. The script also offers the option of downloading data based on country or state names. Further information on this can be found in the commentary in the script. 
 4. Visit [Osmose](https://osmose.openstreetmap.fr/en/map/#loc=7/4.907/-72.994&level=1%2C2%2C3&tags=power&class=2&item=7040) and activate only **"Power lines"**. Click the plus symbol next to it and select **"Unfinished power major line"**. Zoom to the area of interest, **activate the Osmose layer in JOSM**, switch back to Osmose, and press **Export → JOSM**. This will export the Osmose information to that specific layer. Towers with "Unfinished power major line" should now be visible in the Osmose layer in JOSM.
    - If the towers are not visible, try the following:
      - Disable your ad blocker.
      - Enable **Remote Control** under **Edit → Preferences** in JOSM.
      - Reduce the visible area in Osmose.
-5. Enable **"Discourage Upload"** for the Osmose layer to prevent accidental uploads. You can now investigate each Osmose error in the transmission grid. After fixing an issue (or if you cannot fix it), remove the tower from the Osmose layer to track your progress.
+5. We also provide a [Python script](https://github.com/open-energy-transition/grid-mapping-starter-kit/blob/main/scripts/osmose_per_country.py) that enables you to load all **Unfinished power major line** issues from a country or state as a geoJSON. This allows you to load those issues as another data layer into JSOM via the **File → Open** 
+6. Enable **"Discourage Upload"** for the Osmose layer to prevent accidental uploads. You can now investigate each Osmose error in the transmission grid. After fixing an issue (or if you cannot fix it), remove the tower from the Osmose layer to track your progress.
 
 ## How to Map and upload your progress to OSM
 1. For ease of mapping, customise your toolbar with presets. **Edit → Preferences → Toolbar**. Then select the **Presets → Man Made → Man Made/Power** and add power towers, power portals etc.
@@ -52,3 +53,11 @@ If you don't know a good country to start with, [OpenInfraMap.org's nightlights 
 5. Avoid ignoring validation results. The only acceptable warning when uploading data is "Possible missing line support node within power line".
 6. Get lost in details. If can't continoue a line, just switch to another grid area.
 7. Mapping of distrubtion grid is sometimes possible from satellite images but extremly hard. In general the following applies: The larger the tower/substation, the higher the priority and confidence you can have in the mapping. 
+
+## JOSM Mapping Environment
+
+Once you have set up the mapping environment on your computer, it should look similar like the screenshot below: 
+
+<img src="./josm-config/josm-config/transmission-grid-mapping-env-2025-02-25-2012-48-32.png" alt="" width="300">
+
+
