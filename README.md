@@ -58,6 +58,6 @@ If you don't know a good country to start with, [OpenInfraMap.org's nightlights 
 
 Once you have set up the mapping environment on your computer, it should look similar like the screenshot below: 
 
-<img src="./josm-config/josm-config/transmission-grid-mapping-env-2025-02-25-2012-48-32.png" alt="" width="300">
+<img src="josm-config/transmission-grid-mapping-env-2025-02-25-12-48-32.png" align="center" width="1000">
 
 
