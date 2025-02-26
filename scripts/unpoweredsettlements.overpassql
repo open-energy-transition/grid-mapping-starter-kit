@@ -9,7 +9,15 @@ relation["boundary"="administrative"]["admin_level"="4"](bn.places) -> .admin_bo
 // ================================
 // Get settlements
 // ================================
-node["place"~"village|town|city"](area.searchArea)-> .settlements;
+node["place"~"village|town|city"](area.searchArea) -> .settlement_node;
+way["place"~"village|town|city"](area.searchArea) -> .settlement_way;
+relation["place"~"village|town|city"](area.searchArea) -> .settlement_relation;
+
+(
+  .settlement_node;
+  .settlement_way;
+  .settlement_relation;
+) -> .settlements;
 
 // ================================
 // Get power-related infrastructure
@@ -34,7 +42,7 @@ node["place"~"village|town|city"](area.searchArea)-> .settlements;
 ) -> .power_infra;
 
 // Find settlements with power infrastructure within 5km
-node.settlements(around.power_infra:5000) -> .settlements_with_power;
+nwr.settlements(around.power_infra:5000) -> .settlements_with_power;
 
 // Find settlements WITHOUT power infrastructure
 (.settlements; - .settlements_with_power;)-> .unpowered_settlements;
