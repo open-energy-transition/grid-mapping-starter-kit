@@ -4,8 +4,6 @@
 
 > We offer one-to-one workshops to help you get started. Please [contact the maintainer](https://github.com/Ly0n) of this repository to book a free training session. 
 
-**⚠️ Please note that the Overpass Turbo script provided with this starter kit is optimised for transmission grid mapping. Lines on towers below 90 kV are not visualised in JOSM and should not be mapped with the standard configuration of this script. ⚠️**
-
 <img src="josm-config/transmission-grid-mapping-env-2025-02-25-12-48-32.png" align="center" width="1000">
 
 ## Setup Mapping Environment
@@ -46,14 +44,16 @@ The following strategies outline different approaches to extending the existing 
 
 If you don't know a good country to start with, [OpenInfraMap.org's nightlights background](https://openinframap.org/#2.15/-1.45/23.58/L,N,P) can help you find countries with larger gaps in the transmission grid.
 
-## Common mistakes 
+## Common Mistakes 
+**⚠️ Please note that the Overpass Turbo script provided with this starter kit is optimised for transmission grid mapping. Lines on towers below 90 kV are not visualised in JOSM and should not be mapped with the standard configuration of this script. ⚠️**
 
-1. Leaving the downloaded area and mapping transmission grids that do not appear to have been mapped, but simply have not yet been downloaded into JOSM. To avoid this problem you should always be aware of the country boundary and be careful when crossing the highlighted country boundary. Due to the design of Overpass Turbo, some elements such as lines may still be visible across the border, but other objects such as substations will appear as if they have not yet been mapped. 
-2. Mapping beyond your experience is something you should avoid. Mapping is an iterative process and you should not expect to be able to finish all the details you are mapping. If you cannot map with a high degree of certainty, leave it to local mappers or experienced grid mappers.
-3. If the route of the lines is not completely obvious or visible in the satellite imagery, don't map it.
+1. When you leave the downloaded area, you may find transmission grids that do not appear to have been mapped. Actually, they were not downloaded to JOSM and you map them 2 times. To avoid this always be aware of the country boundary and be careful when crossing highlighted dashed orange lines. Due to the design of Overpass Turbo, some elements such as power lines may still be visible. across the border, but other objects such as substations will appear as if they have not yet been mapped. 
+2. Mapping beyond your experience is something you should avoid. Mapping is an iterative process and you should not expect to be able to finish all the details you are mapping. If you cannot map with a high degree of certainty, leave it to local mappers, better satellite imagery or experienced grid mappers.
+3. If the routing of the lines is not completely obvious or visible in the satellite imagery, don't map it.
 4. Avoid uploading large changesets. Upload your data regularly.
 5. Avoid ignoring validation results. The only acceptable warning when uploading data is "Possible missing line support node within power line".
-6. Don't get stuck on detail. If you can't continue a line, just switch to another grid area.
-7. Mapping the distribution network from satellite imagery is not possible for most lines. 
+6. Don't get stuck on detail. If you can't continue a line, switch to another grid area or try it from the other side of the line.
+7. Mapping the distribution power lines from satellite imagery is not possible for most regions.
 
-
+## Mapping Constrains
+Before you start mapping, please find out about the mapping restrictions in the respective country. In some countries, the mapping of transmission lines is not permitted. Get in touch with local users by finding out about [local projects](https://wiki.openstreetmap.org/wiki/Power_networks).
