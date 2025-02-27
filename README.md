@@ -44,15 +44,15 @@ The following strategies outline different approaches to extending the existing 
 
 If you don't know a good country to start with, [OpenInfraMap.org's nightlights background](https://openinframap.org/#2.15/-1.45/23.58/L,N,P) can help you find countries with larger gaps in the transmission grid.
 
-## Common Mistakes 
+## Common mistakes 
 
 1. Leaving the downloaded area and mapping transmission grids that do not appear to have been mapped, but simply have not yet been downloaded into JOSM. To avoid this problem you should always be aware of the country boundary and be careful when crossing the highlighted country boundary. Due to the design of Overpass Turbo, some elements such as lines may still be visible across the border, but other objects such as substations will appear as if they have not yet been mapped. 
 2. Mapping beyond your experience is something you should avoid. Mapping is an iterative process and you should not expect to be able to finish all the details you are mapping. If you cannot map with a high degree of certainty, leave it to local mappers or experienced grid mappers.
 3. If the route of the lines is not completely obvious or visible in the satellite imagery, don't map it.
 4. Avoid uploading large changesets. Upload your data regularly.
 5. Avoid ignoring validation results. The only acceptable warning when uploading data is "Possible missing line support node within power line".
-6. Get lost in details. If can't continoue a line, just switch to another grid area.
-7. Mapping of distrubtion grid is sometimes possible from satellite images but extremly hard. In general the following applies: The larger the tower/substation, the higher the priority and confidence you can have in the mapping. 
+6. Don't get stuck on detail. If you can't continue a line, just switch to another grid area.
+7. Mapping the distribution network from satellite imagery is not possible for most lines. 
 
 ## Frontend
 
