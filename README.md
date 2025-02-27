@@ -6,6 +6,8 @@
 
 **⚠️ Please note that the Overpass Turbo script provided with this starter kit is optimised for transmission grid mapping. Lines on towers below 90 kV are not visualised in JOSM and should not be mapped with the standard configuration of this script. ⚠️**
 
+<img src="josm-config/transmission-grid-mapping-env-2025-02-25-12-48-32.png" align="center" width="1000">
+
 ## Setup Mapping Environment
 1. First install Java on your machine, and then install the latest version of JOSM on your machine. [Download here](https://josm.openstreetmap.de/).
 2. Configure the JOSM user interface according to your needs. A preconfigured preferences file is [available here](josm-config/preferences.xml). The [JOSM wiki](https://josm.openstreetmap.de/wiki/Help/Preferences) provides details on where to place the `preferences.xml` file, depending on your operating system.
@@ -53,11 +55,5 @@ If you don't know a good country to start with, [OpenInfraMap.org's nightlights 
 5. Avoid ignoring validation results. The only acceptable warning when uploading data is "Possible missing line support node within power line".
 6. Don't get stuck on detail. If you can't continue a line, just switch to another grid area.
 7. Mapping the distribution network from satellite imagery is not possible for most lines. 
-
-## Frontend
-
-Once you have set up the mapping environment on your computer, it should look similar like the screenshot below: 
-
-<img src="josm-config/transmission-grid-mapping-env-2025-02-25-12-48-32.png" align="center" width="1000">
 
 
