@@ -47,6 +47,7 @@ If you don't know a good country to start with, [OpenInfraMap.org's nightlights 
 ## Common Mistakes 
 **⚠️ Please note that the Overpass Turbo script provided with this starter kit is optimised for transmission grid mapping. Lines on towers below 90 kV are not visualised in JOSM and should not be mapped with the standard configuration of this script. ⚠️**
 
+0. Not reading about [good practices](https://wiki.openstreetmap.org/wiki/Good_practice).
 1. When you leave the downloaded area, you may find transmission grids that do not appear to have been mapped. Actually, they were not downloaded to JOSM and you map them 2 times. To avoid this always be aware of the country boundary and be careful when crossing highlighted dashed orange lines. Due to the design of Overpass Turbo, some elements such as power lines may still be visible. across the border, but other objects such as substations will appear as if they have not yet been mapped. 
 2. Mapping beyond your experience is something you should avoid. Mapping is an iterative process and you should not expect to be able to finish all the details you are mapping. If you cannot map with a high degree of certainty, leave it to local mappers, better satellite imagery or experienced grid mappers.
 3. If the routing of the lines is not completely obvious or visible in the satellite imagery, don't map it.
@@ -55,5 +56,5 @@ If you don't know a good country to start with, [OpenInfraMap.org's nightlights 
 6. Don't get stuck on detail. If you can't continue a line, switch to another grid area or try it from the other side of the line.
 7. Mapping the distribution power lines from satellite imagery is not possible for most regions.
 
-## Mapping Constrains
+## Mapping Regulations
 Before you start mapping, please find out about the mapping restrictions in the respective country. In some countries, the mapping of transmission lines is not permitted. Get in touch with local users by finding out about [local projects](https://wiki.openstreetmap.org/wiki/Power_networks).
