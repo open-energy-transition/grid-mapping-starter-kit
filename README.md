@@ -54,7 +54,7 @@ If you don't know a good country to start with, [OpenInfraMap.org's nightlights 
 6. Get lost in details. If can't continoue a line, just switch to another grid area.
 7. Mapping of distrubtion grid is sometimes possible from satellite images but extremly hard. In general the following applies: The larger the tower/substation, the higher the priority and confidence you can have in the mapping. 
 
-## JOSM Mapping Environment
+## Frontend
 
 Once you have set up the mapping environment on your computer, it should look similar like the screenshot below: 
 
