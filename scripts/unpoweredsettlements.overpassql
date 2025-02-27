@@ -1,6 +1,11 @@
 [out:json][timeout:400];
 
+// Select country or state/province nodes inside the bounding box
 node["place"~"country|state|province"]({{bbox}}) -> .places;
+
+// Find administrative boundaries that match the selected admin level
+// Admin_level 4 if working in a region, level 2 for country-level
+// Admin level 4 sometimes does not work (ie. Gabon), so do admin 2 and change settlements to only fetch cities
 relation["boundary"="administrative"]["admin_level"="4"](bn.places) -> .admin_boundary;
 
 // Map the relation to an area
