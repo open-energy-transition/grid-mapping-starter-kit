@@ -41,6 +41,19 @@ def fetch_osmose_data(country, issue_type=7040):
     print(issues)
     return issues
 
+def fetch_supported_regions():
+    url = "https://osmose.openstreetmap.fr/api/0.3/countries"
+    
+    response = requests.get(url)
+    
+    if response.status_code != 200:
+        print(f"Error fetching data: {response.status_code}")
+        return []
+    
+    countries = response.json()
+    return countries
+
+
 def save_to_geojson(issues, filename="osmose_unfinished_power_lines.geojson"):
     """
     Saves the extracted issues to a GeoJSON file.
@@ -62,7 +75,11 @@ def save_to_geojson(issues, filename="osmose_unfinished_power_lines.geojson"):
     print(f"Data saved to {filename}")
 
 if __name__ == "__main__":
-    region = input("Enter country or state name: ").strip()
+    supported_regions = fetch_supported_regions()
+    region = input("Enter country, region or state name: ").strip()
     issues = fetch_osmose_data(region)
     print(f"Fetched {len(issues)} issues.")
-    save_to_geojson(issues)
+    if not issues:
+        print("No issues found for this region! Maybe the region is not supported? Here a list of supported region.")
+        print(supported_regions)
+    save_to_geojson(issues, "osmose_unfinished_power_lines_"+region+".geojson" )
