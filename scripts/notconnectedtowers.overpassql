@@ -19,7 +19,7 @@ node["power"="tower"](area.searchArea) -> .towers;
 // Find all power lines that are connected to towers within the administrative boundary
 way["power"="line"](area.searchArea)-> .lines;
 
-nwr["power"~"substation|transformer|plant|portal"](area.searchArea) -> .power_nodes;  
+nwr["power"~"substation|transformer|plant|generator|portal"](area.searchArea) -> .power_nodes;  
 
 // Find towers close to end power infrastructure within 400 metres
 node.towers(around.power_nodes:400) -> .towers_close;
