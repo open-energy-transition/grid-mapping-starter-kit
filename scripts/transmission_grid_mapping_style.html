@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>MapCSS Color Legend</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 1em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 0 auto;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.5em;
+            vertical-align: top;
+        }
+        th {
+            background: #eee;
+            text-align: left;
+        }
+        .color-swatch {
+            display: inline-block;
+            width: 1.5em;
+            height: 1.5em;
+            vertical-align: middle;
+            margin-right: 0.5em;
+            border: 1px solid #333;
+        }
+        pre {
+            background: #f8f8f8;
+            padding: 0.5em;
+            margin: 0;
+        }
+        .color-key {
+            font-weight: bold;
+        }
+        .meta-section {
+            width: 80%;
+            margin: 0 auto;
+            padding: 1em;
+            border: 1px dashed #aaa;
+            margin-bottom: 2em;
+        }
+        .meta-section h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+<h1>MapCSS Color Legend</h1>
+
+
+    <div class="meta-section">
+      <h2>Metadata</h2>
+      <ul><li><strong>title:</strong> "transmission-grid-mapping-style"</li><li><strong>description:</strong> "A style for fast electrical grid mapping of wide-area transmission networks. Adapted from the "detailed power grid style" by FLacombe."</li><li><strong>version:</strong> "0.1"</li></ul>
+    </div>
+    
+
+<table>
+<tr>
+    <th>Selectors</th>
+    <th>Color Properties</th>
+</tr>
+<tr>
+    <td><pre>relation[boundary=administrative]</pre></td>
+    <td><span class="color-swatch" style="background:yellow;"></span> <span class="color-key">color</span>: yellow<br><span class="color-swatch" style="background:yellow;"></span> <span class="color-key">symbol-fill-color</span>: yellow</td>
+</tr>
+<tr>
+    <td><pre>node[power=portal]</pre></td>
+    <td><span class="color-swatch" style="background:pink;"></span> <span class="color-key">symbol-fill-color</span>: pink</td>
+</tr>
+<tr>
+    <td><pre>node[power=tower]</pre></td>
+    <td><span class="color-swatch" style="background:blue;"></span> <span class="color-key">symbol-fill-color</span>: blue</td>
+</tr>
+<tr>
+    <td><pre>/* Substations */
+
+area[power=substation]</pre></td>
+    <td><span class="color-swatch" style="background:white;"></span> <span class="color-key">color</span>: white</td>
+</tr>
+<tr>
+    <td><pre>area[power=substation][substation=transmission]</pre></td>
+    <td><span class="color-swatch" style="background:tomato;"></span> <span class="color-key">color</span>: tomato<br><span class="color-swatch" style="background:#FFD800;"></span> <span class="color-key">fill-color</span>: #FFD800</td>
+</tr>
+<tr>
+    <td><pre>area[power=substation][substation=distribution]</pre></td>
+    <td><span class="color-swatch" style="background:lime;"></span> <span class="color-key">color</span>: lime</td>
+</tr>
+<tr>
+    <td><pre>area[power=substation][substation=minor_distribution]</pre></td>
+    <td><span class="color-swatch" style="background:lime;"></span> <span class="color-key">color</span>: lime</td>
+</tr>
+<tr>
+    <td><pre>/* Power lines */
+way[power=line]</pre></td>
+    <td><em>No color properties</em></td>
+</tr>
+<tr>
+    <td><pre>way[power=cable]</pre></td>
+    <td><em>No color properties</em></td>
+</tr>
+<tr>
+    <td><pre>way[power=line][line=busbar]</pre></td>
+    <td><span class="color-swatch" style="background:#FFD800;"></span> <span class="color-key">casing-color</span>: #FFD800</td>
+</tr>
+<tr>
+    <td><pre>way[power=line][line=bay]</pre></td>
+    <td><span class="color-swatch" style="background:#A0A0A0;"></span> <span class="color-key">casing-color</span>: #A0A0A0</td>
+</tr>
+<tr>
+    <td><pre>way[power=plant]</pre></td>
+    <td><span class="color-swatch" style="background:#BA55D3;"></span> <span class="color-key">color</span>: #BA55D3<br><span class="color-swatch" style="background:#FFD800;"></span> <span class="color-key">fill-color</span>: #FFD800</td>
+</tr>
+<tr>
+    <td><pre>node[power=generator]</pre></td>
+    <td><span class="color-swatch" style="background:brown;"></span> <span class="color-key">symbol-fill-color</span>: brown</td>
+</tr>
+<tr>
+    <td><pre>node[item=7040]</pre></td>
+    <td><span class="color-swatch" style="background:brown;"></span> <span class="color-key">symbol-fill-color</span>: brown</td>
+</tr>
+<tr>
+    <td><pre>node[power=transformer]<br>way[power=transformer]</pre></td>
+    <td><span class="color-swatch" style="background:rgb(3, 134, 106);"></span> <span class="color-key">color</span>: rgb(3, 134, 106)<br><span class="color-swatch" style="background:rgb(3, 134, 106);"></span> <span class="color-key">fill-color</span>: rgb(3, 134, 106)</td>
+</tr>
+<tr>
+    <td><pre>/* Voltages */
+  
+way[power=line][!voltage]<br>way[power=line][voltage=0]</pre></td>
+    <td><span class="color-swatch" style="background:white;"></span> <span class="color-key">color</span>: white</td>
+</tr>
+<tr>
+    <td><pre>way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>100000][to_int(get(split(";",tag(voltage)),0))<=170000]</pre></td>
+    <td><span class="color-swatch" style="background:magenta;"></span> <span class="color-key">color</span>: magenta<br><span class="color-swatch" style="background:#003DB0;"></span> <span class="color-key">text-halo-color</span>: #003DB0</td>
+</tr>
+<tr>
+    <td><pre>way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>170000][to_int(get(split(";",tag(voltage)),0))<=250000]</pre></td>
+    <td><span class="color-swatch" style="background:#009414;"></span> <span class="color-key">color</span>: #009414<br><span class="color-swatch" style="background:#009414;"></span> <span class="color-key">text-halo-color</span>: #009414</td>
+</tr>
+<tr>
+    <td><pre>way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>250000][to_int(get(split(";",tag(voltage)),0))<=420000]</pre></td>
+    <td><span class="color-swatch" style="background:#FF0000;"></span> <span class="color-key">color</span>: #FF0000<br><span class="color-swatch" style="background:#FF0000;"></span> <span class="color-key">text-halo-color</span>: #FF0000</td>
+</tr>
+<tr>
+    <td><pre>way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>420000]</pre></td>
+    <td><span class="color-swatch" style="background:#01ccff;"></span> <span class="color-key">color</span>: #01ccff<br><span class="color-swatch" style="background:#01ccff;"></span> <span class="color-key">text-halo-color</span>: #01ccff</td>
+</tr>
+<tr>
+    <td><pre>way[power=~/line|cable/][cables>3]<br>way[power=~/line|cable/][circuits>1]</pre></td>
+    <td><em>No color properties</em></td>
+</tr>
+<tr>
+    <td><pre>way[power=minor_line][cables>3]<br>way[power=minor_line][circuits>1]</pre></td>
+    <td><em>No color properties</em></td>
+</tr>
+<tr>
+    <td><pre>way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))<=33000]<br>way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage<=33000]</pre></td>
+    <td><span class="color-swatch" style="background:#FFFFFF;"></span> <span class="color-key">left-casing-color</span>: #FFFFFF</td>
+</tr>
+<tr>
+    <td><pre>way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>33000][to_int(get(split(";",tag(voltage)),1))<=50000]<br>way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>33000][voltage<=50000]</pre></td>
+    <td><span class="color-swatch" style="background:#FFFFFF;"></span> <span class="color-key">left-casing-color</span>: #FFFFFF</td>
+</tr>
+<tr>
+    <td><pre>way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>50000][to_int(get(split(";",tag(voltage)),1))<=70000]<br>way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>50000][voltage<=70000]</pre></td>
+    <td><span class="color-swatch" style="background:#BF0054;"></span> <span class="color-key">left-casing-color</span>: #BF0054</td>
+</tr>
+<tr>
+    <td><pre>way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>70000][to_int(get(split(";",tag(voltage)),1))<=100000]<br>way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>70000][voltage<=100000]</pre></td>
+    <td><span class="color-swatch" style="background:#FF8000;"></span> <span class="color-key">left-casing-color</span>: #FF8000</td>
+</tr>
+<tr>
+    <td><pre>way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>100000][to_int(get(split(";",tag(voltage)),1))<=170000]<br>way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>100000][voltage<=170000]</pre></td>
+    <td><span class="color-swatch" style="background:#003DB0;"></span> <span class="color-key">left-casing-color</span>: #003DB0</td>
+</tr>
+<tr>
+    <td><pre>way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>170000][to_int(get(split(";",tag(voltage)),1))<=250000]<br>way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>170000][voltage<=250000]</pre></td>
+    <td><span class="color-swatch" style="background:#009414;"></span> <span class="color-key">left-casing-color</span>: #009414</td>
+</tr>
+<tr>
+    <td><pre>way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>250000][to_int(get(split(";",tag(voltage)),1))<=420000]<br>way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>250000][voltage<=420000]</pre></td>
+    <td><span class="color-swatch" style="background:#FF0000;"></span> <span class="color-key">left-casing-color</span>: #FF0000</td>
+</tr>
+<tr>
+    <td><pre>way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>420000]<br>way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>420000]</pre></td>
+    <td><span class="color-swatch" style="background:#01ccff;"></span> <span class="color-key">left-casing-color</span>: #01ccff</td>
+</tr>
+<tr>
+    <td><pre>/* Style for proposed power lines */
+way[power=line][proposed=yes]</pre></td>
+    <td><em>No color properties</em></td>
+</tr>
+
+</table>
+</body>
+</html>
