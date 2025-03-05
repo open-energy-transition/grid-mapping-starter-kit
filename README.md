@@ -26,9 +26,9 @@
 5. We also provide a [Python script](https://github.com/open-energy-transition/grid-mapping-starter-kit/blob/main/scripts/osmose_per_country.py) that enables you to load all **Unfinished power major line** issues from a country or state as a geoJSON. This allows you to load those issues as another data layer into JSOM via the **File → Open** 
 6. Enable **"Discourage Upload"** for the Osmose layer to prevent accidental uploads. You can now investigate each Osmose error in the transmission grid. After fixing an issue (or if you cannot fix it), remove the tower from the Osmose layer to track your progress.
 
-## How to Map and upload your progress to OSM
+## How to Map and Upload your Progress
 1. For ease of mapping, customise your toolbar with presets. **Edit → Preferences → Toolbar**. Then select the **Presets → Man Made → Man Made/Power** and add power towers, power portals etc.
-2. Place a node (eg.power towers, power portals) or place nodes to delimit an area (eg. substation, generator), and press on the preset structure you want it to be. Add extra data such as voltage if available.
+2. Start Mapping. Place nodes (eg.power towers, power portals) or place polygons to delimit an area (eg. substation, generator), and press on the preset structure you want it to be.
 3. With the correct layer selected, press the upload arrow.
 
 ## Mapping Strategies
