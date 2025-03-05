@@ -1,6 +1,6 @@
 # Grid Mapping Starter Kit
 
-**A starter kit for Electrical Transmission Grid Mapping in OpenStreetMap, combining Osmose with JOSM.**
+**A starter kit for Electrical Transmission Grid Mapping in OpenStreetMap, combining Osmose and Overpass with JOSM.**
 
 > We offer one-to-one workshops to help you get started. Please [contact the maintainer](https://github.com/Ly0n) of this repository to book a free training session. 
 
