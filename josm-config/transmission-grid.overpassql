@@ -37,8 +37,6 @@ relation["boundary"="administrative"]["admin_level"="2"](bn.places) -> .admin_bo
 // relation["boundary"="administrative"]["name"~"Kenya|Uganda"] -> .admin_boundary;
 // relation["boundary"="administrative"]["name"~"Colombia"] -> .admin_boundary;
 
-// Map the relation to an area
-.admin_boundary map_to_area -> .searchArea;
 
 // ================================
 // Get transmission grid relevant data
