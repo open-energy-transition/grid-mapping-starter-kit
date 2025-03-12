@@ -19,7 +19,7 @@ relation[boundary=administrative]{
 node[power=portal] {
     symbol-shape: square;
     symbol-fill-color: pink;
-    symbol-size: 5; /* Adjust size as needed */
+    symbol-size: 7; /* Adjust size as needed */
 }
 
 
@@ -44,8 +44,8 @@ area[power=substation]{
 area[power=substation][substation=transmission]{
 	width:20;
 	symbol-size:5;
-	color:tomato;
-	fill-color:#FFD800;
+	color:#DC143C;
+	fill-color:#DC143C;
 	fill-opacity:0.05;
 }
 
@@ -53,14 +53,14 @@ area[power=substation][substation=transmission]{
 area[power=substation][substation=distribution]{
 	width:15;
 	symbol-size:5;
-	color:lime;
+	color:#008F11;
 	fill-opacity:0.05;
 }
 
 area[power=substation][substation=minor_distribution]{
 	width:5;
 	symbol-size:5;
-	color:lime;
+	color:#F5DEB3;
 	fill-opacity:0.05;
 }
 
@@ -82,7 +82,7 @@ way[power=line][line=busbar]{
 	width:3;
 }
 way[power=line][line=bay]{
-	casing-color:#A0A0A0;
+	casing-color:lightgray;
 	casing-width:2;
 	width:3;
 }
@@ -90,22 +90,61 @@ way[power=line][line=bay]{
 way[power=plant]{
 	width:15;
 	symbol-size:5;
-	color:#BA55D3;
-	fill-color:#FFD800;
+	color:black;
+	fill-color:magenta;
 	fill-opacity:0.05;
 }
 
 
 node[power=generator] {
     symbol-shape: square;
-    symbol-fill-color: brown;
+    symbol-fill-color: yellow;
     symbol-size: 10; /* Adjust size as needed */
     symbol-fill-opacity:0.7;
 }
 
+/* Power line */
 node[item=7040] {
     symbol-shape: triangle;
     symbol-fill-color: brown;
+    symbol-size: 15; /* Adjust size as needed */
+    symbol-fill-opacity:1.0;
+}
+
+/* Power Substation */
+node[item=7190] {
+    symbol-shape: square;
+    symbol-fill-color: #06470C;
+    symbol-size: 15; /* Adjust size as needed */
+    symbol-fill-opacity:1.0;
+}
+
+node[item=8280] {
+    symbol-shape: square;
+    symbol-fill-color: #0B6623;
+    symbol-size: 15; /* Adjust size as needed */
+    symbol-fill-opacity:1.0;
+}
+
+node[item=8282] {
+    symbol-shape: square;
+    symbol-fill-color: #008F11;
+    symbol-size: 15; /* Adjust size as needed */
+    symbol-fill-opacity:1.0;
+}
+
+/* Power Plant */
+node[item=8270] {
+    symbol-shape: rectangle;
+    symbol-fill-color: #FF00FF;
+    symbol-size: 15; /* Adjust size as needed */
+    symbol-fill-opacity:1.0;
+}
+
+/* Power transformer */
+node[item=9100] {
+    symbol-shape: hexagon;
+    symbol-fill-color: #FFFF00;
     symbol-size: 15; /* Adjust size as needed */
     symbol-fill-opacity:1.0;
 }
@@ -115,8 +154,8 @@ node[power=transformer], way[power=transformer] {
     text: name;
     text-size: 12;
     text-position: center;
-    color:rgb(3, 134, 106);
-    fill-color: rgb(3, 134, 106);
+    color:cyan;
+    fill-color: cyan;
     width: 3;
 }
 
@@ -131,26 +170,26 @@ way[power=line][voltage=0] {
 
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>100000][to_int(get(split(";",tag(voltage)),0))<=170000]{
 	width:3;
-	color:magenta;
-	text-halo-color:#003DB0;
+	color:#9D00FF;
+	text-halo-color:#9D00FF;
 	z-index: 5;   
 }
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>170000][to_int(get(split(";",tag(voltage)),0))<=250000]{
 	width:4;
-	color:#009414;
-	text-halo-color:#009414;
+	color:#FF1493;
+	text-halo-color:#FF1493;
 	z-index: 5;   
 }
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>250000][to_int(get(split(";",tag(voltage)),0))<=420000]{
 	width:5;
-	color:#FF0000;
-	text-halo-color:#FF0000;
+	color:#E0E1DD;
+	text-halo-color:#E0E1DD;
 	z-index: 5;   
 }
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>420000]{
 	width:5;
-	color:#01ccff;
-	text-halo-color:#01ccff;
+	color:#E0E1DD;
+	text-halo-color:#E0E1DD;
 	z-index: 5;   
 }
 
@@ -166,42 +205,42 @@ way[power=minor_line][cables>3], way[power=minor_line][circuits>1]{
 }
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))<=33000],
 way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage<=33000]{
-	left-casing-color:#FFFFFF;
+	left-casing-color:#FF2E2E;
 	z-index: 5;   
 }
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>33000][to_int(get(split(";",tag(voltage)),1))<=50000],
 way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>33000][voltage<=50000]{
-	left-casing-color:#FFFFFF;
+	left-casing-color:#FF7F11;
 	z-index: 5;   
 }
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>50000][to_int(get(split(";",tag(voltage)),1))<=70000],
 way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>50000][voltage<=70000]{
-	left-casing-color:#BF0054;
+	left-casing-color:#FFD700;
 	z-index: 5;   
 }
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>70000][to_int(get(split(";",tag(voltage)),1))<=100000],
 way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>70000][voltage<=100000]{
-	left-casing-color:#FF8000;
+	left-casing-color:#39FF14;
 	z-index: 5;   
 }
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>100000][to_int(get(split(";",tag(voltage)),1))<=170000],
 way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>100000][voltage<=170000]{
-	left-casing-color:#003DB0;
+	left-casing-color:#9D00FF;
 	z-index: 5;   
 }
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>170000][to_int(get(split(";",tag(voltage)),1))<=250000],
 way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>170000][voltage<=250000]{
-	left-casing-color:#009414;
+	left-casing-color:#FF1493;
 	z-index: 5;   
 }
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>250000][to_int(get(split(";",tag(voltage)),1))<=420000],
 way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>250000][voltage<=420000]{
-	left-casing-color:#FF0000;
+	left-casing-color:#E0E1DD;
 	z-index: 5;   
 }
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>420000],
 way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>420000]{
-	left-casing-color:#01ccff;
+	left-casing-color:#FFB7C5;
 }
 
 /* Style for proposed power lines */
