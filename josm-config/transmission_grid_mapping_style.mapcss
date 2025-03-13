@@ -5,20 +5,11 @@ meta {
 	version: "0.1";	
 }
 
-
-relation[boundary=administrative]{
-  color:yellow;         /* Boundary line color */
-  symbol-fill-color: yellow;
-  symbol-size: 0.5;          /* Make them very small */
-  width: 6;                /* Boundary line width */
-  opacity: 1;            /* Boundary line opacity */
-  fill-opacity: 1;       /* Fill opacity for areas */
-  major-z-index:100.0;  
-}
+/* mapcss colors https://www.w3schools.com/cssref/css_colors.php */
 
 node[power=portal] {
     symbol-shape: square;
-    symbol-fill-color: pink;
+    symbol-fill-color: teal;
     symbol-size: 7; /* Adjust size as needed */
 }
 
@@ -49,18 +40,10 @@ area[power=substation][substation=transmission]{
 	fill-opacity:0.05;
 }
 
-
 area[power=substation][substation=distribution]{
 	width:15;
 	symbol-size:5;
 	color:#008F11;
-	fill-opacity:0.05;
-}
-
-area[power=substation][substation=minor_distribution]{
-	width:5;
-	symbol-size:5;
-	color:#F5DEB3;
 	fill-opacity:0.05;
 }
 
@@ -111,44 +94,6 @@ node[item=7040] {
     symbol-fill-opacity:1.0;
 }
 
-/* Power Substation */
-node[item=7190] {
-    symbol-shape: square;
-    symbol-fill-color: #06470C;
-    symbol-size: 15; /* Adjust size as needed */
-    symbol-fill-opacity:1.0;
-}
-
-node[item=8280] {
-    symbol-shape: square;
-    symbol-fill-color: #0B6623;
-    symbol-size: 15; /* Adjust size as needed */
-    symbol-fill-opacity:1.0;
-}
-
-node[item=8282] {
-    symbol-shape: square;
-    symbol-fill-color: #008F11;
-    symbol-size: 15; /* Adjust size as needed */
-    symbol-fill-opacity:1.0;
-}
-
-/* Power Plant */
-node[item=8270] {
-    symbol-shape: rectangle;
-    symbol-fill-color: #FF00FF;
-    symbol-size: 15; /* Adjust size as needed */
-    symbol-fill-opacity:1.0;
-}
-
-/* Power transformer */
-node[item=9100] {
-    symbol-shape: hexagon;
-    symbol-fill-color: #FFFF00;
-    symbol-size: 15; /* Adjust size as needed */
-    symbol-fill-opacity:1.0;
-}
-
 node[power=transformer], way[power=transformer] {
     icon-size: 14;
     text: name;
@@ -159,7 +104,6 @@ node[power=transformer], way[power=transformer] {
     width: 3;
 }
 
-
 /* Voltages */
   
 way[power=line][!voltage],
@@ -168,27 +112,34 @@ way[power=line][voltage=0] {
     width: 5; /* Adjust line width as needed */
 }
 
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>100000][to_int(get(split(";",tag(voltage)),0))<=170000]{
-	width:3;
-	color:#9D00FF;
-	text-halo-color:#9D00FF;
-	z-index: 5;   
-}
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>170000][to_int(get(split(";",tag(voltage)),0))<=250000]{
-	width:4;
-	color:#FF1493;
-	text-halo-color:#FF1493;
-	z-index: 5;   
-}
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>250000][to_int(get(split(";",tag(voltage)),0))<=420000]{
+way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))<132000]{
 	width:5;
-	color:#E0E1DD;
+	color: BurlyWood;
 	text-halo-color:#E0E1DD;
 	z-index: 5;   
 }
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>420000]{
+
+way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<=220000]{
 	width:5;
-	color:#E0E1DD;
+	color: Coral;
+	text-halo-color:#9D00FF;
+	z-index: 5;   
+}
+way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=220000][to_int(get(split(";",tag(voltage)),0))<=310000]{
+	width:5;
+	color: IndianRed;
+	text-halo-color:#FF1493;
+	z-index: 5;   
+}
+way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<=550000]{
+	width:5;
+	color: DarkViolet;
+	text-halo-color:#E0E1DD;
+	z-index: 5;   
+}
+way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=550000]{
+	width:5;
+	color: DarkTurquoise;
 	text-halo-color:#E0E1DD;
 	z-index: 5;   
 }
@@ -243,10 +194,57 @@ way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1
 	left-casing-color:#FFB7C5;
 }
 
-/* Style for proposed power lines */
+/* Style for proposed power lines and constructed lines */
 way[power=line][proposed=yes] {
     width: 3;
     dashes: 8, 4;    /* Dashed pattern (8px dash, 4px gap) */
     opacity: 0.8;
 }
 
+/* Style for proposed power lines and constructed lines */
+way[power=line][construction=yes] {
+    width: 3;
+    dashes: 8, 4;    /* Dashed pattern (8px dash, 4px gap) */
+    opacity: 0.8;
+}
+
+/* Colors for osmose issues start here*/
+/* Power Substation */
+node[item=7190] {
+    symbol-shape: square;
+    symbol-fill-color: #06470C;
+    symbol-size: 15; /* Adjust size as needed */
+    symbol-fill-opacity:1.0;
+}
+
+node[item=8280] {
+    symbol-shape: square;
+    symbol-fill-color: #0B6623;
+    symbol-size: 15; /* Adjust size as needed */
+    symbol-fill-opacity:1.0;
+}
+
+node[item=8282] {
+    symbol-shape: square;
+    symbol-fill-color: #008F11;
+    symbol-size: 15; /* Adjust size as needed */
+    symbol-fill-opacity:1.0;
+}
+
+/* Power Plant */
+node[item=8270] {
+    symbol-shape: rectangle;
+    symbol-fill-color: #FF00FF;
+    symbol-size: 15; /* Adjust size as needed */
+    symbol-fill-opacity:1.0;
+}
+
+/* Power transformer */
+node[item=9100] {
+    symbol-shape: hexagon;
+    symbol-fill-color: #FFFF00;
+    symbol-size: 15; /* Adjust size as needed */
+    symbol-fill-opacity:1.0;
+}
+
+/* Colors for osmose issues stop here*/
