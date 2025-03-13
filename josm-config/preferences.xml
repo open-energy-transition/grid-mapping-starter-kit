@@ -174,7 +174,7 @@
     <map>
       <tag key='active' value='true'/>
       <tag key='title' value='transmission-grid-mapping-style'/>
-      <tag key='url' value='/home/cy0/gitclones/OET/grid-mapping-starter-kit/josm-config/transmission_grid_mapping_style.mapcss'/>
+      <tag key='url' value='https://raw.githubusercontent.com/open-energy-transition/grid-mapping-starter-kit/refs/heads/main/josm-config/transmission_grid_mapping_style.mapcss'/>
     </map>
   </maps>
   <list key='mappaint.style.known-defaults'>
