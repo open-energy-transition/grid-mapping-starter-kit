@@ -22,8 +22,8 @@
 
 ## How to Map and Upload your Progress
 1. For ease of mapping, customise your toolbar with presets if you have not used the default preferences. **Edit → Preferences → Toolbar**. Then select the **Presets → Man Made → Man Made/Power** and add power towers, power portals and other presets for your mapping acticity. 
-2. Start Mapping. Read more about the [general mapping process in JOSM](https://learnosm.org/en/josm/more-about-josm/). Place nodes (eg.power towers, power portals) or place polygons to delimit an area (eg. substation, generator), and press on the preset structure you want it to be.
-3. With the OpenStreetMap layer activated, press the green Upload arrow.
+2. Start Mapping. Read more about the [general mapping process in JOSM](https://learnosm.org/en/josm/more-about-josm/). Place nodes (eg.power towers, power portals) or place polygons to delimit an area (eg. substation, generator), and press on the preset structure you want it to be. Install [UtilsPlugin2](https://josm.openstreetmap.de/wiki/Help/Plugin/UtilsPlugin2) when mapping longer lines by pressing E to select all the notes associated with the ways you have just mapped to mark them all as power towers at once.
+3. With the OpenStreetMap layer activated, press the green Upload arrow. Avoid ignoring validation results. The only acceptable warning when uploading data is "Possible missing line support node within power line".
 
 ## Mapping Strategies
 The following strategies outline different approaches to extending the existing transmission network. In general, the larger the tower and substation, the higher the voltage and therefore the greater the importance to the network. Priority should therefore be given to large, high-voltage infrastructure first. The easiest way to start mapping the transmission network is to find the location of new 'towers'. You can hardly go wrong with this and it will help you to familiarise yourself with the tool and the local network. **Only map infrastructure that you can confidently classify using satellite or ground imagery.**
