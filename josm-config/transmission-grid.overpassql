@@ -59,6 +59,8 @@ way["power"="line"](area.searchArea)
 // Find all high-voltage power lines (>= 90 kV) within the administrative boundary
 way["power"="line"]["voltage"](if:t["voltage"] >= 90000)(area.searchArea) -> .high_voltage_lines;
 
+way["power"="cable"](area.searchArea) -> .cables;
+
 // Find only poles that are part of high-voltage lines within the administrative boundary
 node.poles(w.high_voltage_lines) -> .hv_poles;
 
@@ -90,6 +92,7 @@ node["power"="portal"](area.searchArea) -> .portal_nodes;
   .towers;
   // poles;
   .hv_poles;   // Only HV poles
+  .cables;
   .lines_connected;
   .high_voltage_lines;
   .substation_nodes;
