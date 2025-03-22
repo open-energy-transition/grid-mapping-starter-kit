@@ -30,8 +30,8 @@ If you don't know a good country to start with, [OpenInfraMap.org's nightlights 
 ## Mapping Strategies
 The following strategies outline different approaches to extending the existing transmission network. In general, the larger the tower and substation, the higher the voltage and therefore the greater the importance to the network. Priority should therefore be given to large, high-voltage infrastructure first. The easiest way to start mapping the transmission network is to find the location of new 'towers'. You can hardly go wrong with this and it will help you to familiarise yourself with the tool and the local network. **Only map infrastructure that you can confidently classify using satellite or ground imagery.**
 
-- [ ] Search for all **"Unfinished power lines"** in Osmose and check if you are able to find new towers at the ende of the line. After fixing an issue (or if you cannot fix it), remove the tower from the Osmose layer to track your progress.
-- [ ] Check if windparks, solar farms, and power plants are connected to the transmission grid.
+- [ ] Search for all **"Unfinished power lines"** in Osmose and check if you are able to find new towers at the ende of the line. After fixing an issue (or if you cannot fix it), remove the tower from the Osmose layer to track your progress. The [Osmose per country](https://open-energy-transition.github.io/osmose_per_country/) website help you to create a geojson per country for different power grid issues. 
+- [ ] Check if windparks, solar farms, and power plants are connected to the transmission grid. The [GEM per Country](https://open-energy-transition.github.io/gem_per_country/) website helps you to create a geojson file of all the power plants in a country. 
 - [ ] Ensure all transmission substations are connected to the grid.
 - [ ] Identify obvious gaps in the network topology from a national perspective.
 - [ ] Search for new lines parallel to existing ones and new lines starting from major central transmission substations.
