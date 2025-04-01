@@ -2,7 +2,7 @@
 
 **A starter kit for Electrical Transmission Grid Mapping in OpenStreetMap, combining Osmose and Overpass with JOSM.**
 
-> ⚠️ We offer one-to-one workshops to help you get started. Please [join our community discord channel](https://discord.gg/6bPK5TXn) and ask for a free training session. ⚠️
+> ⚠️ We offer one-to-one workshops to help you get started. Please [join our community discord channel](https://discord.gg/TtGVGDKTjZ) and ask for a free training session. ⚠️
 
 <img src="josm-config/transmission-grid-mapping-env-2025-02-25-12-48-32.png" align="center" width="1000">
 
