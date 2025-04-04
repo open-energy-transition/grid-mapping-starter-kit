@@ -1,7 +1,7 @@
 [out:json][timeout:400];
 
 // Find a random node inside the bounding box
-node({{bbox}})(if:1);
+node({{bbox}});
 is_in;
 relation(pivot)["boundary"="administrative"]["admin_level"="2"] -> .admin_boundary;
 
