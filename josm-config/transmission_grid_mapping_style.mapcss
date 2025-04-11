@@ -7,13 +7,14 @@ meta {
 
 /* mapcss colors https://www.w3schools.com/cssref/css_colors.php */
 
+/* Power Portal */
 node[power=portal] {
     symbol-shape: square;
     symbol-fill-color: teal;
     symbol-size: 7; /* Adjust size as needed */
 }
 
-
+/* Power Tower */
 node[power=tower] {
     symbol-shape: square;
     symbol-fill-color: blue;
@@ -23,62 +24,104 @@ node[power=tower] {
 }
 
 
-/* Substations */
-
+/* Power Substations */
 area[power=substation]{
 	width:15;
 	symbol-size:5;
 	color:white;
 	fill-opacity:0.05;
+
+	text: "name";
+    font-size: 30; 
+	font-weight:bold;
+	text-allow-overlap: true; 
+	text-halo-opacity: 0.8; 
+	text-position: center; 
 }
 
-area[power=substation][substation=transmission]{
-	width:20;
-	symbol-size:5;
-	color:#DC143C;
-	fill-color:#DC143C;
-	fill-opacity:0.05;
+/* Transmission Substation */
+/* Rule for substations */
+area[power=substation][substation=transmission] {
+    width: 20;
+    symbol-size: 5;
+    color: #DC143C;
+    fill-color: #DC143C;
+    fill-opacity: 0.05;
+    
+    
+    text: "name";
+    font-size: 30; 
+	font-weight:bold;
+	text-allow-overlap: true; 
+	text-halo-opacity: 0.8; 
+	text-position: center; 
+    
 }
 
+
+/* Distribution Substation */
 area[power=substation][substation=distribution]{
 	width:15;
 	symbol-size:5;
 	color:#008F11;
 	fill-opacity:0.05;
+
+	
+    text: "name";
+    font-size: 30; 
+	font-weight:bold;
+	text-allow-overlap: true; 
+	text-halo-opacity: 0.8; 
+	text-position: center; 
 }
 
-/* Power lines */
+/* Power line */
 way[power=line]{
 	text:cables;
 	font-size:1px;
 	text-halo-radius:2;
 }
+
+/* Power Cable */
 way[power=cable]{
 	dashes:2,2;
 	text:cables;
 	font-size:40px;
 	text-halo-radius:2;
 }
+
+/* Power Line Busbar */ 
 way[power=line][line=busbar]{
 	casing-color:#FFD800;
 	casing-width:1;
 	width:3;
 }
+
+/* Power Line Bay */
 way[power=line][line=bay]{
 	casing-color:lightgray;
 	casing-width:2;
 	width:3;
 }
 
+/* Power Plant */ 
 way[power=plant]{
 	width:15;
 	symbol-size:5;
 	color:black;
 	fill-color:magenta;
 	fill-opacity:0.05;
+
+	
+    text: "name";
+    font-size: 25; 
+	font-weight:bold;
+	text-allow-overlap: true; 
+	text-halo-opacity: 0.8; 
+	text-position: center; 
 }
 
-
+/* Power Generator */
 node[power=generator] {
     symbol-shape: square;
     symbol-fill-color: yellow;
@@ -86,7 +129,7 @@ node[power=generator] {
     symbol-fill-opacity:0.7;
 }
 
-/* Power line */
+/* Osmose 7040 */
 node[item=7040] {
     symbol-shape: triangle;
     symbol-fill-color: brown;
@@ -94,6 +137,7 @@ node[item=7040] {
     symbol-fill-opacity:1.0;
 }
 
+/* Power Transformer */
 node[power=transformer], way[power=transformer] {
     icon-size: 14;
     text: name;
@@ -104,51 +148,101 @@ node[power=transformer], way[power=transformer] {
     width: 3;
 }
 
-/* Voltages */
-  
+/* Missing Voltage */  
 way[power=line][!voltage],
 way[power=line][voltage=0] {
     color: white;
     width: 5; /* Adjust line width as needed */
 }
 
+/* Power line < 132kv */
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))<132000]{
 	width:5;
 	color: BurlyWood;
 	text-halo-color:#E0E1DD;
 	z-index: 5;   
+
+	
+    text: "voltage";
+	text-color: black;
+    font-size: 12; 
+	font-weight:bold;
+	text-allow-overlap: true; 
+	text-opacity: 0.7;
 }
 
+/* Power line <= 220kv */
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<=220000]{
 	width:5;
 	color: Coral;
-	text-halo-color:#9D00FF;
-	z-index: 5;   
+	z-index: 5;  
+
+	
+    text: "voltage";
+	text-color: black;
+    font-size: 12; 
+	font-weight:bold;
+	text-allow-overlap: true; 
+	text-opacity: 0.7; 
 }
+
+/* Power line <= 310kv */
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=220000][to_int(get(split(";",tag(voltage)),0))<=310000]{
 	width:5;
 	color: IndianRed;
 	text-halo-color:#FF1493;
 	z-index: 5;   
+
+	
+    text: "voltage";
+	text-color: black;
+    font-size: 12; 
+	font-weight:bold;
+	text-allow-overlap: true; 
+	text-opacity: 0.7;  
 }
+
+/* Power line <= 550kv */
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<=550000]{
 	width:5;
 	color: DarkViolet;
 	text-halo-color:#E0E1DD;
 	z-index: 5;   
+
+	
+    text: "voltage";
+	text-color: black;
+    font-size: 12; 
+	font-weight:bold;
+	text-allow-overlap: true; 
+	text-opacity: 0.7;
 }
+
+/* Power line >= 550kv */
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=550000]{
 	width:5;
 	color: DarkTurquoise;
 	text-halo-color:#E0E1DD;
 	z-index: 5;   
+
+	
+    text: "voltage";
+	text-color: black;
+    font-size: 12; 
+	font-weight:bold;
+	text-allow-overlap: true; 
+	text-opacity: 0.7;
 }
 
+/* Power line cables > 3, circuits > 1 */
 way[power=~/line|cable/][cables>3], way[power=~/line|cable/][circuits>1]{
 	left-casing-dashes:2,14;
 	left-casing-width:5;
 	z-index: 5;   
+	
 }
+
+/* Power line cables > 3, circuits > 1 */
 way[power=minor_line][cables>3], way[power=minor_line][circuits>1]{
 	left-casing-dashes:2,10;
 	left-casing-width:3;
