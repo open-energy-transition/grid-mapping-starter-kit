@@ -1,3 +1,11 @@
+---
+name: 💡 Good First Issue
+about: For beginner mappers working on the OSM transmission network
+title: "[Good First Issue] "
+labels: ["good first issue", "help wanted"]
+assignees: ""
+---
+
 ### 🛰️ Good First Issue: Grid Mapping for New Mappers
 
 These issues are addressed for OpenStreetMap transmission network mappers who are just starting out and looking for simple lines to map.
