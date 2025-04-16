@@ -3,7 +3,7 @@
 // Find a random node inside the bounding box
 node({{bbox}});
 is_in;
-relation(pivot)["boundary"="administrative"]["admin_level"="2"] -> .admin_boundary;
+relation(pivot)["boundary"="administrative"]["admin_level"="4"] -> .admin_boundary;
 
 // Convert the relation to an area
 .admin_boundary map_to_area -> .searchArea;
