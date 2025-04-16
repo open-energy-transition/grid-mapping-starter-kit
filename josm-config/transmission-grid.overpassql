@@ -87,6 +87,11 @@ relation["power"="transformer"](area.searchArea) -> .transformer_relations;
 // Include portals within the administrative boundary
 node["power"="portal"](area.searchArea) -> .portal_nodes;
 
+// Include switchgear
+node["power"="switchgear"](area.searchArea) -> .switchgear_nodes;
+way["power"="switchgear"](area.searchArea) -> .switchgear_ways;
+relation["power"="switchgear"](area.searchArea) -> .switchgear_relations;
+
 // Combine all relevant results
 (
   .towers;
@@ -108,6 +113,9 @@ node["power"="portal"](area.searchArea) -> .portal_nodes;
   .transformer_nodes;
   .transformer_ways;
   .transformer_relations;
+  .switchgear_nodes;
+  .switchgear_ways;
+  .switchgear_relations;
   .admin_boundary;
 );
 
