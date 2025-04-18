@@ -232,14 +232,35 @@ way[power=line][voltage=0] {
     width: 5; /* Adjust line width as needed */
 }
 
-/* Power line < 132kv */
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))<132000]{
+/* Power cable < 132kv */
+way[power=~/cable/][to_int(get(split(";",tag(voltage)),0))<132000]{
 	width:5;
 	color: BurlyWood;
 	text-halo-color:#E0E1DD;
 	z-index: 5;   
 }
-way|z15-[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))<132000]{
+way|z20-[power=~/cable/][to_int(get(split(";",tag(voltage)),0))<132000]{
+	width:5;
+	color: BurlyWood;
+	text-halo-color:#E0E1DD;
+	z-index: 5; 
+
+    text: "voltage";
+	text-color: black;
+    font-size: 5; 
+	font-weight:bold;
+	text-allow-overlap: true; 
+	text-opacity: 0.5;
+}
+
+/* Power line < 132kv */
+way[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))<132000]{
+	width:5;
+	color: BurlyWood;
+	text-halo-color:#E0E1DD;
+	z-index: 5;   
+}
+way|z15-[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))<132000]{
 	width:5;
 	color: BurlyWood;
 	text-halo-color:#E0E1DD;
