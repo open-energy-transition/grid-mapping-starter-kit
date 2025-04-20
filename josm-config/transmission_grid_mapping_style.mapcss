@@ -7,6 +7,24 @@ meta {
 
 /* mapcss colors https://www.w3schools.com/cssref/css_colors.php */
 
+setting::hide_icons {
+  type: boolean;
+  label: tr("Hide icons at low zoom");
+  default: true;
+}
+
+setting::shrink_nodes {
+  type: boolean;
+  label: tr("Less obtrusive node symbols at low zoom");
+  default: true;
+}
+
+setting::hide_tagged_waynodes {
+  type: boolean;
+  label: tr("Hide tagged waynodes at low zoom");
+  default: true;
+}
+
 /* Power Portal */
 node[power=portal] {
     symbol-shape: square;
@@ -53,12 +71,94 @@ node[power=tower]:unconnected {
 	major-z-index:1.0;  
 }
 
+node[power=pole][switch] {
+    icon-image: "presets/power/pole_switch.svg";
+    set icon_z17;
+}
+node[power=pole][transformer=distribution] {
+    icon-image: "presets/power/pole_transformer.svg";
+    set icon_z17;
+}
+node[power=catenary_mast] {
+    icon-image: "presets/power/catenary_mast.svg";
+    set icon_z17;
+}
+node[power=connection] {
+    icon-image: "presets/power/connection.svg";
+    set icon_z17;
+}
+node[power=insulator] {
+    icon-image: "presets/power/insulator.svg";
+    set icon_z17;
+}
+node[man_made=street_cabinet][street_cabinet=power] {
+    icon-image: "presets/power/cable_distribution_cabinet.svg";
+    set icon_z17;
+}
+node[power=generator] {
+    icon-image: "presets/power/generator.svg";
+    set icon_z17;
+}
+node[power=heliostat] {
+    icon-image: "presets/power/heliostat.svg";
+    set icon_z17;
+}
+node[power=substation] {
+    icon-image: "presets/power/substation.svg";
+    set icon_z17;
+}
+node[power=transformer] {
+    icon-image: "presets/power/transformer.svg";
+    set icon_z17;
+}
+node[power=terminal] {
+    icon-image: "presets/power/terminal.svg";
+    set icon_z17;
+}
+node[power=switch] {
+    icon-image: "presets/power/switch.svg";
+    set icon_z17;
+}
+node|z-16[power=switch] {
+    font-size: 0;
+	symbol-size:0;
+}
+node[power=converter] {
+    icon-image: "presets/power/converter.svg";
+    set icon_z17;
+}
+node[power=compensator] {
+    icon-image: "presets/power/compensator.svg";
+    set icon_z17;
+}
+
 
 /* Power Substations */
+node|z-18[power=substation][substation=minor_distribution]{
+	text: "operator";
+	font-size: 0;
+	symbol-size:0;
+	color:white;
+	fill-opacity:0.05; 
+}
+node|z-18[power=substation][substation=industrial]{
+	text: "operator";
+	font-size: 0;
+	symbol-size:0;
+	color:red;
+	fill-opacity:0.05; 
+}
 area[power=substation]{
 	width:15;
 	symbol-size:5;
 	color:white;
+	fill-opacity:0.05; 
+}
+area[power=substation][substation=minor_distribution]{
+	font-size: 0;
+	width:15;
+	symbol-size:5;
+	color:lime;
 	fill-opacity:0.05; 
 }
 area|z12-[power=substation]{
@@ -135,7 +235,7 @@ way[power=line]{
 way[power=cable]{
 	dashes:2,2;
 	text:cables;
-	font-size:40px;
+	font-size:8;
 	text-halo-radius:2;
 }
 
@@ -178,7 +278,8 @@ area|z12-[power=plant]{
 
 
 /* Power Generator */
-node[power=generator] {
+node|z-15[power=generator] {
+	font-size: 0;
     symbol-shape: square;
     symbol-fill-color: yellow;
     symbol-size: 7; 
@@ -247,7 +348,7 @@ way|z20-[power=~/cable/][to_int(get(split(";",tag(voltage)),0))<132000]{
 
     text: "voltage";
 	text-color: black;
-    font-size: 5; 
+    font-size: 10; 
 	font-weight:bold;
 	text-allow-overlap: true; 
 	text-opacity: 0.5;
@@ -287,7 +388,7 @@ way|z15-[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>
 
     text: "voltage";
 	text-color: black;
-    font-size: 10; 
+    font-size: 8; 
 	font-weight:bold;
 	text-allow-overlap: true; 
 	text-opacity: 0.5;
@@ -308,7 +409,7 @@ way|z15-[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>
 
     text: "voltage";
 	text-color: black;
-    font-size: 10; 
+    font-size: 8; 
 	font-weight:bold;
 	text-allow-overlap: true; 
 	text-opacity: 0.5;
@@ -329,7 +430,7 @@ way|z15-[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>
 
     text: "voltage";
 	text-color: black;
-    font-size: 10; 
+    font-size: 8; 
 	font-weight:bold;
 	text-allow-overlap: true; 
 	text-opacity: 0.5;
@@ -351,7 +452,7 @@ way|z15-[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>
 
     text: "voltage";
 	text-color: black;
-    font-size: 10; 
+    font-size: 8; 
 	font-weight:bold;
 	text-allow-overlap: true; 
 	text-opacity: 0.5;
@@ -465,3 +566,21 @@ node[item=9100] {
 }
 
 /* Colors for osmose issues stop here*/
+node|z-16[setting("hide_icons")].icon_z17!.icon_z0,
+relation|z-16[type=restriction][setting("hide_icons")] {
+    icon-image: none;
+}
+node|z-17[setting("hide_icons")]!.text_z0 {
+    text: none;
+}
+way > node|z-15[setting("shrink_nodes")]!:tagged {
+    symbol-shape: none;
+}
+node:tagged {
+    symbol-stroke-color: none;
+    symbol-fill-color: none;
+	text: none;
+}
+
+node|z-18,area|z-18 { font-size: 0; }
+
