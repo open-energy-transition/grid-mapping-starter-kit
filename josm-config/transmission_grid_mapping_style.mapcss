@@ -3,6 +3,7 @@ meta {
 	title: "transmission-grid-mapping-style";
 	description: "A style for fast electrical grid mapping of wide-area transmission networks. Adapted from the "detailed power grid style" by FLacombe.";
 	version: "0.1";	
+	author: "Mwiche";
 }
 
 /* mapcss colors https://www.w3schools.com/cssref/css_colors.php */
@@ -24,6 +25,7 @@ setting::hide_tagged_waynodes {
   label: tr("Hide tagged waynodes at low zoom");
   default: true;
 }
+
 
 /* Power Portal */
 node[power=portal] {
@@ -134,11 +136,11 @@ node[power=compensator] {
 
 
 /* Power Substations */
-node|z-18[power=substation][substation=minor_distribution]{
+node|z18-[power=substation][substation=industrial]{
 	text: "operator";
-	font-size: 0;
-	symbol-size:0;
-	color:white;
+	font-size: 8;
+	symbol-size:5;
+	color:red;
 	fill-opacity:0.05; 
 }
 node|z-18[power=substation][substation=industrial]{
@@ -154,13 +156,7 @@ area[power=substation]{
 	color:white;
 	fill-opacity:0.05; 
 }
-area[power=substation][substation=minor_distribution]{
-	font-size: 0;
-	width:15;
-	symbol-size:5;
-	color:lime;
-	fill-opacity:0.05; 
-}
+
 area|z12-[power=substation]{
 	width:3;
 
@@ -223,11 +219,17 @@ area|z12-[power=substation][substation=distribution]{
 	text-position: center; 
 	z-index: 8; 
 }
+node|z-18[power=substation][substation=minor_distribution] {
+	font-size: 0;
+	symbol-size:0;
+	color:white;
+	fill-opacity:0.05; 
+}
 
 /* Power line */
-way[power=line]{
+way|z16-19[power=line]{
 	text:cables;
-	font-size:1px;
+	font-size:15;
 	text-halo-radius:2;
 }
 
@@ -235,7 +237,19 @@ way[power=line]{
 way[power=cable]{
 	dashes:2,2;
 	text:cables;
-	font-size:8;
+	text-halo-radius:2;
+}
+way|z16-19[power=cable]{
+	dashes:2,2;
+	text:cables;
+	font-size:15;
+	text-color:white;
+	text-halo-radius:2;
+}
+way|z16-19[power=cable][location=underwater]{
+	dashes:2,2;
+	text:cables;
+	font-size:15;
 	text-halo-radius:2;
 }
 
@@ -375,33 +389,51 @@ way|z15-[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))<132000
 	text-opacity: 0.5;
 }
 
-/* Power line <= 220kv */
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<=220000]{
+/* Power cable <= 220kv */
+way[power=~/cable/][to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<=220000]{
 	width:5;
 	color: Coral;
 	z-index: 5;  
 }
-way|z15-[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<=220000]{
+way|z20-[power=~/cable/][to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<=220000]{
 	width:5;
 	color: Coral;
 	z-index: 5;
 
     text: "voltage";
 	text-color: black;
-    font-size: 8; 
+    font-size: 10; 
+	font-weight:bold;
+	text-allow-overlap: true; 
+	text-opacity: 0.5;
+}
+/* Power line <= 220kv */
+way[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<=220000]{
+	width:5;
+	color: Coral;
+	z-index: 5;  
+}
+way|z15-[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<=220000]{
+	width:5;
+	color: Coral;
+	z-index: 5;
+
+    text: "voltage";
+	text-color: black;
+    font-size: 10; 
 	font-weight:bold;
 	text-allow-overlap: true; 
 	text-opacity: 0.5;
 }
 
-/* Power line <= 310kv */
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=220000][to_int(get(split(";",tag(voltage)),0))<=310000]{
+/* Power cable <= 310kv */
+way[power=~/cable/][to_int(get(split(";",tag(voltage)),0))>=220000][to_int(get(split(";",tag(voltage)),0))<=310000]{
 	width:5;
 	color: IndianRed;
 	text-halo-color:#FF1493;
 	z-index: 5;   
 }
-way|z15-[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=220000][to_int(get(split(";",tag(voltage)),0))<=310000]{
+way|z20-[power=~/cable/][to_int(get(split(";",tag(voltage)),0))>=220000][to_int(get(split(";",tag(voltage)),0))<=310000]{
 	width:5;
 	color: IndianRed;
 	text-halo-color:#FF1493;
@@ -409,20 +441,60 @@ way|z15-[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>
 
     text: "voltage";
 	text-color: black;
-    font-size: 8; 
+    font-size: 10; 
+	font-weight:bold;
+	text-allow-overlap: true; 
+	text-opacity: 0.5;
+}
+/* Power line <= 310kv */
+way[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))>=220000][to_int(get(split(";",tag(voltage)),0))<=310000]{
+	width:5;
+	color: IndianRed;
+	text-halo-color:#FF1493;
+	z-index: 5;   
+}
+way|z15-[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))>=220000][to_int(get(split(";",tag(voltage)),0))<=310000]{
+	width:5;
+	color: IndianRed;
+	text-halo-color:#FF1493;
+	z-index: 5; 
+
+    text: "voltage";
+	text-color: black;
+    font-size: 10; 
 	font-weight:bold;
 	text-allow-overlap: true; 
 	text-opacity: 0.5;
 }
 
+/* Power cable <= 550kv */
+way[power=~/cable/][to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<=550000]{
+	width:5;
+	color: DarkViolet;
+	text-halo-color:#E0E1DD;
+	z-index: 5;   
+}
+way|z20-[power=~/cable/][to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<=550000]{	
+	width:5;
+	color: DarkViolet;
+	text-halo-color:#E0E1DD;
+	z-index: 5;
+
+    text: "voltage";
+	text-color: black;
+    font-size: 10; 
+	font-weight:bold;
+	text-allow-overlap: true; 
+	text-opacity: 0.5;
+}
 /* Power line <= 550kv */
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<=550000]{
+way[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<=550000]{
 	width:5;
 	color: DarkViolet;
 	text-halo-color:#E0E1DD;
 	z-index: 5;   
 }
-way|z15-[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<=550000]{	
+way|z15-[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<=550000]{	
 	width:5;
 	color: DarkViolet;
 	text-halo-color:#E0E1DD;
@@ -430,21 +502,21 @@ way|z15-[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>
 
     text: "voltage";
 	text-color: black;
-    font-size: 8; 
+    font-size: 10; 
 	font-weight:bold;
 	text-allow-overlap: true; 
 	text-opacity: 0.5;
 }
 
 
-/* Power line >= 550kv */
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=550000]{
+/* Power cable >= 550kv */
+way[power=~/cable/][to_int(get(split(";",tag(voltage)),0))>=550000]{
 	width:5;
 	color: DarkTurquoise;
 	text-halo-color:#E0E1DD;
 	z-index: 5;   
 }
-way|z15-[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=550000]{
+way|z20-[power=~/cable/][to_int(get(split(";",tag(voltage)),0))>=550000]{
 	width:5;
 	color: DarkTurquoise;
 	text-halo-color:#E0E1DD;
@@ -452,7 +524,27 @@ way|z15-[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>
 
     text: "voltage";
 	text-color: black;
-    font-size: 8; 
+    font-size: 10; 
+	font-weight:bold;
+	text-allow-overlap: true; 
+	text-opacity: 0.5;
+}
+/* Power line >= 550kv */
+way[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))>=550000]{
+	width:5;
+	color: DarkTurquoise;
+	text-halo-color:#E0E1DD;
+	z-index: 5;   
+}
+way|z15-[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))>=550000]{
+	width:5;
+	color: DarkTurquoise;
+	text-halo-color:#E0E1DD;
+	z-index: 5;
+
+    text: "voltage";
+	text-color: black;
+    font-size: 10; 
 	font-weight:bold;
 	text-allow-overlap: true; 
 	text-opacity: 0.5;
@@ -576,11 +668,26 @@ node|z-17[setting("hide_icons")]!.text_z0 {
 way > node|z-15[setting("shrink_nodes")]!:tagged {
     symbol-shape: none;
 }
-node:tagged {
+node|z-17:tagged  {
     symbol-stroke-color: none;
     symbol-fill-color: none;
 	text: none;
+	font-size: 0;
 }
 
 node|z-18,area|z-18 { font-size: 0; }
 
+relation[boundary=administrative] > way::core_boundary,
+way[boundary=administrative]::core_boundary {
+    z-index: 2;
+    modifier: false;
+    width: 1;
+    color: boundary#FF6600;
+    dashes: 9,9;
+}
+way[boundary=administrative][admin_level=1]::core_boundary,
+relation[boundary=administrative][admin_level=1] > way::core_boundary,
+way[boundary=administrative][admin_level=2]::core_boundary,
+relation[boundary=administrative][admin_level=2] > way::core_boundary {
+    width: 5;
+}
