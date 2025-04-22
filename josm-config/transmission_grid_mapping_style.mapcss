@@ -29,9 +29,8 @@ setting::hide_tagged_waynodes {
 
 /* Power Portal */
 node[power=portal] {
-    symbol-shape: square;
-    symbol-fill-color: teal;
-    symbol-size: 7; 
+    icon-image: "presets/power/portal.svg";
+    set icon_z17;
 }
 node|z-15[power=portal] {
     symbol-shape: square;
