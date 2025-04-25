@@ -26,5 +26,5 @@ Happy mapping! 🌍⚡
 
 ---
 
-Coordiantes:
+Coordinates:
 Screenshot of the line:
