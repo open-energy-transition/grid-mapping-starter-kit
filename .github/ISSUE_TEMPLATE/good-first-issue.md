@@ -15,6 +15,8 @@ These issues are addressed for OpenStreetMap transmission network mappers who ar
 1. **Copy the coordinates** provided in the issue and press **"Add a node"** in your JOSM editor to jump to the location. Then, **delete the node**.
 2. **Zoom out** and **load the local grid data** into your editor.
 3. **Continue the line** as best you can, connecting it accurately based on the visible infrastructure.
+4. **Upload your data** and please use the **#ohmygrid** hashtag in your changeset.
+5. **Provide** a comment in this issue when you are done or you need help.  
 
 ---
 
@@ -26,5 +28,5 @@ Happy mapping! 🌍⚡
 
 ---
 
-Coordiantes:
+Coordinates:
 Screenshot of the line:
