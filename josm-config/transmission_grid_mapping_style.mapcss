@@ -1,467 +1,986 @@
-
 meta {
 	title: "transmission-grid-mapping-style";
-	description: "A style for fast electrical grid mapping of wide-area transmission networks. Adapted from the "detailed power grid style" by FLacombe.";
-	version: "0.1";	
+	description: "A style for fast electrical grid mapping of wide-area transmission networks. Adapted from the 'detailed power grid style' by FLacombe.";
+	version: "0.3";	
+	author: "Mwiche", "Oh My Grid Initiative";
 }
 
-/* mapcss colors https://www.w3schools.com/cssref/css_colors.php */
+/* Settings */
+setting::hide_icons {
+  type: boolean;
+  label: tr("Hide icons at low zoom");
+  default: true;
+}
 
-/* Power Portal */
-node[power=portal] {
+setting::shrink_nodes {
+  type: boolean;
+  label: tr("Less obtrusive node symbols at low zoom");
+  default: true;
+}
+
+setting::hide_tagged_waynodes {
+  type: boolean;
+  label: tr("Hide tagged waynodes at low zoom");
+  default: true;
+}
+
+setting::partial_fill {
+  type: boolean;
+  label: tr("Areas are drawn with fill only around their inner edges");
+  default: true;
+}
+
+/* Canvas defaults */
+canvas { default-points: false; }
+node { text: auto; }
+
+/****************/
+/* Node styling */
+/****************/
+
+/* Basic power nodes - visible only at z10+ */
+node|z10-[power] { set power_node; }
+node.power_node[power=portal] { icon-image: "presets/power/portal.svg"; }
+node.power_node[power=tower] { icon-image: "presets/power/tower.svg"; }
+node.power_node[power=pole] { icon-image: "presets/power/pole.svg"; }
+node.power_node[power=generator] { icon-image: "presets/power/generator.svg"; }
+node.power_node[power=heliostat] { icon-image: "presets/power/heliostat.svg"; }
+node.power_node[power=substation] { icon-image: "presets/power/substation.svg"; }
+node.power_node[power=transformer] { icon-image: "presets/power/transformer.svg"; }
+node.power_node[power=terminal] { icon-image: "presets/power/terminal.svg"; }
+node.power_node[power=switch] { icon-image: "presets/power/switch.svg"; }
+node.power_node[power=converter] { icon-image: "presets/power/converter.svg"; }
+node.power_node[power=compensator] { icon-image: "presets/power/compensator.svg"; }
+node.power_node[power=connection] { icon-image: "presets/power/connection.svg"; }
+node.power_node[power=insulator] { icon-image: "presets/power/insulator.svg"; }
+node.power_node { set icon_z17; }
+
+/* Specialized power nodes */
+node|z10-[power=pole][switch] { icon-image: "presets/power/pole_switch.svg"; }
+node|z10-[power=pole][transformer=distribution] { icon-image: "presets/power/pole_transformer.svg"; }
+node|z10-[power=catenary_mast] { icon-image: "presets/power/catenary_mast.svg"; }
+node|z10-[man_made=street_cabinet][street_cabinet=power] { 
+    icon-image: "presets/power/cable_distribution_cabinet.svg"; 
+    set icon_z17;
+}
+
+/* Node styling at different zoom levels */
+node|z15-[power=portal] {
     symbol-shape: square;
     symbol-fill-color: teal;
-    symbol-size: 7; 
-}
-node|z-15[power=portal] {
-    symbol-shape: square;
-    symbol-fill-color: teal;
-    symbol-size: 5; 
+    symbol-size: 1; 
 }
 
-/* Power Tower */
-node|z15-[power=tower] {
-	icon-image: "presets/power/tower.svg";
-	set icon_z17;
-      
-}
-node|z-15[power=tower] {
-    symbol-shape: square;
-    symbol-size: 0; 
-    symbol-fill-opacity:0;
-	symbol-stroke-opacity:0;
-	major-z-index:1.0; 
-}
-
-node|z15-[power=pole] {
-	icon-image: "presets/power/pole.svg";
-	set icon_z17;
-      
-}
+node|z-15[power=tower],
 node|z-15[power=pole] {
     symbol-shape: square;
     symbol-size: 0; 
-    symbol-fill-opacity:0;
-	symbol-stroke-opacity:0;
-	major-z-index:1.0; 
+    symbol-fill-opacity: 0;
+    symbol-stroke-opacity: 0;
+    major-z-index: 1.0; 
 }
-node[power=tower]:unconnected {
+
+/* Only show unconnected towers at z16+ */
+node|z16-[power=tower]:unconnected {
     symbol-shape: square;
     symbol-fill-color: blue;
-    symbol-size: 10; 
-    symbol-fill-opacity:0.7;
-	major-z-index:1.0;  
+    symbol-size: 2; 
+    symbol-fill-opacity: 0.7;
+    major-z-index: 1.0;  
 }
 
-
-/* Power Substations */
-area[power=substation]{
-	width:15;
-	symbol-size:5;
-	color:white;
-	fill-opacity:0.05; 
-}
-area|z12-[power=substation]{
-	width:3;
-
-	text: "name";
-	text-color:black;
-	text-halo-color: white;
-	text-halo-radius: 2;
-	text-halo-opacity: 0.8;
-    font-size: 20; 
-	font-weight:bold; 
-	text-halo-opacity: 0.8; 
-	text-position: center; 
-	z-index: 8;
+/* Hide unconnected towers at z0-15 - improved rule */
+node|z0-15[power=tower]:unconnected {
+    symbol-shape: none;
+    symbol-size: 0; 
+    symbol-fill-opacity: 0;
+    symbol-stroke-opacity: 0;
+    icon-image: none;
+    major-z-index: -1;
 }
 
-/* Transmission Substation */
-/* Rule for substations */
-area[power=substation][substation=transmission] {
-    width: 20;
-    symbol-size: 5;
-    color: #DC143C;
-    fill-color: #DC143C;
-    fill-opacity: 0.05;
-    
-}
-area|z12-[power=substation][substation=transmission] {
-	width:3;
-
-	text: "name";
-	text-color:black;
-	text-halo-color: white;
-	text-halo-radius: 2;
-	text-halo-opacity: 0.8;
-    font-size: 20; 
-	font-weight:bold; 
-	text-halo-opacity: 0.8; 
-	text-position: center; 
-	z-index: 8; 
+node|z-16[power=switch] {
+    font-size: 0;
+    symbol-size: 0;
 }
 
-
-/* Distribution Substation */
-area[power=substation][substation=distribution]{
-	width:15;
-	symbol-size:5;
-	color:#008F11;
-	fill-opacity:0.05; 
-}
-area|z12-[power=substation][substation=distribution]{
-	width:3;
-
-	text: "name";
-	text-color:black;
-	text-halo-color: white;
-	text-halo-radius: 2;
-	text-halo-opacity: 0.8;
-    font-size: 20; 
-	font-weight:bold; 
-	text-halo-opacity: 0.8; 
-	text-position: center; 
-	z-index: 8; 
+/* Power substation node styling */
+node|z18-[power=substation][substation=industrial] {
+    text: "operator";
+    font-size: 8;
+    symbol-size: 3;
+    color: red;
+    fill-opacity: 0.05; 
 }
 
-/* Power line */
-way[power=line]{
-	text:cables;
-	font-size:1px;
-	text-halo-radius:2;
+node|z-18[power=substation][substation=industrial] {
+    text: "operator";
+    font-size: 0;
+    symbol-size: 0;
+    color: red;
+    fill-opacity: 0.05; 
 }
 
-/* Power Cable */
-way[power=cable]{
-	dashes:2,2;
-	text:cables;
-	font-size:40px;
-	text-halo-radius:2;
+node|z-18[power=substation][substation=minor_distribution] {
+    font-size: 0;
+    symbol-size: 0;
+    color: white;
+    fill-opacity: 0.05; 
 }
 
-/* Power Line Busbar */ 
-way[power=line][line=busbar]{
-	casing-color:#FFD800;
-	casing-width:1;
-	width:3;
-}
-
-/* Power Line Bay */
-way[power=line][line=bay]{
-	casing-color:lightgray;
-	casing-width:2;
-	width:3;
-}
-
-/* Power Plant */ 
-way[power=plant]{
-	width:15;
-	symbol-size:5;
-	color:black;
-	fill-color:magenta;
-	fill-opacity:0.05; 
-}
-area|z12-[power=plant]{
-	width:3;
-
-	text: "name";
-	text-color:black;
-	text-halo-color: white;
-	text-halo-radius: 2;
-	text-halo-opacity: 0.8;
-    font-size: 20; 
-	font-weight:bold; 
-	text-halo-opacity: 0.8; 
-	text-position: center; 
-	z-index: 8; 
-}
-
-
-/* Power Generator */
-node[power=generator] {
+/* Power generator node styling */
+node|z-15[power=generator] {
+    font-size: 0;
     symbol-shape: square;
     symbol-fill-color: yellow;
-    symbol-size: 7; 
-    symbol-fill-opacity:0.7;
-}
-way[power=generator] {
-	width:15;
-    symbol-shape: square;
-    symbol-fill-color: yellow;
-    symbol-size: 7; 
-    symbol-fill-opacity:0.7;
-}
-area|z12-[power=generator]{
-	width:3;
-
-	text: "name";
-	text-color:black;
-	text-halo-color: white;
-	text-halo-radius: 2;
-	text-halo-opacity: 0.8;
-    font-size: 20; 
-	font-weight:bold; 
-	text-halo-opacity: 0.8; 
-	text-position: center; 
-	z-index: 8; 
+    symbol-size: 3; 
+    symbol-fill-opacity: 0.7;
 }
 
-/* Osmose 7040 */
-node[item=7040] {
-    symbol-shape: triangle;
-    symbol-fill-color: brown;
-    symbol-size: 15; 
-    symbol-fill-opacity:1.0;
-}
-
-/* Power Transformer */
-node[power=transformer], way[power=transformer] {
-    icon-size: 14;
+/* Power transformer node styling */
+node|z10-[power=transformer], way|z10-[power=transformer] {
+    icon-size: 8;
     text: name;
     text-size: 12;
     text-position: center;
-    color:cyan;
+    color: cyan;
     fill-color: cyan;
-    width: 3;
+    width: 1;
 }
 
-/* Missing Voltage */  
+/*****************/
+/* Area styling */
+/*****************/
+
+/* Dynamic widths for substations */
+area|z0-15[power=substation] {
+    width: 10;
+    symbol-size: 3;
+    color: white;
+    fill-opacity: 0.07; 
+}
+
+area|z14-16[power=substation] {
+    width: 1.5;
+    symbol-size: 4;
+    color: white;
+    fill-opacity: 0.08; 
+}
+
+area|z17-19[power=substation] {
+    width: 2;
+    symbol-size: 5;
+    color: white;
+    fill-opacity: 0.1; 
+}
+
+area|z20-[power=substation] {
+    width: 3;
+    symbol-size: 6;
+    color: white;
+    fill-opacity: 0.15; 
+}
+
+/* Dynamic text sizes for substations */
+area|z12-13[power=substation] {
+    text: "name";
+    text-color: black;
+    text-halo-color: white;
+    text-halo-radius: 2;
+    text-halo-opacity: 0.8;
+    font-size: 14; 
+    font-weight: bold; 
+    text-position: center; 
+    z-index: 8;
+}
+
+area|z14-16[power=substation] {
+    text: "name";
+    text-color: black;
+    text-halo-color: white;
+    text-halo-radius: 2;
+    text-halo-opacity: 0.8;
+    font-size: 16; 
+    font-weight: bold; 
+    text-position: center; 
+    z-index: 8;
+}
+
+area|z17-19[power=substation] {
+    text: "name";
+    text-color: black;
+    text-halo-color: white;
+    text-halo-radius: 2;
+    text-halo-opacity: 0.8;
+    font-size: 18; 
+    font-weight: bold; 
+    text-position: center; 
+    z-index: 8;
+}
+
+area|z20-[power=substation] {
+    text: "name";
+    text-color: black;
+    text-halo-color: white;
+    text-halo-radius: 2;
+    text-halo-opacity: 0.8;
+    font-size: 20; 
+    font-weight: bold; 
+    text-position: center; 
+    z-index: 8;
+}
+
+/* Dynamic widths for transmission substations */
+area|z0-15[power=substation][substation=transmission] {
+    width: 10;
+    color: #DC143C;
+    fill-color: #DC143C;
+    fill-opacity: 0.07;
+}
+
+area|z14-16[power=substation][substation=transmission] {
+    width: 1.5;
+    color: #DC143C;
+    fill-color: #DC143C;
+    fill-opacity: 0.08;
+}
+
+area|z17-19[power=substation][substation=transmission] {
+    width: 2;
+    color: #DC143C;
+    fill-color: #DC143C;
+    fill-opacity: 0.1;
+}
+
+area|z20-[power=substation][substation=transmission] {
+    width: 3;
+    color: #DC143C;
+    fill-color: #DC143C;
+    fill-opacity: 0.15;
+}
+
+/* Dynamic widths for distribution substations */
+area|z0-15[power=substation][substation=distribution] {
+    width: 10;
+    color: #008F11;
+    fill-opacity: 0.07; 
+}
+
+area|z14-16[power=substation][substation=distribution] {
+    width: 1.5;
+    color: #008F11;
+    fill-opacity: 0.08; 
+}
+
+area|z17-19[power=substation][substation=distribution] {
+    width: 2;
+    color: #008F11;
+    fill-opacity: 0.1; 
+}
+
+area|z20-[power=substation][substation=distribution] {
+    width: 3;
+    color: #008F11;
+    fill-opacity: 0.15; 
+}
+
+/* Dynamic widths for power plants - fixed colors */
+way|z0-15[power=plant] {
+    width: 0;
+    color: transparent;
+    fill-color: transparent;
+    fill-opacity: 0; 
+}
+
+area|z0-15[power=plant] {
+    width: 0;
+    color: transparent;
+    fill-color: transparent;
+    fill-opacity: 0; 
+}
+
+way|z14-16[power=plant] {
+    width: 1.5;
+    color: black;
+    fill-color: magenta;
+    fill-opacity: 0.08; 
+}
+
+way|z17-19[power=plant] {
+    width: 2;
+    color: black;
+    fill-color: magenta;
+    fill-opacity: 0.1; 
+}
+
+way|z20-[power=plant] {
+    width: 3;
+    color: black;
+    fill-color: magenta;
+    fill-opacity: 0.15; 
+}
+
+/* Dynamic text sizes for power plants */
+area|z12-13[power=plant] {
+    text: "name";
+    text-color: black;
+    text-halo-color: white;
+    text-halo-radius: 2;
+    text-halo-opacity: 0.8;
+    font-size: 14; 
+    font-weight: bold; 
+    text-position: center; 
+    z-index: 8; 
+}
+
+area|z14-16[power=plant] {
+    text: "name";
+    text-color: black;
+    text-halo-color: white;
+    text-halo-radius: 2;
+    text-halo-opacity: 0.8;
+    font-size: 16; 
+    font-weight: bold; 
+    text-position: center; 
+    z-index: 8; 
+}
+
+area|z17-19[power=plant] {
+    text: "name";
+    text-color: black;
+    text-halo-color: white;
+    text-halo-radius: 2;
+    text-halo-opacity: 0.8;
+    font-size: 18; 
+    font-weight: bold; 
+    text-position: center; 
+    z-index: 8; 
+}
+
+area|z20-[power=plant] {
+    text: "name";
+    text-color: black;
+    text-halo-color: white;
+    text-halo-radius: 2;
+    text-halo-opacity: 0.8;
+    font-size: 20; 
+    font-weight: bold; 
+    text-position: center; 
+    z-index: 8; 
+}
+
+/* Power generator area styling */
+node|z-13[power=generator] {
+    width: 0;
+    symbol-size: 0; 
+    symbol-fill-opacity: 0;
+}
+
+/* Dynamic widths for generators */
+way|z0-15[power=generator] {
+    width: 0;
+    symbol-shape: square;
+    symbol-fill-color: yellow;
+    symbol-size: 0; 
+    symbol-fill-opacity: 0;
+}
+
+way|z14-16[power=generator] {
+    width: 1.5;
+    symbol-shape: square;
+    symbol-fill-color: yellow;
+    symbol-size: 4; 
+    symbol-fill-opacity: 0.7;
+}
+
+way|z17-19[power=generator] {
+    width: 2;
+    symbol-shape: square;
+    symbol-fill-color: yellow;
+    symbol-size: 5; 
+    symbol-fill-opacity: 0.8;
+}
+
+way|z20-[power=generator] {
+    width: 3;
+    symbol-shape: square;
+    symbol-fill-color: yellow;
+    symbol-size: 6; 
+    symbol-fill-opacity: 0.8;
+}
+
+/* Dynamic text sizes for generators */
+area|z12-13[power=generator] {
+    text: "name";
+    text-color: black;
+    text-halo-color: white;
+    text-halo-radius: 2;
+    text-halo-opacity: 0.8;
+    font-size: 14; 
+    font-weight: bold; 
+    text-position: center; 
+    z-index: 8; 
+}
+
+area|z14-16[power=generator] {
+    text: "name";
+    text-color: black;
+    text-halo-color: white;
+    text-halo-radius: 2;
+    text-halo-opacity: 0.8;
+    font-size: 16; 
+    font-weight: bold; 
+    text-position: center; 
+    z-index: 8; 
+}
+
+area|z17-19[power=generator] {
+    text: "name";
+    text-color: black;
+    text-halo-color: white;
+    text-halo-radius: 2;
+    text-halo-opacity: 0.8;
+    font-size: 18; 
+    font-weight: bold; 
+    text-position: center; 
+    z-index: 8; 
+}
+
+area|z20-[power=generator] {
+    text: "name";
+    text-color: black;
+    text-halo-color: white;
+    text-halo-radius: 2;
+    text-halo-opacity: 0.8;
+    font-size: 20; 
+    font-weight: bold; 
+    text-position: center; 
+    z-index: 8; 
+}
+
+/* Generator sources area styling */
+area|z10-[generator:source=nuclear],
+area|z10-[generator:source=wind],
+area|z10-[generator:source=hydro],
+area|z10-[generator:source=solar],
+area|z10-[generator:source=coal],
+area|z10-[generator:source=gas],
+area|z10-[generator:source=biomass],
+area|z10-[generator:source=oil] {
+    fill-color: power#eeeeee;
+}
+
+/* Dynamic widths for industrial areas */
+area|z0-15[landuse=industrial] {
+    color: darkorange;
+    width: 0;
+    dashes: 4,4;
+}
+
+area|z17-19[landuse=industrial] {
+    color: darkorange;
+    width: 1.5;
+    dashes: 4,4;
+}
+
+area|z20-[landuse=industrial] {
+    color: darkorange;
+    width: 2;
+    dashes: 4,4;
+}
+
+/******************/
+/* Line styling */
+/******************/
+
+/* Zoom-dependent line widths */
+way|z0-15[power=line],
+way|z0-15[power=minor_line],
+way|z0-15[power=cable] { width: 4; }
+way|z16-19[power] { width: 3; }
+way|z20-[power] { width: 4; }
+
+/* Zoom-dependent casing widths */
+way|z0-19[power][line=busbar], 
+way|z0-19[power][line=bay] { casing-width: 1; }
+way|z20-22[power][line=busbar], 
+way|z20-22[power][line=bay] { casing-width: 2; }
+way|z23-[power][line=busbar], 
+way|z23-[power][line=bay] { casing-width: 3; }
+
+/* Multi-circuit line casing width by zoom */
+way|z0-19[power=~/line|cable/][cables>3], 
+way|z0-19[power=~/line|cable/][circuits>1],
+way|z0-19[power=minor_line][cables>3], 
+way|z0-19[power=minor_line][circuits>1] { 
+    left-casing-width: 2; 
+    right-casing-width: 2;
+}
+
+way|z20-22[power=~/line|cable/][cables>3], 
+way|z20-22[power=~/line|cable/][circuits>1],
+way|z20-22[power=minor_line][cables>3], 
+way|z20-22[power=minor_line][circuits>1] { 
+    left-casing-width: 4; 
+    right-casing-width: 4;
+}
+
+way|z23-[power=~/line|cable/][cables>3], 
+way|z23-[power=~/line|cable/][circuits>1],
+way|z23-[power=minor_line][cables>3], 
+way|z23-[power=minor_line][circuits>1] { 
+    left-casing-width: 5; 
+    right-casing-width: 5;
+}
+
+/* Basic power lines - visible at all zoom levels */
+way[power=portal],
+way[power=line],
+way[power=minor_line] {
+    color: power#eeeeee;
+}
+
+way[power=cable] {
+    color: power#eeeeee;
+    dashes: 9,9;
+}
+
+/* Power line text - only at specific zoom levels */
+way|z18-[power=line] {
+    text: cables;
+    font-size: 15;
+    text-halo-radius: 2;
+}
+
+/* Power cable styling - basic properties without text */
+way[power=cable] {
+    dashes: 2,2;
+    text-halo-radius: 2;
+}
+
+/* Cable text for specific zoom levels only */
+way|z18-[power=cable] {
+    text: cables;
+    font-size: 15;
+    text-color: white;
+    text-halo-radius: 2;
+}
+
+way|z18-[power=cable][location=underwater] {
+    text: cables;
+    font-size: 15;
+    text-halo-radius: 2;
+}
+
+/* Power line special types */
+way[power=line][line=busbar] {
+    casing-color: #FFD800;
+}
+
+way[power=line][line=bay] {
+    casing-color: lightgray;
+}
+
+/* Missing voltage */
 way[power=line][!voltage],
 way[power=line][voltage=0] {
     color: white;
-    width: 5; /* Adjust line width as needed */
 }
 
-/* Power cable < 132kv */
-way[power=~/cable/][to_int(get(split(";",tag(voltage)),0))<132000]{
-	width:5;
-	color: BurlyWood;
-	text-halo-color:#E0E1DD;
-	z-index: 5;   
-}
-way|z20-[power=~/cable/][to_int(get(split(";",tag(voltage)),0))<132000]{
-	width:5;
-	color: BurlyWood;
-	text-halo-color:#E0E1DD;
-	z-index: 5; 
+/* Voltage-based styling with voltage labels for all lines/cables */
 
+/* Under 132kV */
+way[power=~/cable/][to_int(get(split(";",tag(voltage)),0))<132000] {
+    color: BurlyWood;
+    text-halo-color: #E0E1DD;
+    z-index: 5;
+}
+
+/* Show voltage label for all cables at z18+ only */
+way|z18-[power=~/cable/][to_int(get(split(";",tag(voltage)),0))<132000] {
     text: "voltage";
-	text-color: black;
-    font-size: 5; 
-	font-weight:bold;
-	text-allow-overlap: true; 
-	text-opacity: 0.5;
-}
-
-/* Power line < 132kv */
-way[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))<132000]{
-	width:5;
-	color: BurlyWood;
-	text-halo-color:#E0E1DD;
-	z-index: 5;   
-}
-way|z15-[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))<132000]{
-	width:5;
-	color: BurlyWood;
-	text-halo-color:#E0E1DD;
-	z-index: 5; 
-
-    text: "voltage";
-	text-color: black;
+    text-color: black;
     font-size: 10; 
-	font-weight:bold;
-	text-allow-overlap: true; 
-	text-opacity: 0.5;
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 0.5;
+    text-position: line;
 }
 
-/* Power line <= 220kv */
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<=220000]{
-	width:5;
-	color: Coral;
-	z-index: 5;  
+way[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))<132000] {
+    color: BurlyWood;
+    text-halo-color: #E0E1DD;
+    z-index: 5;
 }
-way|z15-[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<=220000]{
-	width:5;
-	color: Coral;
-	z-index: 5;
 
+/* Show voltage label for all lines at z18+ only */
+way|z18-[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))<132000] {
     text: "voltage";
-	text-color: black;
+    text-color: black;
     font-size: 10; 
-	font-weight:bold;
-	text-allow-overlap: true; 
-	text-opacity: 0.5;
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 0.5;
+    text-position: line; 
 }
 
-/* Power line <= 310kv */
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=220000][to_int(get(split(";",tag(voltage)),0))<=310000]{
-	width:5;
-	color: IndianRed;
-	text-halo-color:#FF1493;
-	z-index: 5;   
+/* 132-220kV */
+way[power=~/cable/][to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<=220000] {
+    color: Coral;
+    z-index: 5;
 }
-way|z15-[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=220000][to_int(get(split(";",tag(voltage)),0))<=310000]{
-	width:5;
-	color: IndianRed;
-	text-halo-color:#FF1493;
-	z-index: 5; 
 
+way|z18-[power=~/cable/][to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<=220000] {
     text: "voltage";
-	text-color: black;
+    text-color: black;
     font-size: 10; 
-	font-weight:bold;
-	text-allow-overlap: true; 
-	text-opacity: 0.5;
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 0.5;
+    text-position: line; 
 }
 
-/* Power line <= 550kv */
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<=550000]{
-	width:5;
-	color: DarkViolet;
-	text-halo-color:#E0E1DD;
-	z-index: 5;   
+way[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<=220000] {
+    color: Coral;
+    z-index: 5;
 }
-way|z15-[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<=550000]{	
-	width:5;
-	color: DarkViolet;
-	text-halo-color:#E0E1DD;
-	z-index: 5;
 
+way|z18-[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))>=132000][to_int(get(split(";",tag(voltage)),0))<=220000] {
     text: "voltage";
-	text-color: black;
+    text-color: black;
     font-size: 10; 
-	font-weight:bold;
-	text-allow-overlap: true; 
-	text-opacity: 0.5;
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 0.5;
+    text-position: line; 
 }
 
-
-/* Power line >= 550kv */
-way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=550000]{
-	width:5;
-	color: DarkTurquoise;
-	text-halo-color:#E0E1DD;
-	z-index: 5;   
+/* 220-310kV */
+way[power=~/cable/][to_int(get(split(";",tag(voltage)),0))>=220000][to_int(get(split(";",tag(voltage)),0))<=310000] {
+    color: IndianRed;
+    text-halo-color: #FF1493;
+    z-index: 5;
 }
-way|z15-[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),0))>=550000]{
-	width:5;
-	color: DarkTurquoise;
-	text-halo-color:#E0E1DD;
-	z-index: 5;
 
+way|z18-[power=~/cable/][to_int(get(split(";",tag(voltage)),0))>=220000][to_int(get(split(";",tag(voltage)),0))<=310000] {
     text: "voltage";
-	text-color: black;
+    text-color: black;
     font-size: 10; 
-	font-weight:bold;
-	text-allow-overlap: true; 
-	text-opacity: 0.5;
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 0.5;
+    text-position: line; 
 }
 
-/* Power line cables > 3, circuits > 1 */
-way[power=~/line|cable/][cables>3], way[power=~/line|cable/][circuits>1]{
-	left-casing-dashes:2,14;
-	left-casing-width:5;
-	z-index: 5;   
-	
+way[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))>=220000][to_int(get(split(";",tag(voltage)),0))<=310000] {
+    color: IndianRed;
+    text-halo-color: #FF1493;
+    z-index: 5;
 }
 
-/* Power line cables > 3, circuits > 1 */
-way[power=minor_line][cables>3], way[power=minor_line][circuits>1]{
-	left-casing-dashes:2,10;
-	left-casing-width:3;
-	z-index: 5;   
+way|z18-[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))>=220000][to_int(get(split(";",tag(voltage)),0))<=310000] {
+    text: "voltage";
+    text-color: black;
+    font-size: 10; 
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 0.5;
+    text-position: line; 
 }
+
+/* 310-550kV */
+way[power=~/cable/][to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<=550000] {
+    color: DarkViolet;
+    text-halo-color: #E0E1DD;
+    z-index: 5;
+}
+
+way|z18-[power=~/cable/][to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<=550000] {
+    text: "voltage";
+    text-color: black;
+    font-size: 10; 
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 0.5;
+    text-position: line; 
+}
+
+way[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<=550000] {
+    color: DarkViolet;
+    text-halo-color: #E0E1DD;
+    z-index: 5;
+}
+
+way|z18-[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))>=310000][to_int(get(split(";",tag(voltage)),0))<=550000] {
+    text: "voltage";
+    text-color: black;
+    font-size: 10; 
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 0.5;
+    text-position: line; 
+}
+
+/* >550kV */
+way[power=~/cable/][to_int(get(split(";",tag(voltage)),0))>=550000] {
+    color: DarkTurquoise;
+    text-halo-color: #E0E1DD;
+    z-index: 5;
+}
+
+way|z18-[power=~/cable/][to_int(get(split(";",tag(voltage)),0))>=550000] {
+    text: "voltage";
+    text-color: black;
+    font-size: 10; 
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 0.5;
+    text-position: line; 
+}
+
+way[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))>=550000] {
+    color: DarkTurquoise;
+    text-halo-color: #E0E1DD;
+    z-index: 5;
+}
+
+way|z18-[power=~/line|minor_line/][to_int(get(split(";",tag(voltage)),0))>=550000] {
+    text: "voltage";
+    text-color: black;
+    font-size: 10; 
+    font-weight: bold;
+    text-allow-overlap: true; 
+    text-opacity: 0.5;
+    text-position: line; 
+}
+
+/* Multi-circuit line styling */
+way[power=~/line|cable/][cables>3], 
+way[power=~/line|cable/][circuits>1] {
+    left-casing-dashes: 2,14;
+    right-casing-dashes: 2,14;
+    z-index: 5;
+}
+
+way[power=minor_line][cables>3], 
+way[power=minor_line][circuits>1] {
+    left-casing-dashes: 2,10;
+    right-casing-dashes: 2,10;
+    z-index: 5;
+}
+
+/* Circuit voltage coloring */
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))<=33000],
-way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage<=33000]{
-	left-casing-color:#FF2E2E;
-	z-index: 5;   
+way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage<=33000] {
+    left-casing-color: #FF2E2E;
+    right-casing-color: #FF2E2E;
+    z-index: 5;
 }
+
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>33000][to_int(get(split(";",tag(voltage)),1))<=50000],
-way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>33000][voltage<=50000]{
-	left-casing-color:#FF7F11;
-	z-index: 5;   
+way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>33000][voltage<=50000] {
+    left-casing-color: #FF7F11;
+    right-casing-color: #FF7F11;
+    z-index: 5;
 }
+
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>50000][to_int(get(split(";",tag(voltage)),1))<=70000],
-way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>50000][voltage<=70000]{
-	left-casing-color:#FFD700;
-	z-index: 5;   
+way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>50000][voltage<=70000] {
+    left-casing-color: #FFD700;
+    right-casing-color: #FFD700;
+    z-index: 5;
 }
+
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>70000][to_int(get(split(";",tag(voltage)),1))<=100000],
-way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>70000][voltage<=100000]{
-	left-casing-color:#39FF14;
-	z-index: 5;   
+way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>70000][voltage<=100000] {
+    left-casing-color: #39FF14;
+    right-casing-color: #39FF14;
+    z-index: 5;
 }
+
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>100000][to_int(get(split(";",tag(voltage)),1))<=170000],
-way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>100000][voltage<=170000]{
-	left-casing-color:#9D00FF;
-	z-index: 5;   
+way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>100000][voltage<=170000] {
+    left-casing-color: #9D00FF;
+    right-casing-color: #9D00FF;
+    z-index: 5;
 }
+
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>170000][to_int(get(split(";",tag(voltage)),1))<=250000],
-way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>170000][voltage<=250000]{
-	left-casing-color:#FF1493;
-	z-index: 5;   
+way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>170000][voltage<=250000] {
+    left-casing-color: #FF1493;
+    right-casing-color: #FF1493;
+    z-index: 5;
 }
+
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>250000][to_int(get(split(";",tag(voltage)),1))<=420000],
-way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>250000][voltage<=420000]{
-	left-casing-color:#E0E1DD;
-	z-index: 5;   
+way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>250000][voltage<=420000] {
+    left-casing-color: #E0E1DD;
+    right-casing-color: #E0E1DD;
+    z-index: 5;
 }
+
 way[power=~/line|minor_line|cable/][to_int(get(split(";",tag(voltage)),1))>420000],
-way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>420000]{
-	left-casing-color:#FFB7C5;
+way[power=~/line|minor_line|cable/][circuits>1][count(split(";",tag(voltage)))=1][voltage>420000] {
+    left-casing-color: #FFB7C5;
+    right-casing-color: #FFB7C5;
 }
 
-/* Style for proposed power lines and constructed lines */
-way[power=line][proposed=yes] {
-    width: 3;
-    dashes: 8, 4;    /* Dashed pattern (8px dash, 4px gap) */
-    opacity: 0.8;
-}
-
-/* Style for proposed power lines and constructed lines */
+/* Proposed and construction power lines */
+way[power=line][proposed=yes],
 way[power=line][construction=yes] {
-    width: 3;
-    dashes: 8, 4;    /* Dashed pattern (8px dash, 4px gap) */
+    dashes: 8, 4;
     opacity: 0.8;
 }
 
-/* Colors for osmose issues start here*/
-/* Power Substation */
+/* Bridge/Tunnel styling for power */
+way[power=line][bridge=yes]::bridge_power,
+way[power=cable][bridge=yes]::bridge_power {
+    major-z-index: 2;
+    object-z-index: -1;
+    width: +4;
+    color: bridge#0000FF;
+    opacity: 0.9;
+}
+
+way[power=line][tunnel=yes]::tunnel_power,
+way[power=cable][tunnel=yes]::tunnel_power {
+    major-z-index: 2;
+    object-z-index: -1;
+    width: +3;
+    color: tunnel#964B00;
+    opacity: 0.9;
+}
+
+/* Generator sources node styling - visible only at z10+ */
+node|z10-[generator:source=nuclear] { icon-image: "presets/power/power_source-nuclear.svg"; set icon_z17; }
+node|z10-[generator:source=wind] { icon-image: "presets/power/power_source-wind.svg"; set icon_z17; }
+node|z10-[generator:source=hydro] { icon-image: "presets/power/power_source-water.svg"; set icon_z17; }
+node|z10-[generator:source=solar] { icon-image: "presets/power/power_source-sun.svg"; set icon_z17; }
+node|z10-[generator:source=coal] { icon-image: "presets/power/power_source-coal.svg"; set icon_z17; }
+node|z10-[generator:source=gas] { icon-image: "presets/power/power_source-gas.svg"; set icon_z17; }
+node|z10-[generator:source=biomass] { icon-image: "presets/power/power_source-biofuel.svg"; set icon_z17; }
+node|z10-[generator:source=oil] { icon-image: "presets/power/power_source-oil.svg"; set icon_z17; }
+
+/* Enhanced visualization for power line attributes */
+node|z15-19[power=tower][design] {
+    text: "design";
+    text-color: black;
+    text-halo-color: white;
+    text-halo-radius: 1;
+    text-offset-y: -15;
+    font-size: 8;
+}
+
+/* Line frequencies only at z11+ */
+way|z14-15[power=line][frequency] {
+    text: "frequency";
+    text-color: white;
+    text-halo-color: black;
+    text-halo-radius: 1;
+    text-offset-y: -8;
+    font-size: 8;
+}
+
+way|z15-[power=line][construction=yes][opening_date] {
+    text: "opening_date";
+    text-color: black;
+    text-halo-color: white;
+    text-halo-radius: 1;
+    text-offset-y: 8;
+    font-size: 8;
+}
+
+way|z10-[power=line][circuits="2"][voltage~=";"] {
+    text: "voltage";
+    text-color: yellow;
+    text-halo-color: black;
+    text-halo-radius: 1;
+    text-offset-y: -10;
+    font-size: 9;
+    font-weight: bold;
+}
+
+way|z15-16[power=line][operator] {
+    text: "operator";
+    text-color: white;
+    text-halo-color: black;
+    text-halo-radius: 1;
+    text-offset-y: 10;
+    font-size: 8;
+    text-position: line;
+}
+
+/* Osmose issue styling */
+node[item=7040] {
+    symbol-shape: triangle;
+    symbol-fill-color: brown;
+    symbol-size: 10; 
+    symbol-fill-opacity: 1.0;
+}
+
 node[item=7190] {
     symbol-shape: square;
     symbol-fill-color: #06470C;
-    symbol-size: 15; 
-    symbol-fill-opacity:1.0;
+    symbol-size: 10; 
+    symbol-fill-opacity: 1.0;
+}
+
+node[item=8270] {
+    symbol-shape: rectangle;
+    symbol-fill-color: #FF00FF;
+    symbol-size: 10; 
+    symbol-fill-opacity: 1.0;
 }
 
 node[item=8280] {
     symbol-shape: square;
     symbol-fill-color: #0B6623;
-    symbol-size: 15; 
-    symbol-fill-opacity:1.0;
+    symbol-size: 10; 
+    symbol-fill-opacity: 1.0;
 }
 
 node[item=8282] {
     symbol-shape: square;
     symbol-fill-color: #008F11;
-    symbol-size: 15; 
-    symbol-fill-opacity:1.0;
+    symbol-size: 10; 
+    symbol-fill-opacity: 1.0;
 }
 
-/* Power Plant */
-node[item=8270] {
-    symbol-shape: rectangle;
-    symbol-fill-color: #FF00FF;
-    symbol-size: 15; 
-    symbol-fill-opacity:1.0;
-}
-
-/* Power transformer */
 node[item=9100] {
     symbol-shape: hexagon;
     symbol-fill-color: #FFFF00;
-    symbol-size: 15; 
-    symbol-fill-opacity:1.0;
+    symbol-size: 10; 
+    symbol-fill-opacity: 1.0;
 }
 
-/* Colors for osmose issues stop here*/
+/* Zoom level behaviors for nodes */
+node|z-16[setting("hide_icons")].icon_z17!.icon_z0,
+relation|z-16[type=restriction][setting("hide_icons")] {
+    icon-image: none;
+}
+node|z-17[setting("hide_icons")]!.text_z0 {
+    text: none;
+}
+way > node|z-15[setting("shrink_nodes")]!:tagged {
+    symbol-shape: none;
+}
+node|z-17:tagged {
+    symbol-stroke-color: none;
+    symbol-fill-color: none;
+    text: none;
+    font-size: 0;
+}
+
+/* Area fill settings */
+area[setting("partial_fill")] {
+    fill-extent: 15;
+}
+
+area|z-13[setting("partial_fill")] {
+    fill-extent-threshold: 1.0;
+}
+
+area[setting("partial_fill")]:closed2 {
+    fill-extent: 25;
+    fill-extent-threshold: JOSM_pref("draw.area.extent_threshold", 0.5);
+}
