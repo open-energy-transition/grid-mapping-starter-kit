@@ -984,3 +984,18 @@ area[setting("partial_fill")]:closed2 {
     fill-extent: 25;
     fill-extent-threshold: JOSM_pref("draw.area.extent_threshold", 0.5);
 }
+
+relation[boundary=administrative] > way::core_boundary,
+way[boundary=administrative]::core_boundary {
+    z-index: 2;
+    modifier: false;
+    width: 1;
+    color: boundary#FF6600;
+    dashes: 9,9;
+}
+way[boundary=administrative][admin_level=1]::core_boundary,
+relation[boundary=administrative][admin_level=1] > way::core_boundary,
+way[boundary=administrative][admin_level=2]::core_boundary,
+relation[boundary=administrative][admin_level=2] > way::core_boundary {
+    width: 4;
+}
