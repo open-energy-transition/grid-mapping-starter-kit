@@ -953,6 +953,14 @@ node[item=9100] {
     symbol-fill-opacity: 1.0;
 }
 
+/* GEM Per Country*/
+node[Type] {
+    symbol-shape: hexagon;
+    symbol-fill-color:#800080;
+    symbol-size: 12; 
+    symbol-fill-opacity: 1.0;
+}
+
 /* Zoom level behaviors for nodes */
 node|z-16[setting("hide_icons")].icon_z17!.icon_z0,
 relation|z-16[type=restriction][setting("hide_icons")] {
