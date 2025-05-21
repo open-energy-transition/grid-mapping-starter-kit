@@ -302,7 +302,7 @@ area|z0-15[power=plant] {
 way|z14-16[power=plant] {
     width: 1.5;
     color: black;
-    fill-color: magenta;
+    fill-color: black;
     fill-opacity: 0.08; 
 }
 
