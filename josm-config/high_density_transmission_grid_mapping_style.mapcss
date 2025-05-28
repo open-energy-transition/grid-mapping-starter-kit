@@ -910,6 +910,14 @@ node[Type] {
     symbol-fill-opacity: 1.0;
 }
 
+/* WIKIDATA Per Country*/
+node[type] {
+    symbol-shape: square;
+    symbol-fill-color:#700070;
+    symbol-size: 12; 
+    symbol-fill-opacity: 1.0;
+}
+
 /* Zoom level behaviors for nodes */
 node|z-16[setting("hide_icons")].icon_z17!.icon_z0,
 relation|z-16[type=restriction][setting("hide_icons")] {
